@@ -5,13 +5,13 @@
  * Date: 10.12.18
  * Time: 17:56
  */
-
-class ProductModel
+namespace models;
+class Product
 {
-    public $items = [];
+    public $items;
     public function __construct()
     {
-        $this->items = include_once 'views/itemslist/itemlist.php';
+        $this->items = include_once 'views/itemlist.php';
     }
 
     public function getItems()

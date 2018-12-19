@@ -5,7 +5,7 @@
     <title>Sony MDR</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../style.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -16,7 +16,7 @@ function myAutoloader($className)
 {
    include "/home/NIX/phpstudent/www/app/models/$className".'.php';
 }
-$myClass1 = new ProductModel();
+$myClass1 = new Product();
 $item = $myClass1->getItemById($_GET['id']);
 ?>
 <div class="container-flued">
@@ -26,7 +26,7 @@ $item = $myClass1->getItemById($_GET['id']);
             ?>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="../../views/index/index.php">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="index.php">Главная</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Информация о продукте</li>
                 </ol>
             </nav>

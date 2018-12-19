@@ -1,11 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: phpstudent
- * Date: 12.12.18
- * Time: 16:14
- */
+
+namespace components;
+
+
 class Controller
 {
-
+    public function render($view, $items) {
+        require "$view";
+    }
 }

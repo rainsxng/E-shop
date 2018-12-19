@@ -1,4 +1,5 @@
 <?php
-include_once 'Router.php';
-$router = new Router();
-$router->route();
+include_once 'autoload.php';
+include_once 'сomponents\App.php';
+use \components\App;
+$app = new App();
