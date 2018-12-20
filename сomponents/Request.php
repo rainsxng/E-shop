@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: alterwalker
- * Date: 27.02.2018
- * Time: 20:23
- */
+
 
 namespace components;
 
