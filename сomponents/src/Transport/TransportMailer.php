@@ -12,7 +12,7 @@ class TransportMailer implements TransportInterface
     {
         $this->config = require_once __DIR__.'/config/mailConfig.php';
     }
-    public function send($subject, $messsage)
+    public function send($subject, $messsage,$template)
     {
         $transport = (new \Swift_SmtpTransport($this->config['host'],$this->config['port']))
             ->setUsername($this->config['username'])
@@ -27,7 +27,7 @@ class TransportMailer implements TransportInterface
         $message = (new \Swift_Message($subject))
             ->setFrom([$this->config['username'] => $this->config['username']])
             ->setTo([$this->config['username'] => $this->config['username']])
-            ->setBody($messsage);
+            ->setBody( require_once 'template/'.$template.'.php','text/html');
         ;
         $params  = $this->config;
         require_once 'template/example.php';

@@ -1,3 +1,3 @@
 <?php
-echo $params['username'];
-die();
+return "<p> Добро пожаловать, {$this->config['username']} . <br> {$messsage}";
+
