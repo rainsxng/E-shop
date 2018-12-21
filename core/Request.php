@@ -6,7 +6,7 @@
  * Time: 20:23
  */
 
-namespace components;
+namespace core;
 
 use controllers\IndexController;
 use \Exception;

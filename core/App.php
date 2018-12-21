@@ -5,8 +5,8 @@
  * Date: 19.12.2018
  * Time: 7:44
  */
-namespace components;
-include 'Request.php';
+namespace core;
+use core\Request;
 class App
 {
     public $route=null;
