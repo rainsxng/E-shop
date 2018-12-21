@@ -1,11 +1,11 @@
 <?php
 
-namespace components;
+namespace core;
 
 
 class Controller
 {
     public function render($view, $items) {
-        require "$view";
+        require $view;
     }
 }

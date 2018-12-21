@@ -6,7 +6,9 @@
  * Time: 17:56
  */
 namespace models;
-class Product
+use core\Model;
+
+class Product extends Model
 {
     public $items;
     public function __construct()

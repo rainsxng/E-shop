@@ -9,9 +9,8 @@
 namespace controllers;
 
 
-use components\Controller;
-use models\Product;
-include_once 'Controller.php';
+use Core\Controller;
+use Models\Product;
 
 class IndexController extends Controller
 {

@@ -7,10 +7,7 @@
  */
 
 namespace core;
-
 use controllers\IndexController;
-use \Exception;
-
 class Request
 {
     protected $controller = 'index';
@@ -31,11 +28,10 @@ class Request
             $this->controller = $path[1];
         }
 
-        $Controller =  ucfirst($this->controller) . 'Controller.php';
-
+        $Controller =  ucfirst($this->controller) . 'Controller';
+        $path = "controllers\\".$Controller;
         $action = 'action' . ucfirst($this->action);
-         include getcwd().'\controllers\\'.$Controller;
-         $controller = new IndexController();
+         $controller = new $path();
 //        if(class_exists("\controller\\".$classController)) {
 //            $instanceController = new $classController;
 //            if(method_exists($instanceController,$action)) {
