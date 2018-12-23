@@ -6,13 +6,19 @@
  * Time: 7:44
  */
 namespace core;
-use core\Request;
+
 class App
 {
     public $route=null;
     public function  __construct()
     {
         $router = new Request();
-        $router->init();
+        $routes = array(
+            // 'url' => 'контроллер/действие/параметр1/параметр2/параметр3'
+            '/' => 'controllers\IndexController/actionIndex', // главная страница
+            '/product/:num' => 'controllers\ProductController/viewProduct/$1'
+);
+        $router::addRoute($routes);
+        $router::dispatch();
     }
 }

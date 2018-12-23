@@ -7,18 +7,16 @@
  */
 
 namespace controllers;
-
-
 use Core\Controller;
 use Models\Product;
 
-class IndexController extends Controller
+class ProductController extends Controller
 {
-    public function actionIndex() {
-        $ProductModel = new Product();
 
-        IndexController::render ('views/index.php',
-            $ProductModel->getItems());
+    public function viewProduct($id) {
+        $ProductModel = new Product();
+        self::render ('views/product.php',
+            $ProductModel->getItemById($id));
     }
 
 }

@@ -49,7 +49,7 @@ include "views/header.html";
 
                         <img class="card-img-top" src="<?=$items[$key]['img'];?>" alt="Card image cap">
                         <div class="card-body">
-                            <h4 class="card-title"><a href="../app/views/product/product.php?page=product&&id=<?=$key;?>" title="View Product"><?=$items[$key]['title'];?></a></h4>
+                            <h4 class="card-title"><a href="product/<?=$key;?>" title="View Product"><?=$items[$key]['title'];?></a></h4>
                             <p class="card-text"><?=$items[$key]['text'];?></p>
                             <div class="row">
                                 <div class="col">

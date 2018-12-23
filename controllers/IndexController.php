@@ -17,7 +17,7 @@ class IndexController extends Controller
     public function actionIndex() {
         $ProductModel = new Product();
 
-        $this->render ('views/index.php',
+        self::render ('views/index.php',
             $ProductModel->getItems());
     }
 
