@@ -4,7 +4,6 @@ function autoload($className) {
     $className = str_replace('-','',ucwords($className,'-'));
     $className = ucfirst($className);
     $fileName = __DIR__.'\\' .$className.".php";
-    var_dump($fileName);
     echo '<br>';
     if(file_exists($fileName)) {
         require_once $fileName;
