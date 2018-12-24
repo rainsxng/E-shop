@@ -9,8 +9,8 @@
 namespace controllers;
 
 
-use Core\Controller;
-use Models\Product;
+use core\Controller;
+use models\Product;
 
 class IndexController extends Controller
 {

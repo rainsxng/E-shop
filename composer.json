@@ -1,0 +1,22 @@
+{
+    "name": "brian/nixapp",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Dmitry",
+            "email": "rainsxng@gmail.com"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^1.24",
+        "twig/twig": "^2.6",
+        "phpunit/phpunit": "^7.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "controllers\\": "controllers\\",
+            "core\\": "core\\",
+            "models\\": "models\\"
+        }
+    }
+}

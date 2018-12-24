@@ -7,8 +7,8 @@
  */
 
 namespace controllers;
-use Core\Controller;
-use Models\Product;
+use core\Controller;
+use models\Product;
 
 class ProductController extends Controller
 {

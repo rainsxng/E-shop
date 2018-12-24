@@ -29,8 +29,8 @@ class TransportMailer implements TransportInterface
             ->setTo([$this->config['username'] => $this->config['username']])
             ->setBody( require_once 'template/'.$template.'.php','text/html');
         ;
-        $params  = $this->config;
-        require_once 'template/example.php';
+//        $params  = $this->config;
+//        require_once 'template/example.php';
 // Send the message
         $result = $mailer->send($message);
     }
