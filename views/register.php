@@ -29,17 +29,23 @@ include_once 'header.html';
     <div class="col-lg-4" id="fluent-container">
         <div class="card bg-primary text-center card-form">
             <div class="card-body">
-                <h3>Вход в аккаунт</h3>
-                <p>Для входа заполните поля ниже</p>
+                <h3>Регистрация</h3>
+                <p>Для регистрации заполните поля ниже</p>
                 <form>
+
                     <div class="form-group">
                         <input type="text" class="form-control form-control-lg" placeholder="Имя пользователя">
                     </div>
                     <div class="form-group">
+                        <input type="email" class="form-control form-control-lg" placeholder="Электронная почта">
+                    </div>
+                    <div class="form-group">
                         <input type="password" class="form-control form-control-lg" placeholder="Пароль">
                     </div>
-                    <input type="submit" class="btn btn-outline-light btn-block" value="Вход">
-                    <a href="/register" class="btn btn-outline-light btn-block">Регистрация</a>
+                    <div class="form-group">
+                        <input type="password" class="form-control form-control-lg" placeholder="Повторите пароль">
+                    </div>
+                    <input type="submit" class="btn btn-outline-light btn-block" value="Регистрация">
                 </form>
             </div>
         </div>
