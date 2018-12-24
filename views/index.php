@@ -23,7 +23,7 @@ include "views/header.html";
             <div class="card bg-light mb-3">
                 <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Категории</div>
                 <ul class="list-group category_block">
-                    <li class="list-group-item"><a href="category.php">Наушники</a></li>
+                    <li class="list-group-item"><a href="/category">Наушники</a></li>
                     <li class="list-group-item"><a href="category.php">Lorem ipsum dolor sit amet.</a></li>
                     <li class="list-group-item"><a href="category.php">Lorem ipsum dolor sit amet.</a></li>
                     <li class="list-group-item"><a href="category.php">PLorem ipsum dolor sit amet.</a></li>

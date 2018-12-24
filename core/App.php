@@ -17,8 +17,9 @@ class App
             // 'url' => 'контроллер/действие/параметр1/параметр2/параметр3'
             '/' => 'controllers\IndexController/actionIndex', // главная страница
             '/product/:num' => 'controllers\ProductController/viewProduct/$1',
-            '/login'=>'controllers\AuthController/showLoginPage',
-            '/register'=>'controllers\AuthController/showRegisterPage'
+            '/login'=>'controllers\IndexController/showLoginPage',
+            '/register'=>'controllers\IndexController/showRegisterPage',
+            '/category'=>'controllers\IndexController/showCatalog'
 );
         $router::addRoute($routes);
         $router::dispatch();

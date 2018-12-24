@@ -20,5 +20,14 @@ class IndexController extends Controller
         self::render ('views/index.php',
             $ProductModel->getItems());
     }
+    public function showCatalog(){
+        self::render('views/category.php');
+    }
+    public function showLoginPAge() {
+        self::render ('views/login.php');
+    }
+    public function showRegisterPAge() {
+        self::render ('views/register.php');
+    }
 
 }
