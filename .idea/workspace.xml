@@ -1,47 +1,556 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cfdd3126-b6fe-4d49-a7fa-ea843b4177e3" name="Default Changelist" comment="" />
+    <list default="true" id="cfdd3126-b6fe-4d49-a7fa-ea843b4177e3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/App/core/src/Transport/TransportInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/core/src/Transport/TransportMailer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/core/src/Transport/config/mailConfig.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/core/src/Transport/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/core/src/Transport/template/example.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/NIX.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/NIX.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autoload.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/controllers/IndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/controllers/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/App.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/core/App.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/core/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/core/Model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/Request.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/core/Request.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/composer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/composer.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/Transport/TransportInterface.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/Transport/TransportMailer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/Transport/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/Transport/template/example.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/autoload.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/composer/ClassLoader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/composer/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/composer/autoload_classmap.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/composer/autoload_files.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/composer/autoload_namespaces.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/composer/autoload_psr4.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/composer/autoload_real.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/composer/autoload_static.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/composer/installed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/doctrine/lexer/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/doctrine/lexer/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/doctrine/lexer/composer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/doctrine/lexer/lib/Doctrine/Common/Lexer/AbstractLexer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/EmailLexer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/EmailParser.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/EmailValidator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/AtextAfterCFWS.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/CRLFAtTheEnd.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/CRLFX2.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/CRNoLF.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/CharNotAllowed.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/CommaInDomain.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/ConsecutiveAt.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/ConsecutiveDot.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/DomainHyphened.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/DotAtEnd.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/DotAtStart.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/ExpectingAT.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/ExpectingATEXT.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/ExpectingCTEXT.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/ExpectingDTEXT.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/ExpectingDomainLiteralClose.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/ExpectingQPair.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/InvalidEmail.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/NoDNSRecord.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/NoDomainPart.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/NoLocalPart.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/UnclosedComment.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/UnclosedQuotedString.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Exception/UnopenedComment.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Parser/DomainPart.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Parser/LocalPart.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Parser/Parser.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Validation/DNSCheckValidation.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Validation/EmailValidation.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Validation/Error/RFCWarnings.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Validation/Error/SpoofEmail.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Validation/Exception/EmptyValidationList.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Validation/MultipleErrors.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Validation/MultipleValidationWithAnd.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Validation/NoRFCWarningsValidation.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Validation/RFCValidation.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Validation/SpoofCheckValidation.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Warning/AddressLiteral.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Warning/CFWSNearAt.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Warning/CFWSWithFWS.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Warning/Comment.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Warning/DeprecatedComment.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Warning/DomainLiteral.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Warning/DomainTooLong.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Warning/EmailTooLong.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Warning/IPV6BadChar.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Warning/IPV6ColonEnd.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Warning/IPV6ColonStart.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Warning/IPV6Deprecated.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Warning/IPV6DoubleColon.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Warning/IPV6GroupCount.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Warning/IPV6MaxGroups.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Warning/LabelTooLong.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Warning/LocalTooLong.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Warning/NoDNSMXRecord.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Warning/ObsoleteDTEXT.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Warning/QuotedPart.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Warning/QuotedString.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Warning/TLD.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/EmailValidator/Warning/Warning.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/composer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/egulias/email-validator/phpunit.xml.dist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/.github/ISSUE_TEMPLATE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/.github/PULL_REQUEST_TEMPLATE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/.php_cs.dist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/CHANGES" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/composer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/doc/headers.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/doc/index.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/doc/introduction.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/doc/japanese.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/doc/messages.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/doc/plugins.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/doc/sending.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/AddressEncoder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/AddressEncoder/IdnAddressEncoder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/AddressEncoder/Utf8AddressEncoder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/AddressEncoderException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Attachment.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/ByteStream/AbstractFilterableInputStream.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/ByteStream/ArrayByteStream.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/ByteStream/FileByteStream.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/ByteStream/TemporaryFileByteStream.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/CharacterReader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/CharacterReader/GenericFixedWidthReader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/CharacterReader/UsAsciiReader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/CharacterReader/Utf8Reader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/CharacterReaderFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/CharacterReaderFactory/SimpleCharacterReaderFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/CharacterStream.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/CharacterStream/ArrayCharacterStream.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/CharacterStream/NgCharacterStream.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/ConfigurableSpool.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/DependencyContainer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/DependencyException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/EmbeddedFile.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Encoder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Encoder/Base64Encoder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Encoder/QpEncoder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Encoder/Rfc2231Encoder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/CommandEvent.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/CommandListener.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/Event.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/EventDispatcher.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/EventListener.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/EventObject.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/ResponseEvent.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/ResponseListener.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/SendEvent.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/SendListener.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/SimpleEventDispatcher.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/TransportChangeEvent.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/TransportChangeListener.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/TransportExceptionEvent.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Events/TransportExceptionListener.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/FailoverTransport.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/FileSpool.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/FileStream.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Filterable.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/IdGenerator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Image.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/InputByteStream.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/IoException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/KeyCache.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/KeyCache/ArrayKeyCache.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/KeyCache/DiskKeyCache.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/KeyCache/KeyCacheInputStream.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/KeyCache/NullKeyCache.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/KeyCache/SimpleKeyCacheInputStream.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/LoadBalancedTransport.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer/ArrayRecipientIterator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer/RecipientIterator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/MemorySpool.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Message.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Attachment.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/CharsetObserver.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/ContentEncoder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/ContentEncoder/Base64ContentEncoder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/ContentEncoder/NativeQpContentEncoder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/ContentEncoder/NullContentEncoder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/ContentEncoder/PlainContentEncoder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/ContentEncoder/QpContentEncoder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/ContentEncoder/QpContentEncoderProxy.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/ContentEncoder/RawContentEncoder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/EmbeddedFile.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/EncodingObserver.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Header.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/HeaderEncoder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/HeaderEncoder/Base64HeaderEncoder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/HeaderEncoder/QpHeaderEncoder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/AbstractHeader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/DateHeader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/IdentificationHeader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/MailboxHeader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/OpenDKIMHeader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/ParameterizedHeader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/PathHeader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/Headers/UnstructuredHeader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/IdGenerator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/MimePart.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleHeaderFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleHeaderSet.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMessage.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMimeEntity.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/MimePart.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/NullTransport.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/OutputByteStream.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/AntiFloodPlugin.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/BandwidthMonitorPlugin.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/Decorator/Replacements.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/DecoratorPlugin.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/ImpersonatePlugin.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/Logger.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/LoggerPlugin.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/Loggers/ArrayLogger.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/Loggers/EchoLogger.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/MessageLogger.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/Pop/Pop3Connection.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/Pop/Pop3Exception.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/PopBeforeSmtpPlugin.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/RedirectingPlugin.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/Reporter.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/ReporterPlugin.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/Reporters/HitReporter.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/Reporters/HtmlReporter.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/Sleeper.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/ThrottlerPlugin.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Plugins/Timer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Preferences.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/ReplacementFilterFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/RfcComplianceException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/SendmailTransport.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Signer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Signers/BodySigner.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Signers/DKIMSigner.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Signers/DomainKeySigner.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Signers/HeaderSigner.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Signers/OpenDKIMSigner.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Signers/SMimeSigner.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/SmtpTransport.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Spool.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/SpoolTransport.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/StreamFilter.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/StreamFilters/ByteArrayReplacementFilter.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/StreamFilters/StringReplacementFilter.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/StreamFilters/StringReplacementFilterFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/SwiftException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/AbstractSmtpTransport.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/Esmtp/Auth/CramMd5Authenticator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/Esmtp/Auth/LoginAuthenticator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/Esmtp/Auth/NTLMAuthenticator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/Esmtp/Auth/PlainAuthenticator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/Esmtp/Auth/XOAuth2Authenticator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/Esmtp/AuthHandler.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/Esmtp/Authenticator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/Esmtp/EightBitMimeHandler.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/Esmtp/SmtpUtf8Handler.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpHandler.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/EsmtpTransport.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/FailoverTransport.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/IoBuffer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/LoadBalancedTransport.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/NullTransport.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/SendmailTransport.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/SmtpAgent.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/SpoolTransport.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Transport/StreamBuffer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/classes/Swift/TransportException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/dependency_maps/cache_deps.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/dependency_maps/message_deps.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/dependency_maps/mime_deps.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/dependency_maps/transport_deps.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/mime_types.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/preferences.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/swift_required.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/lib/swiftmailer_generate_mimes_config.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/phpunit.xml.dist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/IdenticalBinaryConstraint.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/StreamCollector.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/SwiftMailerSmokeTestCase.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/SwiftMailerTestCase.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/charsets/iso-2022-jp/one.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/charsets/iso-8859-1/one.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/charsets/utf-8/one.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/charsets/utf-8/three.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/charsets/utf-8/two.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/dkim/dkim.test.priv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/dkim/dkim.test.pub" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/files/data.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/files/swiftmailer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/files/textfile.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/smime/CA.srl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/smime/ca.crt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/smime/ca.key" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/smime/create-cert.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/smime/encrypt.crt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/smime/encrypt.key" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/smime/encrypt2.crt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/smime/encrypt2.key" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/smime/intermediate.crt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/smime/intermediate.key" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/smime/sign.crt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/smime/sign.key" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/smime/sign2.crt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/_samples/smime/sign2.key" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance.conf.php.default" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/AttachmentAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/ByteStream/FileByteStreamAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/CharacterReaderFactory/SimpleCharacterReaderFactoryAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/DependencyContainerAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/EmbeddedFileAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Encoder/Base64EncoderAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Encoder/QpEncoderAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Encoder/Rfc2231EncoderAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/KeyCache/ArrayKeyCacheAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/KeyCache/DiskKeyCacheAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/MessageAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Mime/AttachmentAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Mime/ContentEncoder/Base64ContentEncoderAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Mime/ContentEncoder/NativeQpContentEncoderAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Mime/ContentEncoder/PlainContentEncoderAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Mime/ContentEncoder/QpContentEncoderAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Mime/EmbeddedFileAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Mime/HeaderEncoder/Base64HeaderEncoderAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Mime/MimePartAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Mime/SimpleMessageAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/MimePartAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Transport/StreamBuffer/AbstractStreamBufferAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Transport/StreamBuffer/BasicSocketAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Transport/StreamBuffer/ProcessAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Transport/StreamBuffer/SocketTimeoutTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Transport/StreamBuffer/SslSocketAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/acceptance/Swift/Transport/StreamBuffer/TlsSocketAcceptanceTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/bootstrap.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/bug/Swift/Bug111Test.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/bug/Swift/Bug118Test.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/bug/Swift/Bug206Test.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/bug/Swift/Bug274Test.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/bug/Swift/Bug34Test.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/bug/Swift/Bug35Test.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/bug/Swift/Bug38Test.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/bug/Swift/Bug518Test.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/bug/Swift/Bug51Test.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/bug/Swift/Bug534Test.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/bug/Swift/Bug650Test.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/bug/Swift/Bug71Test.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/bug/Swift/Bug76Test.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/bug/Swift/BugFileByteStreamConsecutiveReadCallsTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/fixtures/MimeEntityFixture.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/smoke.conf.php.default" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/smoke/Swift/Smoke/AttachmentSmokeTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/smoke/Swift/Smoke/BasicSmokeTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/smoke/Swift/Smoke/HtmlWithAttachmentSmokeTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/smoke/Swift/Smoke/InternationalSmokeTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/ByteStream/ArrayByteStreamTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/CharacterReader/GenericFixedWidthReaderTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/CharacterReader/UsAsciiReaderTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/CharacterReader/Utf8ReaderTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/CharacterStream/ArrayCharacterStreamTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/DependencyContainerTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Encoder/Base64EncoderTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Encoder/QpEncoderTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Encoder/Rfc2231EncoderTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Events/CommandEventTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Events/EventObjectTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Events/ResponseEventTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Events/SendEventTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Events/SimpleEventDispatcherTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Events/TransportChangeEventTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Events/TransportExceptionEventTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/KeyCache/ArrayKeyCacheTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/KeyCache/SimpleKeyCacheInputStreamTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mailer/ArrayRecipientIteratorTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/MailerTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/MessageTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/AbstractMimeEntityTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/AttachmentTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/ContentEncoder/Base64ContentEncoderTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/ContentEncoder/PlainContentEncoderTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/ContentEncoder/QpContentEncoderTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/EmbeddedFileTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/HeaderEncoder/Base64HeaderEncoderTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/HeaderEncoder/QpHeaderEncoderTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/Headers/DateHeaderTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/Headers/IdentificationHeaderTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/Headers/MailboxHeaderTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/Headers/ParameterizedHeaderTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/Headers/PathHeaderTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/Headers/UnstructuredHeaderTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/IdGeneratorTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/MimePartTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/SimpleHeaderFactoryTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/SimpleHeaderSetTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/SimpleMessageTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Mime/SimpleMimeEntityTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/AntiFloodPluginTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/BandwidthMonitorPluginTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/DecoratorPluginTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/LoggerPluginTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/Loggers/ArrayLoggerTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/Loggers/EchoLoggerTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/PopBeforeSmtpPluginTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/RedirectingPluginTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/ReporterPluginTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/Reporters/HitReporterTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/Reporters/HtmlReporterTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Plugins/ThrottlerPluginTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Signers/DKIMSignerTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Signers/OpenDKIMSignerTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Signers/SMimeSignerTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/StreamFilters/ByteArrayReplacementFilterTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/StreamFilters/StringReplacementFilterFactoryTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/StreamFilters/StringReplacementFilterTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/AbstractSmtpEventSupportTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/AbstractSmtpTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/Esmtp/Auth/CramMd5AuthenticatorTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/Esmtp/Auth/LoginAuthenticatorTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/Esmtp/Auth/NTLMAuthenticatorTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/Esmtp/Auth/PlainAuthenticatorTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/Esmtp/AuthHandlerTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/EsmtpTransport/ExtensionSupportTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/EsmtpTransportTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/FailoverTransportTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/LoadBalancedTransportTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/SendmailTransportTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/StreamBufferTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/models/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/views/cart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/category.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/views/category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/views/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/App/views/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/views/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/itemlist.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/views/itemlist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/views/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/product.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/views/product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/views/register.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/core/composer.json</pharConfigPath>
+  </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="92">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="23">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/composer.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="92">
+              <caret line="4" column="9" lean-forward="true" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App/core/Model.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="23">
+              <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App/core/Request.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="483">
+              <caret line="71" column="70" selection-start-line="71" selection-start-column="70" selection-end-line="71" selection-end-column="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App/controllers/AuthController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="69">
+              <caret line="8" column="21" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App/models/Product.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Router.php">
+        <entry file="file://$PROJECT_DIR$/App/views/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="15" column="39" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+            <state relative-caret-position="277">
+              <caret line="69" column="10" lean-forward="true" selection-start-line="69" selection-start-column="10" selection-end-line="69" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/index/index.php">
+        <entry file="file://$PROJECT_DIR$/App/controllers/IndexController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+            <state relative-caret-position="253">
+              <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/MainController.php">
+        <entry file="file://$PROJECT_DIR$/App/controllers/ProductController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/ProductModel.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="13" column="37" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
+            <state relative-caret-position="46">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+              <folding>
+                <element signature="e#118#138#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -58,8 +567,30 @@
         <option value="$PROJECT_DIR$/views/index/index.php" />
         <option value="$PROJECT_DIR$/models/ProductModel.php" />
         <option value="$PROJECT_DIR$/controllers/MainController.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/core/composer.json" />
+        <option value="$PROJECT_DIR$/core/.gitignore" />
+        <option value="$PROJECT_DIR$/App/core/App.php" />
+        <option value="$PROJECT_DIR$/App/core/Controller.php" />
+        <option value="$PROJECT_DIR$/App/core/Model.php" />
+        <option value="$PROJECT_DIR$/App/controllers/AuthController.php" />
+        <option value="$PROJECT_DIR$/App/controllers/ProductController.php" />
+        <option value="$PROJECT_DIR$/public/index.php" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/App/core/Request.php" />
+        <option value="$PROJECT_DIR$/App/controllers/IndexController.php" />
+        <option value="$PROJECT_DIR$/App/models/Product.php" />
+        <option value="$PROJECT_DIR$/App/views/index.php" />
       </list>
     </option>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/core/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/core/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/core/vendor/composer" />
+      <path value="$PROJECT_DIR$/core/vendor/swiftmailer/swiftmailer" />
+    </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="35" />
@@ -78,19 +609,31 @@
         <subPane>
           <expand>
             <path>
-              <item name="NIX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NIX" type="462c0819:PsiDirectoryNode" />
+              <item name="nixapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nixapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="NIX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NIX" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="nixapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nixapp" type="462c0819:PsiDirectoryNode" />
+              <item name="App" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="NIX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NIX" type="462c0819:PsiDirectoryNode" />
+              <item name="nixapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nixapp" type="462c0819:PsiDirectoryNode" />
+              <item name="App" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nixapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nixapp" type="462c0819:PsiDirectoryNode" />
+              <item name="App" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nixapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nixapp" type="462c0819:PsiDirectoryNode" />
+              <item name="App" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="index" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -100,9 +643,16 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../NIX" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\OSPanel\domains\nixapp\public\css" />
+      <recent name="C:\OSPanel\domains\nixapp\public" />
+      <recent name="C:\OSPanel\domains\nixapp\app" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -127,65 +677,151 @@
       <option name="presentableId" value="Default" />
       <updated>1545017845169</updated>
       <workItem from="1545017850118" duration="1920000" />
+      <workItem from="1546122874578" duration="504000" />
+      <workItem from="1546176269580" duration="129000" />
+      <workItem from="1546176430559" duration="1210000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1920000" />
+    <option name="totallyTimeSpent" value="3763000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25973153" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32941177" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32941177" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32941177" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/views/index/index.php">
+    <entry file="file://$PROJECT_DIR$/views/index/index.php" />
+    <entry file="file://$PROJECT_DIR$/models/ProductModel.php" />
+    <entry file="file://$PROJECT_DIR$/controllers/MainController.php" />
+    <entry file="file://$PROJECT_DIR$/Router.php" />
+    <entry file="file://$PROJECT_DIR$/vendor/autoload.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/composer.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+        <state relative-caret-position="69">
+          <caret line="3" column="6" lean-forward="true" selection-start-line="3" selection-start-column="6" selection-end-line="4" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/ProductModel.php">
+    <entry file="file://$PROJECT_DIR$/core/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autoload.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/core/App.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="13" column="37" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
+        <state relative-caret-position="46">
+          <caret line="7" column="14" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/MainController.php">
+    <entry file="file://$PROJECT_DIR$/App/core/Controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+        <state relative-caret-position="46">
+          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Router.php">
+    <entry file="file://$PROJECT_DIR$/App/core/Model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="15" column="39" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+        <state relative-caret-position="23">
+          <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/controllers/ProductController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#118#138#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/controllers/AuthController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="8" column="21" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="9" lean-forward="true" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/core/Request.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="71" column="70" selection-start-line="71" selection-start-column="70" selection-end-line="71" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/controllers/IndexController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/models/Product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/views/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="69" column="10" lean-forward="true" selection-start-line="69" selection-start-column="10" selection-end-line="69" selection-end-column="10" />
         </state>
       </provider>
     </entry>
