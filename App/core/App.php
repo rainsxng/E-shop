@@ -15,10 +15,10 @@ class App
         $router = new Request();
         $routes = array(
             // 'url' => 'контроллер/действие/параметр1/параметр2/параметр3'
-            '/' => 'controllers\IndexController/actionIndex', // главная страница
-            '/product/:num' => 'controllers\ProductController/viewProduct/$1',
-            '/login'=>'controllers\AuthController/showLoginPage',
-            '/register'=>'controllers\AuthController/showRegisterPage'
+            '/' => 'Controllers\IndexController/actionIndex', // главная страница
+            '/product/:num' => 'Controllers\ProductController/viewProduct/$1',
+            '/login'=>'Controllers\ShowController/showLoginPage',
+            '/register'=>'Controllers\ShowController/showRegisterPage'
 );
         $router::addRoute($routes);
         $router::dispatch();

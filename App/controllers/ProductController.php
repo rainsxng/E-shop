@@ -15,7 +15,7 @@ class ProductController extends Controller
 
     public function viewProduct($id) {
         $ProductModel = new Product();
-        self::render ('views/product.php',
+        self::render ('../App/views/product.php',
             $ProductModel->getItemById($id));
     }
 

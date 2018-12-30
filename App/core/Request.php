@@ -7,7 +7,6 @@
  */
 
 namespace Core;
-use Controllers\IndexController;
 class Request
 {
     public static $routes = array();

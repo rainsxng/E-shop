@@ -10,15 +10,9 @@ namespace Controllers;
 
 
 use Core\Controller;
-use Models\Product;
 
 class AuthController extends Controller
 {
-    public function showLoginPAge() {
-        self::render ('views/login.php');
-    }
-    public function showRegisterPAge() {
-        self::render ('views/register.php');
-    }
+
 
 }
