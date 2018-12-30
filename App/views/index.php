@@ -23,11 +23,9 @@ include "../App/views/header.html";
             <div class="card bg-light mb-3">
                 <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Категории</div>
                 <ul class="list-group category_block">
-                    <li class="list-group-item"><a href="category.php">Наушники</a></li>
-                    <li class="list-group-item"><a href="category.php">Lorem ipsum dolor sit amet.</a></li>
-                    <li class="list-group-item"><a href="category.php">Lorem ipsum dolor sit amet.</a></li>
-                    <li class="list-group-item"><a href="category.php">PLorem ipsum dolor sit amet.</a></li>
-                    <li class="list-group-item"><a href="category.php">Lorem ipsum dolor sit amet.</a></li>
+                    <?php foreach ($categories as $key=>$value){ ?>
+                    <li class="list-group-item"><a href="/category/<?=$key;?>"><?=$categories[$key]['category'];?></a></li>
+                    <?php }?>
                 </ul>
             </div>
             <div class="card bg-light mb-3">
@@ -50,8 +48,9 @@ include "../App/views/header.html";
                         <div class="card-body">
                             <h4 class="card-title"><a href="product/<?=$key;?>" title="View Product"><?=$items[$key]['title'];?></a></h4>
                             <div class="col mb-4">
-                                <a href="/category/<?=$items[$key]['categoryId'];?>"><?=$items[$key]['category'];?></a>
-                            </div> <p class="card-text"><?=$items[$key]['text'];?></p>
+                                 <a href="/category/<?=$items[$key]['categoryId'];?>"><?=$items[$key]['category'];?></a>
+                            </div>
+                            <p class="card-text"><?=$items[$key]['text'];?></p>
                             <div class="row">
 
                                 <div class="col">

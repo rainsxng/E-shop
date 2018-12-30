@@ -10,7 +10,8 @@ use Core\Model;
 
 class Product extends Model
 {
-    public $items;
+    private $items;
+    private $products = [];
     public function __construct()
     {
         $this->items = include_once '../App/views/itemlist.php';
@@ -35,6 +36,14 @@ class Product extends Model
             }
         }
     return 0;
+    }
+    public function getProductsByCategoryId($id){
+        foreach ($this->items as $key=>$value) {
+            if ($this->items[$key]['categoryId'] == $id) {
+                $this->products [] =$this->items[$key];
+            }
+        }
+        return $this->products;
     }
 
 }

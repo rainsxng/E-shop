@@ -11,7 +11,7 @@
 <body>
 <div class="container">
     <?php
-    include_once 'header.html';
+    include_once '../App/views/header.html';
     ?>
 <div class="container">
     <div class="row align-items-end">
@@ -43,108 +43,27 @@
         </div>
         <div class="col">
             <div class="row">
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <img class="card-img-top" src="https://images-na.ssl-images-amazon.com/images/I/816fXIY2whL._SX425_.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title"><a href="product.php" title="View Product">Sony MDR-7506</a></h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, porro?</p>
-                            <div class="row">
-                                <div class="col">
-                                    <p class="btn btn-danger btn-block">99.00 $</p>
-                                </div>
-                                <div class="col">
-                                    <a href="#" class="btn btn-success btn-block">Добавить в корзину</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <img class="card-img-top" src="https://images-na.ssl-images-amazon.com/images/I/816fXIY2whL._SX425_.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title"><a href="product.php" title="View Product">Sony MDR1000X/B</a></h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, porro?.</p>
-                            <div class="row">
-                                <div class="col">
-                                    <p class="btn btn-danger btn-block">99.00 $</p>
-                                </div>
-                                <div class="col">
-                                    <a href="#" class="btn btn-success btn-block">Добавить в корзину</a>
+                <?php foreach ($items as $key=>$value) {
+                ?>
+                    <div class="col-12 col-md-6 col-lg-4 mt-4 mb-3">
+                        <div class="card">
+                            <img class="card-img-top" src="<?=$items[$key]['img'];?>" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="product/<?=$key;?>" title="View Product"><?=$items[$key]['title'];?></a></h4>
+                                <p class="card-text"><?=$items[$key]['text'];?></p>
+                                <div class="row">
+
+                                    <div class="col">
+                                        <p class="btn btn-danger btn-block"><?=$items[$key]['price'];?></p>
+                                    </div>
+                                    <div class="col">
+                                        <a href="#" class="btn btn-success btn-block">Добавить в корзину</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <img class="card-img-top" src="https://images-na.ssl-images-amazon.com/images/I/816fXIY2whL._SX425_.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title"><a href="product.php" title="View Product">Sony MDR1000X/B</a></h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, porro?.</p>
-                            <div class="row">
-                                <div class="col">
-                                    <p class="btn btn-danger btn-block">99.00 $</p>
-                                </div>
-                                <div class="col">
-                                    <a href="#" class="btn btn-success btn-block">Добавить в корзину</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <img class="card-img-top" src="https://images-na.ssl-images-amazon.com/images/I/816fXIY2whL._SX425_.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title"><a href="product.php" title="View Product">Sony MDR1000X/B</a></h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, porro?</p>
-                            <div class="row">
-                                <div class="col">
-                                    <p class="btn btn-danger btn-block">99.00 $</p>
-                                </div>
-                                <div class="col">
-                                    <a href="#" class="btn btn-success btn-block">Добавить в корзину</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <img class="card-img-top" src="https://images-na.ssl-images-amazon.com/images/I/816fXIY2whL._SX425_.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title"><a href="product.php" title="View Product">Sony MDR1000X/B</a></h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, porro?</p>
-                            <div class="row">
-                                <div class="col">
-                                    <p class="btn btn-danger btn-block">99.00 $</p>
-                                </div>
-                                <div class="col">
-                                    <a href="#" class="btn btn-success btn-block">Добавить в корзину</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <img class="card-img-top" src="https://images-na.ssl-images-amazon.com/images/I/816fXIY2whL._SX425_.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title"><a href="product.php" title="View Product">Sony MDR1000X/B</a></h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, porro?</p>
-                            <div class="row">
-                                <div class="col">
-                                    <p class="btn btn-danger btn-block">99.00 $</p>
-                                </div>
-                                <div class="col">
-                                    <a href="#" class="btn btn-success btn-block">Добавить в корзину</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php }?>
                 <div class="col-12">
                     <nav aria-label="...">
                         <ul class="pagination">
@@ -171,7 +90,7 @@
 
 <!-- Footer -->
     <?php
-    include_once 'footer.html';
+    include_once '../App/views/footer.html';
     ?>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
