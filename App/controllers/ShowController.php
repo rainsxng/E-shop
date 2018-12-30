@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: alterwalker
- * Date: 27.02.2018
- * Time: 21:06
- */
+
 
 namespace Controllers;
 
@@ -19,6 +14,9 @@ class ShowController extends Controller
     }
     public function showRegisterPAge() {
         self::render ('../App/views/register.php');
+    }
+    public function showCart() {
+        self::render ('../App/views/cart.php');
     }
 
 }

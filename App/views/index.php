@@ -44,14 +44,16 @@ include "../App/views/header.html";
             <div class="row">
                 <?php foreach ($items as $key=>$value) {
                 ?>
-                <div class="col-12 col-md-6 col-lg-4">
+                <div class="col-12 col-md-6 col-lg-4 mt-4 mb-3">
                     <div class="card">
-
                         <img class="card-img-top" src="<?=$items[$key]['img'];?>" alt="Card image cap">
                         <div class="card-body">
                             <h4 class="card-title"><a href="product/<?=$key;?>" title="View Product"><?=$items[$key]['title'];?></a></h4>
-                            <p class="card-text"><?=$items[$key]['text'];?></p>
+                            <div class="col mb-4">
+                                <a href="/category/<?=$items[$key]['categoryId'];?>"><?=$items[$key]['category'];?></a>
+                            </div> <p class="card-text"><?=$items[$key]['text'];?></p>
                             <div class="row">
+
                                 <div class="col">
                                     <p class="btn btn-danger btn-block"><?=$items[$key]['price'];?></p>
                                 </div>

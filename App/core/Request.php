@@ -21,6 +21,12 @@ class Request
         }
         self::$routes = array_merge(self::$routes, $route);
     }
+    public function __construct()
+    {
+        $routes = require_once '../App/config/routes.php';
+        self::addRoute($routes);
+    }
+
     /**
      * Разделить переданный URL на компоненты
      */

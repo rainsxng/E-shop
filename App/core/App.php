@@ -13,14 +13,6 @@ class App
     public function  __construct()
     {
         $router = new Request();
-        $routes = array(
-            // 'url' => 'контроллер/действие/параметр1/параметр2/параметр3'
-            '/' => 'Controllers\IndexController/actionIndex', // главная страница
-            '/product/:num' => 'Controllers\ProductController/viewProduct/$1',
-            '/login'=>'Controllers\ShowController/showLoginPage',
-            '/register'=>'Controllers\ShowController/showRegisterPage'
-);
-        $router::addRoute($routes);
         $router::dispatch();
     }
 }
