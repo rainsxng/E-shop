@@ -16,7 +16,7 @@
 <div class="container">
     <div class="row align-items-end">
         <div class="col-lg-5 text-right ml-5" style="font-size: 20px">
-            <span id="popularLabel2">Категория: Наушники</span>
+            <span id="popularLabel2">Категория: <?=$items[0]['category'];?></span>
         </div>
         <div class="col text-right mr-3 mt-4">
             <div class="dropdown">

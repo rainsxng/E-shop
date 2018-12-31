@@ -6,22 +6,30 @@ use Models\Product;
 
 class ProductController extends Controller
 {
-    private static $ProductModel;
-    public function __construct()
-    {
-        self::$ProductModel = new Product();
-    }
-
     public function viewProduct($id)
     {
-        self::render ('../App/views/product.php',
-            self::$ProductModel->getItemById($id));
+        $product = new Product();
+        $products = $product->getItemById($id);
+        if (!empty($products)) {
+            self::render('../App/views/product.php',
+                $product->getItemById($id));
+        }
+        else {
+            self::render('../App/views/404.php');
+        }
     }
+
     public function getProductsByCategoryId($id)
     {
         $product = new Product();
-        self::render('../App/views/category.php',
-            $product->getProductsByCategoryId($id));
+        $products = $product->getProductsByCategoryId($id);
+        if (!empty($products)) {
+            self::render('../App/views/category.php',
+               $products);
+        }
+        else {
+            self::render('../App/views/404.php');
+        }
     }
 
 }

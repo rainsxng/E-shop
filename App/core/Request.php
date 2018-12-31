@@ -66,6 +66,9 @@ class Request
                 self::$params = self::splitUrl($uri);
                 break; // URL обработан!
             }
+
+
+
         }
         return self::executeAction();
     }
