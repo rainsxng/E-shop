@@ -10,7 +10,7 @@
 </head>
 <body>
 <?php
-include_once '../App/views/header.html';
+include_once '../App/views/header.php';
 ?>
 <div class="container-flued">
     <div class="row  align-items-center">

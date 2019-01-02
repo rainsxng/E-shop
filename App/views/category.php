@@ -11,7 +11,7 @@
 <body>
 <div class="container">
     <?php
-    include_once '../App/views/header.html';
+    include_once '../App/views/header.php';
     ?>
 <div class="container">
     <div class="row align-items-end">

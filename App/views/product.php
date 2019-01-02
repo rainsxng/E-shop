@@ -10,7 +10,7 @@
 </head>
 <body>
 <?php
-include "../App/views/header.html";
+include "../App/views/header.php";
 ?>
 <div class="container-flued">
     <div class="row ">

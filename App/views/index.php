@@ -10,7 +10,7 @@
 </head>
 <body>
 <?php
-include "../App/views/header.html";
+include "../App/views/header.php";
 ?>
 <div class="container">
 
@@ -47,9 +47,7 @@ include "../App/views/header.html";
                         <img class="card-img-top" src="<?=$items[$key]['img'];?>" alt="Card image cap">
                         <div class="card-body">
                             <h4 class="card-title"><a href="product/<?=$key;?>" title="View Product"><?=$items[$key]['title'];?></a></h4>
-                            <div class="col mb-4">
                                  <a href="/category/<?=$items[$key]['categoryId'];?>"><?=$items[$key]['category'];?></a>
-                            </div>
                             <p class="card-text"><?=$items[$key]['text'];?></p>
                             <div class="row">
 
