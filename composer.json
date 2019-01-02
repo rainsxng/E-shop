@@ -7,10 +7,12 @@
             "email": "rainsxng@gmail.com"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
         "monolog/monolog": "^1.24",
         "twig/twig": "^2.6",
-        "phpunit/phpunit": "^7.5"
+        "phpunit/phpunit": "^7.5",
+        "brian/logger": "dev-master"
     },
     "autoload": {
         "psr-4": {
