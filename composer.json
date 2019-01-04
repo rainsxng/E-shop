@@ -18,7 +18,8 @@
         "psr-4": {
             "Controllers\\": "App\\controllers\\",
             "Core\\": "App\\core\\",
-            "Models\\": "App\\models\\"
+            "Models\\": "App\\models\\",
+            "Mappers\\": "App\\DataMappers\\"
         }
     }
 }

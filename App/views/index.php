@@ -23,9 +23,10 @@ include "../App/views/header.php";
             <div class="card bg-light mb-3">
                 <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Категории</div>
                 <ul class="list-group category_block">
-                    <?php foreach ($categories as $key=>$value){ ?>
-                    <li class="list-group-item"><a href="/category/<?=$key;?>"><?=$categories[$key]['category'];?></a></li>
-                    <?php }?>
+                    <?php foreach ($categories as $key=>$value){
+                        ?>
+                    <li class="list-group-item"><a href="/category/<?=$key;?>"><?=$categories[$key];?></a></li>
+                    <?php  } ?>
                 </ul>
             </div>
             <div class="card bg-light mb-3">

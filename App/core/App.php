@@ -1,7 +1,6 @@
 <?php
 namespace Core;
 use Logger\LoggerClass;
-use mysql_xdevapi\Exception;
 
 class App
 {
@@ -13,6 +12,7 @@ class App
         $logger->registerFatalHandler();
         $logger->registerExceptionHandler();
         $logger->registerErrorHandler([],false);
+        $wrapper = new DBWrapper();
         $router = new Request();
         $router::dispatch();
     }
