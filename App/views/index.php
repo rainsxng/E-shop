@@ -25,17 +25,17 @@ include "../App/views/header.php";
                 <ul class="list-group category_block">
                     <?php foreach ($categories as $key=>$value){
                         ?>
-                    <li class="list-group-item"><a href="/category/<?=$key;?>"><?=$categories[$key];?></a></li>
+                    <li class="list-group-item"><a href="/category/<?=$items[$key]['category_id'];?>"><?=$categories[$key];?></a></li>
                     <?php  } ?>
                 </ul>
             </div>
             <div class="card bg-light mb-3">
                 <div class="card-header bg-success text-white text-uppercase">Последнее поступление</div>
                 <div class="card-body">
-                    <img class="img-fluid" src="<?=$items[0][1]['img'];?>" />
-                    <h5 class="card-title"><?=$items[0][1]['title'];?></h5>
+                    <img class="img-fluid" src="<?=$items[0]['image'];?>" />
+                    <h5 class="card-title"><?=$items[0]['name'];?></h5>
                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, porro?</p>
-                    <p class="bloc_left_price">99$</p>
+                    <p class="bloc_left_price"><?=$items[0]['price'];?>$</p>
                 </div>
             </div>
         </div>
@@ -45,15 +45,16 @@ include "../App/views/header.php";
                 ?>
                 <div class="col-12 col-md-6 col-lg-4 mt-4 mb-3">
                     <div class="card">
-                        <img class="card-img-top" src="<?=$items[$key]['img'];?>" alt="Card image cap">
+                        <img class="card-img-top" src="<?=$items[$key]['image'];?>" alt="Card image cap">
                         <div class="card-body">
-                            <h4 class="card-title"><a href="product/<?=$key;?>" title="View Product"><?=$items[$key]['title'];?></a></h4>
-                                 <a href="/category/<?=$items[$key]['categoryId'];?>"><?=$items[$key]['category'];?></a>
-                            <p class="card-text"><?=$items[$key]['text'];?></p>
+                            <a href="brands/<?=$items[$key]['brand_id'];?>"><?=$items[$key]['Brand'];?></a>
+                            <h4 class="card-title"><a href="product/<?=$items[$key]['id'];?>" title="View Product"><?=$items[$key]['name'];?></a></h4>
+                                 <a href="/category/<?=$items[$key]['category_id'];?>"><?=$items[$key]['Category'];?></a>
+                            <p class="card-text"><?=$items[$key]['short_desc'];?></p>
                             <div class="row">
 
                                 <div class="col">
-                                    <p class="btn btn-danger btn-block"><?=$items[$key]['price'];?></p>
+                                    <p class="btn btn-danger btn-block"><?=$items[$key]['price'];?>$</p>
                                 </div>
                                 <div class="col">
                                     <a href="#" class="btn btn-success btn-block">Добавить в корзину</a>

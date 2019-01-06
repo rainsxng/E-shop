@@ -12,7 +12,7 @@ class App
         $logger->registerFatalHandler();
         $logger->registerExceptionHandler();
         $logger->registerErrorHandler([],false);
-        $wrapper = new DBWrapper();
+        $wrapper = new Mapper();
         $router = new Request();
         $router::dispatch();
     }

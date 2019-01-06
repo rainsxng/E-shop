@@ -7,10 +7,10 @@
  */
 
 namespace Mappers;
-use Core\DBWrapper;
+use Core\Mapper;
 use PDO;
 
-class CategoryMapper extends DBWrapper
+class CategoryMapper extends Mapper
 {
     private $pdo;
     public function __construct()
@@ -20,7 +20,6 @@ class CategoryMapper extends DBWrapper
     public function getAllCategories(){
         $query = $this->pdo->query('SELECT name FROM categories');
         $row = $query->fetchALL(PDO::FETCH_COLUMN);
-        var_dump($row);
         return $row;
     }
 }

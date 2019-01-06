@@ -16,7 +16,7 @@
 <div class="container">
     <div class="row align-items-end">
         <div class="col-lg-5 text-right ml-5" style="font-size: 20px">
-            <span id="popularLabel2">Категория: <?=$items[0]['category'];?></span>
+            <span id="popularLabel2">Категория: <?=$items[0]['Category'];?></span>
         </div>
         <div class="col text-right mr-3 mt-4">
             <div class="dropdown">
@@ -47,14 +47,16 @@
                 ?>
                     <div class="col-12 col-md-6 col-lg-4 mt-4 mb-3">
                         <div class="card">
-                            <img class="card-img-top" src="<?=$items[$key]['img'];?>" alt="Card image cap">
+                            <img class="card-img-top" src="<?=$items[$key]['image'];?>" alt="Card image cap">
                             <div class="card-body">
-                                <h4 class="card-title"><a href="product/<?=$key;?>" title="View Product"><?=$items[$key]['title'];?></a></h4>
-                                <p class="card-text"><?=$items[$key]['text'];?></p>
+                                <a href="brands/<?=$items[$key]['brand_id'];?>"><?=$items[$key]['Brand'];?></a>
+                                <h4 class="card-title"><a href="product/<?=$items[$key]['id'];?>" title="View Product"><?=$items[$key]['name'];?></a></h4>
+                                <a href="/category/<?=$items[$key]['category_id'];?>"><?=$items[$key]['Category'];?></a>
+                                <p class="card-text"><?=$items[$key]['short_desc'];?></p>
                                 <div class="row">
 
                                     <div class="col">
-                                        <p class="btn btn-danger btn-block"><?=$items[$key]['price'];?></p>
+                                        <p class="btn btn-danger btn-block"><?=$items[$key]['price'];?>$</p>
                                     </div>
                                     <div class="col">
                                         <a href="#" class="btn btn-success btn-block">Добавить в корзину</a>

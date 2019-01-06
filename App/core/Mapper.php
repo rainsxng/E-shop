@@ -8,7 +8,7 @@
 
 namespace Core;
 use PDO;
-class DBWrapper
+class Mapper
 {
     public function __construct()
     {

@@ -6,6 +6,8 @@ namespace Controllers;
 
 use Core\Controller;
 use Mappers\CategoryMapper;
+use Mappers\ProductMapper;
+
 class ShowController extends Controller
 {
     public function showLoginPAge() {
@@ -18,8 +20,8 @@ class ShowController extends Controller
         self::render ('../App/views/cart.php');
     }
     public function showConnect(){
-        $mapper = new CategoryMapper();
-        $mapper->getAllCategories();
+        $mapper = new ProductMapper();
+        $mapper->getAllProducts();
     }
 
 }

@@ -26,14 +26,16 @@ include "../App/views/header.php";
         </div>
     </div>
 </div>
-<div class="container-flued">
+<div class="container-flued ml-4 mb-4">
     <div class="row mr-4">
         <div class="col-md-4">
-            <img src="<?=$items[$key]['img'];?>" alt="Product photo" height="450px">
+            <img src="<?=$items[$key]['image'];?>" alt="Product photo" height="450px">
 
         </div>
         <div class="col">
-            <p><?=$items[$key]['title'];?></p>
+            <p><?=$items[$key]['Category'];?></p>
+            <p><?=$items[$key]['Brand'];?></p>
+            <p><?=$items[$key]['name'];?></p>
             <div class="row">
                 <div class="col">
                     <span class="fa fa-star checked"></span>
@@ -56,7 +58,7 @@ include "../App/views/header.php";
                     </div>
                     <div class="row">
                         <div class="col align-self-center">
-                            <div class="description"><?=$items[$key]['text'];?></div>
+                            <div class="description"><?=$items[$key]['short_desc'];?></div>
                         </div>
                     </div>
                 <div class="row content-justify-center">
