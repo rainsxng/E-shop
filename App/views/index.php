@@ -25,7 +25,7 @@ include "../App/views/header.php";
                 <ul class="list-group category_block">
                     <?php foreach ($categories as $key=>$value){
                         ?>
-                    <li class="list-group-item"><a href="/category/<?=$items[$key]['category_id'];?>"><?=$categories[$key];?></a></li>
+                    <li class="list-group-item"><a href="/category/<?=$categories[$key]['id'];?>"><?=$categories[$key]['name'];?></a></li>
                     <?php  } ?>
                 </ul>
             </div>

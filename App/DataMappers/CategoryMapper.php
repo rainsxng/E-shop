@@ -18,8 +18,8 @@ class CategoryMapper extends Mapper
         $this->pdo = parent::__construct();
     }
     public function getAllCategories(){
-        $query = $this->pdo->query('SELECT name FROM categories');
-        $row = $query->fetchALL(PDO::FETCH_COLUMN);
+        $query = $this->pdo->query('SELECT id,name FROM categories');
+        $row = $query->fetchALL(PDO::FETCH_ASSOC);
         return $row;
     }
 }
