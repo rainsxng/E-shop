@@ -23,7 +23,6 @@ class AuthController extends Controller
     }
     public function getLogin()
     {
-        var_dump(self::$model->getLogin());
         return self::$model->getLogin();
     }
     public function registration()

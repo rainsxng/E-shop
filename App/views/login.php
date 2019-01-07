@@ -11,7 +11,12 @@
     </head>
 <body>
 <?php
-include_once '../App/views/header.php';
+use Controllers\AuthController;
+$controller = new AuthController();
+if (isset($_POST['signinbtn'])){
+    $controller->authorize();
+}
+include '../App/views/header.php';
 ?>
 <form method="post">
     <div class="container-flued">

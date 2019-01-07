@@ -1,10 +1,6 @@
 <?php
 use Controllers\AuthController;
 $controller = new AuthController();
-if (isset($_POST['signinbtn'])){
-
-    $controller->authorize();
-}
 if (isset($_POST['logout'])){
     $controller->logOut();
 }
@@ -29,7 +25,6 @@ if (isset($_POST['logout'])){
             <?php
     if ( $_SESSION['isLogged'] == true)
     {
-        var_dump($controller->getLogin());
          ?>
                 <?=$controller->getLogin()?>
                 <button type="submit" class="btn btn-primary ml-4" name="logout">Выход</button>

@@ -21,16 +21,19 @@ class AuthModel extends Model
     public function authorization($login,$pass)
     {
         $this->data = $this->mapper->getUser($login,$pass);
+        var_dump($this->data);
         if ($login ==  $this->data[0]['login'] && $pass ==  $this->data[0]['password']) {
             self::$loginOutput= $this->data[0]['login'];
             if(!isset($_SESSION)){session_start();}
             $_SESSION['isLogged'] = true;
+            $_SESSION['user_id'] = $this->data[0]['id'];
+            $_SESSION['login'] = $this->data[0]['login'];
         } else
             $_SESSION['isLogged'] = false;
         return  $_SESSION['isLogged'];
     }
     public function getLogin(){
-       return  self::$loginOutput;
+       return  $_SESSION['login'];
     }
     public function logOut(){
         $_SESSION['isLogged'] = false;

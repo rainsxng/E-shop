@@ -15,7 +15,6 @@ include_once 'header.php';
 use Controllers\AuthController;
 $controller = new AuthController();
 if (isset($_POST['registerBtn'])){
-    var_dump($_POST);
   $controller->registration();
 }
 ?>

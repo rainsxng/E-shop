@@ -25,10 +25,7 @@ class UsersMapper extends Mapper
     }
     public function addUser($login,$pswd,$email)
     {
-        var_dump($login);
-        var_dump($pswd);
-        var_dump($pswd);
-        $query=$this->pdo->prepare("INSERT INTO users (id, login, password, email, created_at, updated_at) VALUES (NULL, :login,  :password, :email, NULL, NULL)");
+        $query=$this->pdo->prepare("INSERT INTO users (id, login, password, email, created_at, updated_at) VALUES (NULL, :login,  :password, :email,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP )");
         $query->execute(array('login'=>$login,'password'=>$pswd,'email'=>$email));
         if ($query!==NULL){
             return 0;
