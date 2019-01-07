@@ -3,12 +3,14 @@
 namespace Controllers;
 use Core\Controller;
 use Models\AuthModel;
+use phpDocumentor\Reflection\Types\Self_;
+
 class AuthController extends Controller
 {
     public static $model;
     public function __construct()
     {
-        self::$model=  new AuthModel();
+        self::$model=new AuthModel();
     }
 
     public  function authorize()
@@ -19,8 +21,14 @@ class AuthController extends Controller
     {
         self::$model->logOut();
     }
-    public function getLogin(){
+    public function getLogin()
+    {
+        var_dump(self::$model->getLogin());
         return self::$model->getLogin();
+    }
+    public function registration()
+    {
+        self::$model->registration($_POST['loginText'],$_POST['pswdText'],$_POST['emailText']);
     }
 
 }

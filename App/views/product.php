@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sony MDR</title>
+    <title><?=$items[0]['Brand'].' '.$items[0]['name'];?></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="../../style.css">
@@ -19,8 +19,8 @@ include "../App/views/header.php";
             ?>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="../../public/index.php">Главная</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Информация о продукте</li>
+                    <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="/category/<?=$items[0]['category_id'];?>"><?=$items[0]['Category'];?></a>/<?=$items[0]['Brand'].' '.$items[0]['name'];?></li>
                 </ol>
             </nav>
         </div>
@@ -54,11 +54,6 @@ include "../App/views/header.php";
                     <div class="row">
                         <div class="col">
                             <button type="button" class="btn btn-primary align-self-center mt-2">Купить</button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col align-self-center">
-                            <div class="description"><?=$items[$key]['short_desc'];?></div>
                         </div>
                     </div>
                 <div class="row content-justify-center">

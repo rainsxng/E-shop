@@ -6,5 +6,4 @@ return [
     '/register'=>'Controllers\ShowController/showRegisterPage',
     '/cart'=>'Controllers\ShowController/showCart',
     '/category/:num'=>'Controllers\ProductController/getProductsByCategoryId/$1',
-    '/connect'=>'Controllers\ShowController/showConnect'
 ];

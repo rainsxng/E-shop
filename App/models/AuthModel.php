@@ -7,14 +7,22 @@
  */
 namespace Models;
 use Core\Model;
-
+use Mappers\UsersMapper;
 class AuthModel extends Model
 {
-    private $login = 'rainsxng';
-    private $pass = '1234';
+    public function __construct()
+    {
+        $this->mapper = new UsersMapper();
+    }
+
+    private $mapper;
+    private $data;
+    private static $loginOutput;
     public function authorization($login,$pass)
     {
-        if ($login == $this->login && $pass == $this->pass) {
+        $this->data = $this->mapper->getUser($login,$pass);
+        if ($login ==  $this->data[0]['login'] && $pass ==  $this->data[0]['password']) {
+            self::$loginOutput= $this->data[0]['login'];
             if(!isset($_SESSION)){session_start();}
             $_SESSION['isLogged'] = true;
         } else
@@ -22,14 +30,15 @@ class AuthModel extends Model
         return  $_SESSION['isLogged'];
     }
     public function getLogin(){
-        return $this->login;
+       return  self::$loginOutput;
     }
     public function logOut(){
         $_SESSION['isLogged'] = false;
         session_destroy();
         unset($_SESSION);
     }
-    public function getPass(){
-        return $this->pass;
+    public function registration($login,$password,$email)
+    {
+        $this->mapper->addUser($login,$password,$email);
     }
 }

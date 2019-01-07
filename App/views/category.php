@@ -50,9 +50,7 @@
                             <img class="card-img-top" src="<?=$items[$key]['image'];?>" alt="Card image cap">
                             <div class="card-body">
                                 <a href="brands/<?=$items[$key]['brand_id'];?>"><?=$items[$key]['Brand'];?></a>
-                                <h4 class="card-title"><a href="product/<?=$items[$key]['id'];?>" title="View Product"><?=$items[$key]['name'];?></a></h4>
-                                <a href="/category/<?=$items[$key]['category_id'];?>"><?=$items[$key]['Category'];?></a>
-                                <p class="card-text"><?=$items[$key]['short_desc'];?></p>
+                                <h4 class="card-title"><a href="/product/<?=$items[$key]['id'];?>" title="View Product"><?=$items[$key]['name'];?></a></h4>
                                 <div class="row">
 
                                     <div class="col">

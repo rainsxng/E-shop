@@ -43,7 +43,6 @@ include_once '../App/views/header.php';
             </div>
         </div>
     </div>
-
 </form>
 </body>
 </html>

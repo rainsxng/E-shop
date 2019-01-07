@@ -12,8 +12,14 @@
 <body>
 <?php
 include_once 'header.php';
+use Controllers\AuthController;
+$controller = new AuthController();
+if (isset($_POST['registerBtn'])){
+    var_dump($_POST);
+  $controller->registration();
+}
 ?>
-<form>
+<form method="post">
     <div class="container-flued">
         <div class="row ">
             <div class="col">
@@ -34,18 +40,15 @@ include_once 'header.php';
                 <form>
 
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-lg" placeholder="Имя пользователя">
+                        <input type="text" class="form-control form-control-lg" placeholder="Имя пользователя" name="loginText">
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control form-control-lg" placeholder="Электронная почта">
+                        <input type="email" class="form-control form-control-lg" placeholder="Электронная почта" name="emailText">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control form-control-lg" placeholder="Пароль">
+                        <input type="password" class="form-control form-control-lg" placeholder="Пароль" name="pswdText">
                     </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control form-control-lg" placeholder="Повторите пароль">
-                    </div>
-                    <input type="submit" class="btn btn-outline-light btn-block" value="Регистрация">
+                    <input type="submit" class="btn btn-outline-light btn-block" value="Регистрация" name="registerBtn">
                     <a href="/login" class="btn btn-outline-light btn-block">Уже зарегистрированы?</a>
                 </form>
             </div>

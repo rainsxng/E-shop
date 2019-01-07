@@ -5,7 +5,6 @@ namespace Controllers;
 
 
 use Core\Controller;
-use Mappers\CategoryMapper;
 use Mappers\ProductMapper;
 
 class ShowController extends Controller
