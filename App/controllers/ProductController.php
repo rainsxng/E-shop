@@ -2,13 +2,13 @@
 
 namespace Controllers;
 use Core\Controller;
-use Models\Product;
+use Models\ProductModel;
 
 class ProductController extends Controller
 {
     public function viewProduct($id)
     {
-        $product = new Product();
+        $product = new ProductModel();
         $products = $product->getItemById($id);
         if (!empty($products)) {
             self::render('../App/views/product.php',
@@ -21,7 +21,7 @@ class ProductController extends Controller
 
     public function getProductsByCategoryId($id)
     {
-        $product = new Product();
+        $product = new ProductModel();
         $products = $product->getProductsByCategoryId($id);
         if (!empty($products)) {
             self::render('../App/views/category.php',

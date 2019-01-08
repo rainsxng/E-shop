@@ -8,7 +8,7 @@
 namespace Models;
 use Core\Model;
 use Mappers\ProductMapper;
-class Product extends Model
+class ProductModel extends Model
 {
     private $products = [];
     public function getItems()

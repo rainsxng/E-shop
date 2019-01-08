@@ -45,7 +45,7 @@ include "../App/views/header.php";
                     <span class="fa fa-star checked"></span>
                     <div class="row">
                         <div class="col align-self-center">
-                            <div><?=$items[$key]['price'];?></div>
+                            <div><?=$items[$key]['price'];?>$</div>
                         </div>
                         <div class="col align-self-center">
                             <div>Есть в наличии  <i class="fas fa-check"></i></div>
@@ -59,12 +59,6 @@ include "../App/views/header.php";
                 <div class="row content-justify-center">
                         <div class="col">
                             <?=$items[$key]['description'];?>
-                                <ul>
-                                    <li>Эти наушники анализируют ваши предпочтения и индивидуальные особенности, адаптируя звук под них.</li>
-                                    <li>Функция «Быстрое внимание» - Общайтесь, не снимая наушников: просто положите руку на корпус, и громкость мгновенно снизится.</li>
-                                    <li>Режим окружающего звука (голосовой режим) - Наслаждайтесь музыкой без помех, не упуская при этом ничего важного</li>
-                                    <li>Режим окружающего звука (голосовой режим) - Наслаждайтесь музыкой без помех, не упуская при этом ничего важного</li>
-                                </ul>
                             </div>
                         </div>
                     </div>

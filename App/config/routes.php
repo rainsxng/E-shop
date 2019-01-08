@@ -4,6 +4,6 @@ return [
     '/product/:num' => 'Controllers\ProductController/viewProduct/$1',
     '/login'=>'Controllers\ShowController/showLoginPage',
     '/register'=>'Controllers\ShowController/showRegisterPage',
-    '/cart'=>'Controllers\ShowController/showCart',
+    '/cart'=>'Controllers\CartController/getCartProducts',
     '/category/:num'=>'Controllers\ProductController/getProductsByCategoryId/$1',
 ];

@@ -21,7 +21,6 @@ class AuthModel extends Model
     public function authorization($login,$pass)
     {
         $this->data = $this->mapper->getUser($login,$pass);
-        var_dump($this->data);
         if ($login ==  $this->data[0]['login'] && $pass ==  $this->data[0]['password']) {
             self::$loginOutput= $this->data[0]['login'];
             if(!isset($_SESSION)){session_start();}

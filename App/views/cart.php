@@ -13,15 +13,18 @@
 include_once '../App/views/header.php';
 ?>
 <div class="container-flued">
+    <?php foreach ($items as $key=>$value) {
+    ?>
     <div class="row  align-items-center">
         <div class="col">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/816fXIY2whL._SX425_.jpg" alt="Product photo" height="200px">
+            <img src="<?=$items[$key]['image'];?>" alt="Product photo"
+                 height="200px">
         </div>
         <div class="col">
             <span>Название товара</span>
             <div class="row">
                 <div class="col">
-                    <div>Sony MDR 1000 X/B</div>
+                    <div><?=$items[$key]['name'];?></div>
                 </div>
             </div>
         </div>
@@ -29,7 +32,7 @@ include_once '../App/views/header.php';
             <span>Цена товара</span>
             <div class="row">
                 <div class="col">
-                    <span>99$</span>
+                    <span><?=$items[$key]['price'];?></span>
                 </div>
             </div>
         </div>
@@ -37,7 +40,7 @@ include_once '../App/views/header.php';
             <span>Количество</span>
             <div class="row">
                 <div class="col">
-                    <span>1</span>
+                    <span><?= $items[$key]['quantity']; ?></span>
                 </div>
             </div>
         </div>
@@ -45,53 +48,17 @@ include_once '../App/views/header.php';
             <span>Сумма</span>
             <div class="row">
                 <div class="col">
-                    <span>99$</span>
-                    <div class="btn btn-primary btn-sm ml-5"> <i class="fas fa-trash-alt"></i></div>
+                    <span><?=$items[$key]['summ'];?> $</span>
+                    <div class="btn btn-primary btn-sm ml-5"><i class="fas fa-trash-alt"></i></div>
                 </div>
             </div>
         </div>
-
     </div>
-    <div class="row  align-items-center">
-        <div class="col">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/816fXIY2whL._SX425_.jpg" alt="Product photo" height="200px">
-        </div>
-        <div class="col">
-            <span>Название товара</span>
-            <div class="row">
-                <div class="col">
-                    <div>Sony MDR 1000 X/B</div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <span>Цена товара</span>
-            <div class="row">
-                <div class="col">
-                    <span>99$</span>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <span>Количество</span>
-            <div class="row">
-                <div class="col">
-                    <span>1</span>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <span>Сумма</span>
-            <div class="row">
-                <div class="col">
-                    <span>99$</span>
-                   <div class="btn btn-primary btn-sm ml-5"> <i class="fas fa-trash-alt"></i></div>
-                </div>
-            </div>
-        </div>
+</div>
+        <?php
+        }
+ ?>
 
-</div>
-</div>
 <div class="row">
     <div class="col-lg-10 text-right">
         <span>Общая сумма</span>
