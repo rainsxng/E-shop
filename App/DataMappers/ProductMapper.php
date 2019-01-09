@@ -24,19 +24,21 @@ class ProductMapper extends Mapper
         return $row;
     }
     public function getProductById($id){
-        $query = $this->pdo->query("SELECT products.name,products.price,products.quantity,products.image,products.description,brands.name as Brand,categories.name as Category,categories.id as category_id from products
+        $query = $this->pdo->prepare("SELECT products.name,products.price,products.quantity,products.image,products.description,brands.name as Brand,categories.name as Category,categories.id as category_id from products
 INNER JOIN brands on products.brand_id=brands.id
 INNER JOIN categories on products.category_id=categories.id
-WHERE products.id=$id");
+WHERE products.id=:id");
+        $query->execute(array('id'=>$id));
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
         return $row;
     }
     public function getProductsByCategoryId($id)
     {
-        $query = $this->pdo->query("SELECT products.name,products.id,products.price,products.quantity,products.image,products.description,brands.name as Brand,categories.name as Category from categories
+        $query = $this->pdo->prepare("SELECT products.name,products.id,products.price,products.quantity,products.image,products.description,brands.name as Brand,categories.name as Category from categories
 INNER JOIN products on categories.id=products.category_id
 INNER JOIN brands on products.brand_id=brands.id
-WHERE categories.id=$id");
+WHERE categories.id=:id");
+        $query->execute(array('id'=>$id));
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
         return $row;
     }
