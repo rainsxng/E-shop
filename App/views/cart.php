@@ -14,6 +14,7 @@ include_once '../App/views/header.php';
 ?>
 <div class="container-flued">
     <?php foreach ($items as $key=>$value) {
+        if ($key==='Summary') continue;
     ?>
     <div class="row  align-items-center">
         <div class="col">
@@ -32,7 +33,7 @@ include_once '../App/views/header.php';
             <span>Цена товара</span>
             <div class="row">
                 <div class="col">
-                    <span><?=$items[$key]['price'];?></span>
+                    <span><?=$items[$key]['price'];?> $</span>
                 </div>
             </div>
         </div>
@@ -72,7 +73,7 @@ include_once '../App/views/header.php';
         </div>
     </div>
     <div class="col-lg-2">
-        <span>200$</span>
+        <span><?=$items['Summary'];?> $</span>
     </div>
 </div>
 </div>
