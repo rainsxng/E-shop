@@ -11,7 +11,7 @@
 <body>
 <?php
 include_once '../App/views/header.php';
-?>
+if ($items['Summary']!==NULL){ ?>
 <div class="container-flued">
     <?php foreach ($items as $key=>$value) {
         if ($key==='Summary') continue;
@@ -77,5 +77,9 @@ include_once '../App/views/header.php';
     </div>
 </div>
 </div>
+<?php } else { ?>
+<h1>Корзина пустая</h1>
+    <a href="/" class="btn btn-primary">За покупками</a>
+<?php } ?>
 </body>
 </html>
