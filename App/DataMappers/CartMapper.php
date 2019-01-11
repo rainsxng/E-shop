@@ -33,6 +33,7 @@ WHERE orders.user_id = :id AND orders.status='cart'");
         $row['Summary'] =$this->summ;
         return $row;
     }
+
     public function addProduct($product_id)
     {
         $query = $this->pdo->prepare("SELECT orders_products.id from orders_products
@@ -40,15 +41,19 @@ INNER JOIN orders on orders_products.order_id = orders.id
 WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.product_id=:product_id");
         $query->execute(array('product_id'=>$product_id,'user_id'=>$_SESSION['user_id']));
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
-        if ($row==false || $row==[]) {
+        if (empty($row)) {
             $query = $this->pdo->prepare("
         INSERT INTO orders_products
-        SELECT NULL,id,:product_id,1 FROM orders WHERE user_id = :user_id AND status ='cart'");
+        SELECT NULL,id,:product_id,1 FROM orders WHERE user_id = :user_id AND status ='cart';
+        UPDATE products SET quantity = quantity - 1 WHERE product.id = :product_id");
             $query->execute(array('product_id' => $product_id, 'user_id' => $_SESSION['user_id']));
+            unset($query);
         }
         else {
-            $query = $this->pdo->prepare("UPDATE orders_products SET quantity = quantity+1 WHERE product_id =:product_id");
+            $query = $this->pdo->prepare("UPDATE orders_products SET quantity = quantity+1 WHERE product_id =:product_id;
+            UPDATE products SET quantity = quantity-1 WHERE products.id = :product_id");
             $query->execute(array('product_id'=>$product_id));
+            unset($query);
         }
     }
 }
