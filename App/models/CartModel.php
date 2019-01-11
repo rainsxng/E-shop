@@ -14,4 +14,8 @@ class CartModel extends Model
         $mapper = new CartMapper();
         return $mapper->getCartProducts();
     }
+    public function addProduct($product_id){
+        $mapper = new CartMapper();
+        $mapper->addProduct($product_id);
+    }
 }

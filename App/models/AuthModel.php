@@ -27,6 +27,7 @@ class AuthModel extends Model
             $_SESSION['isLogged'] = true;
             $_SESSION['user_id'] = $this->data[0]['id'];
             $_SESSION['login'] = $this->data[0]['login'];
+            header("Refresh:0,url = /");
         } else
             $_SESSION['isLogged'] = false;
         return  $_SESSION['isLogged'];

@@ -16,7 +16,7 @@ if ($items['Summary']!==NULL){ ?>
     <?php foreach ($items as $key=>$value) {
         if ($key==='Summary') continue;
     ?>
-    <div class="row  align-items-center">
+    <div class="row  align-items-center ml-5">
         <div class="col">
             <img src="<?=$items[$key]['image'];?>" alt="Product photo"
                  height="200px">
@@ -78,8 +78,11 @@ if ($items['Summary']!==NULL){ ?>
 </div>
 </div>
 <?php } else { ?>
-<h1>Корзина пустая</h1>
-    <a href="/" class="btn btn-primary">За покупками</a>
+    <div class="col mx-auto text-center">
+        <h1>Корзина пустая</h1>
+        <a href="/" class="btn btn-primary btn-lg mt-4">За покупками</a>
+    </div>
+
 <?php } ?>
 </body>
 </html>

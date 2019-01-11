@@ -12,4 +12,12 @@ class CartController extends Controller
         $products=$model->getProducts();
         self::render('../App/views/cart.php',$products);
     }
+    public function addToCart()
+    {
+        if (isset($_POST['productId'])) {
+            $model = new CartModel();
+            $model->addProduct($_POST['productId']);
+        }
+
+    }
 }

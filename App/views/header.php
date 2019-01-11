@@ -3,6 +3,7 @@ use Controllers\AuthController;
 $controller = new AuthController();
 if (isset($_POST['logout'])){
     $controller->logOut();
+    header("Refresh:0;");
 }
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -23,7 +24,7 @@ if (isset($_POST['logout'])){
             </div>
             <a href="/cart" class="btn btn-primary float-left mr-2"><i class="fas fa-shopping-cart"></i>   Корзина</a>
             <?php
-    if ( $_SESSION['isLogged'] == true)
+    if ( $_SESSION['isLogged'] === true)
     {
          ?>
                 <?=$controller->getLogin()?>

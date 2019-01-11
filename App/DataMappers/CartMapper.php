@@ -33,4 +33,11 @@ WHERE orders.user_id = :id AND orders.status='cart'");
         $row['Summary'] =$this->summ;
         return $row;
     }
+    public function addProduct($product_id)
+    {
+        $query = $this->pdo->prepare("
+        INSERT INTO orders_products
+        SELECT NULL,id,:product_id,1 FROM orders WHERE user_id = :user_id AND status ='cart'");
+        $query->execute(array('product_id'=>$product_id,'user_id'=>$_SESSION['user_id']));
+    }
 }
