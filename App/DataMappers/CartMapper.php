@@ -21,7 +21,7 @@ class CartMapper extends Mapper
 
     public function getCartProducts()
     {
-        $query = $this->pdo->prepare("SELECT products.name,products.price,orders_products.quantity,products.image,products.price*orders_products.quantity as summ from products
+        $query = $this->pdo->prepare("SELECT products.id,products.name,products.price,orders_products.quantity,products.image,products.price*orders_products.quantity as summ from products
 INNER JOIN orders_products on products.id=orders_products.product_id
 INNER JOIN orders on orders.id = orders_products.order_id
 WHERE orders.user_id = :id AND orders.status='cart'");
@@ -55,5 +55,31 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
             $query->execute(array('product_id'=>$product_id));
             unset($query);
         }
+    }
+    public function deleteOne($product_id)
+    {
+        $user_id=$_SESSION['user_id'];
+        $statm = $this->pdo->query("SELECT orders.id FROM orders WHERE user_id=$user_id AND status='cart'");
+        $row = $statm->fetchALL(PDO::FETCH_ASSOC);
+        $order_id=$row[0]['id'];
+        $query = $this->pdo->prepare("
+        DELETE FROM orders_products
+        WHERE product_id=:product_id AND order_id=:order_id;
+        ");
+        $query->execute(array('product_id'=>$product_id,'order_id'=>$order_id));
+        unset($query);
+    }
+    public function deleteAll()
+    {
+        $user_id=$_SESSION['user_id'];
+        $statm = $this->pdo->query("SELECT orders.id FROM orders WHERE user_id=$user_id AND status='cart'");
+        $row = $statm->fetchALL(PDO::FETCH_ASSOC);
+        $order_id=$row[0]['id'];
+        $query = $this->pdo->prepare("
+        DELETE FROM orders_products
+        WHERE order_id=:order_id;
+        ");
+        $query->execute(array('order_id'=>$order_id));
+        unset($query);
     }
 }

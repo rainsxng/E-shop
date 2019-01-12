@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Корзина</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../style.css">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="/js/DeleteFromCart.js"></script>
 </head>
 <body>
 <?php
@@ -50,7 +52,7 @@ if ($items['Summary']!==NULL){ ?>
             <div class="row">
                 <div class="col">
                     <span><?=$items[$key]['summ'];?> $</span>
-                    <div class="btn btn-primary btn-sm ml-5"><i class="fas fa-trash-alt"></i></div>
+                    <div class="btn btn-primary btn-sm ml-5" onclick="DeleteOneFromCart(<?=$items[$key]['id'];?>)"><i class="fas fa-trash-alt"></i></div>
                 </div>
             </div>
         </div>
@@ -69,6 +71,9 @@ if ($items['Summary']!==NULL){ ?>
             </div>
             <div class="col-lg-2">
                 <div class="btn btn-primary">Оформить заказ</div>
+            </div>
+            <div class="col-lg-2">
+                <div class="btn btn-primary" onclick="DeleteAllFromCart()">Очистить корзину</div>
             </div>
         </div>
     </div>

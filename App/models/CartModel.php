@@ -18,4 +18,12 @@ class CartModel extends Model
         $mapper = new CartMapper();
         $mapper->addProduct($product_id);
     }
+    public function deleteOne($product_id){
+        $mapper = new CartMapper();
+        $mapper->deleteOne($product_id);
+    }
+    public function deleteAll(){
+        $mapper = new CartMapper();
+        $mapper->deleteAll();
+    }
 }

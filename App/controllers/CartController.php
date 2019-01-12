@@ -18,6 +18,18 @@ class CartController extends Controller
             $model = new CartModel();
             $model->addProduct($_POST['productId']);
         }
+    }
+    public function deleteOne()
+    {
+        if (isset($_POST['productId'])){
+            $model = new CartModel();
+            $model->deleteOne($_POST['productId']);
+        }
+    }
+    public function deleteAll()
+    {
+            $model = new CartModel();
+            $model->deleteAll();
 
     }
 }
