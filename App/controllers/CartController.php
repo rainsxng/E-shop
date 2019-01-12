@@ -14,6 +14,7 @@ class CartController extends Controller
     }
     public function addToCart()
     {
+        if (!isset($_SESSION['user_id']))  die(header("HTTP/1.0 300"));
         if (isset($_POST['productId'])) {
             $model = new CartModel();
             $model->addProduct($_POST['productId']);

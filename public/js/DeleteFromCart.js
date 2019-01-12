@@ -5,7 +5,9 @@ function DeleteOneFromCart(product_id)
         type: "POST",
         data: "productId="+product_id,
         dataType: "text",
-        error: error,
+        error: function(){
+           alert("Ошибка");
+        },
         success: success
     });
 }
@@ -16,16 +18,14 @@ function DeleteAllFromCart()
         url: '/cart/deleteAll',
         type: "POST",
         dataType: "text",
-        error: error,
+        error: function(){
+            alert("Ошибка");
+        },
         success: success
     });
 }
-
-function error()
-{
-    alert('Ошибка при загрузке данных!');
-}
-function success()
-{
-    alert("Удалено");
+function success() {
+    setTimeout(function () {// wait for 1 secs(2)
+        location.reload(); // then reload the page.(3)
+    }, 1);
 }
