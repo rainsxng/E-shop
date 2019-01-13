@@ -1,11 +1,20 @@
 function AjaxAddToCart(product_id) {
+    let quantity = $('#quantity').val();
+    if (quantity==null){
+        quantity=1;
+    }
     $.ajax({
         url: '/cart/add',
         type: "POST",
-        data: "productId="+product_id,
+        data: {"productId":product_id,"quantity":quantity},
         dataType: "text",
-        error: function(){
-            $.notify('Для добавления товаров необходимо авторизоваться!', {position:"right bottom"})
+        error: function(XMLHttpRequest){
+            if (XMLHttpRequest.status == 300) {
+                $.notify('Для добавления товаров необходимо авторизоваться!', {position: "right bottom"})
+            }
+            else if (XMLHttpRequest.status == 400){
+                $.notify('Некорректное количество товара!', {position: "right bottom"})
+            }
         },
         success: success
     });

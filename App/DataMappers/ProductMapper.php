@@ -24,7 +24,7 @@ class ProductMapper extends Mapper
         return $row;
     }
     public function getProductById($id){
-        $query = $this->pdo->prepare("SELECT products.name,products.price,products.quantity,products.image,products.description,brands.name as Brand,categories.name as Category,categories.id as category_id from products
+        $query = $this->pdo->prepare("SELECT products.id,products.name,products.price,products.quantity,products.image,products.description,brands.name as Brand,categories.name as Category,categories.id as category_id from products
 INNER JOIN brands on products.brand_id=brands.id
 INNER JOIN categories on products.category_id=categories.id
 WHERE products.id=:id");

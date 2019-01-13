@@ -14,10 +14,11 @@ class CartController extends Controller
     }
     public function addToCart()
     {
+        if (isset($_POST['quantity']) && !($_POST['quantity']>=1)) die (header("HTTP/1.0 400"));
         if (!isset($_SESSION['user_id']))  die(header("HTTP/1.0 300"));
         if (isset($_POST['productId'])) {
             $model = new CartModel();
-            $model->addProduct($_POST['productId']);
+            $model->addProduct($_POST['productId'],$_POST['quantity']);
         }
     }
     public function deleteOne()
