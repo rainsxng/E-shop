@@ -60,8 +60,8 @@ footer a {
     position: absolute;
     left: 40px;
 }
-.form-control{
-    width: 50px;
+#quantity{
+    width: 70px;
 }
 input[type="number"],
 select.form-control {

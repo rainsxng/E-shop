@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <script src="/js/DeleteFromCart.js"></script>
-    <title>Корзина</title>>
+    <title>Корзина</title>
 </head>
 <body>
 <?php
@@ -44,7 +44,13 @@ if ($items['Summary']!==NULL){ ?>
             <span>Количество</span>
             <div class="row">
                 <div class="col">
-                    <span><?= $items[$key]['quantity']; ?></span>
+                    <button type="button" class="btn btn-secondary" onclick="decreaseByOne(<?=$items[$key]['id'];?>)">-</button>
+                </div>
+                <div class="col">
+                    <span id="quantity<?=$items[$key]['id'];?>"><?= $items[$key]['quantity']; ?></span>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-secondary" onclick="increaseByOne(<?=$items[$key]['id'];?>)">+</button>
                 </div>
             </div>
         </div>

@@ -34,4 +34,10 @@ class CartController extends Controller
             $model->deleteAll();
 
     }
+    public function increaseByOne(){
+        if (isset($_POST['productId'])) {
+            $model = new CartModel();
+            $model->increaseByOne($_POST['productId']);
+        }
+    }
 }

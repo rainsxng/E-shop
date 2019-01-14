@@ -8,5 +8,6 @@ return [
     '/category/:num'=>'Controllers\ProductController/getProductsByCategoryId/$1',
     '/cart/add'=>'Controllers\CartController/addToCart',
     '/cart/deleteOne'=>'Controllers\CartController/deleteOne',
-    '/cart/deleteAll'=>'Controllers\CartController/deleteAll'
+    '/cart/deleteAll'=>'Controllers\CartController/deleteAll',
+    '/cart/increase'=>'Controllers\CartController/increaseByOne'
 ];

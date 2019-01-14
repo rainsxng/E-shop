@@ -59,7 +59,7 @@ include "../App/views/header.php";
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="name" class="control-label">Количество</label>
+                                <label for="quantity" class="control-label">Количество</label>
                                 <input type="number" name="name" class="form-control" id="quantity" value="1">
                             </div>
                         </div>
