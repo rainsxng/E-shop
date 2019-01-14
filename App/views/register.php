@@ -3,20 +3,22 @@
 <head>
     <head>
         <meta charset="UTF-8">
-        <title>Страница входа</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <meta http-equiv="Cache-control" content="no-cache">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="-1">
+        <title>Страница регистрации</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script src="/js/notify.js"></script>
         <link rel="stylesheet" href="/css/style.css">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <script src="/js/auth.js"></script>
     </head>
 <body>
 <?php
 include_once 'header.php';
-use Controllers\AuthController;
-$controller = new AuthController();
-if (isset($_POST['registerBtn'])){
-  $controller->registration();
-}
 ?>
 <form method="post">
     <div class="container-flued">
@@ -39,15 +41,15 @@ if (isset($_POST['registerBtn'])){
                 <form>
 
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-lg" placeholder="Имя пользователя" name="loginText">
+                        <input type="text" class="form-control form-control-lg" placeholder="Имя пользователя" id="loginText">
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control form-control-lg" placeholder="Электронная почта" name="emailText">
+                        <input type="email" class="form-control form-control-lg" placeholder="Электронная почта" id="emailText">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control form-control-lg" placeholder="Пароль" name="pswdText">
+                        <input type="password" class="form-control form-control-lg" placeholder="Пароль" id="pswdText">
                     </div>
-                    <input type="submit" class="btn btn-outline-light btn-block" value="Регистрация" name="registerBtn">
+                    <input type="button" class="btn btn-outline-light btn-block" value="Регистрация" name="registerBtn" onclick="AjaxRegister()">
                     <a href="/login" class="btn btn-outline-light btn-block">Уже зарегистрированы?</a>
                 </form>
             </div>

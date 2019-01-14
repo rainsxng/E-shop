@@ -10,5 +10,7 @@ return [
     '/cart/deleteOne'=>'Controllers\CartController/deleteOne',
     '/cart/deleteAll'=>'Controllers\CartController/deleteAll',
     '/cart/increase'=>'Controllers\CartController/increaseByOne',
-    '/cart/decrease'=>'Controllers\CartController/decreaseByOne'
+    '/cart/decrease'=>'Controllers\CartController/decreaseByOne',
+    '/auth/register'=>'Controllers\AuthController/registration',
+    '/auth/login'=>'Controllers\AuthController/authorize',
 ];

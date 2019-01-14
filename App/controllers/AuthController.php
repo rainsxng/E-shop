@@ -7,27 +7,29 @@ use phpDocumentor\Reflection\Types\Self_;
 
 class AuthController extends Controller
 {
-    public static $model;
     public function __construct()
     {
-        self::$model=new AuthModel();
+        $this->model=new AuthModel();
     }
+    private $model;
+
 
     public  function authorize()
     {
-       self::$model->authorization($_POST['loginText'], $_POST['pswdText']);
+        $this->model->authorization($_POST['login'], $_POST['password']);
     }
     public function logOut()
     {
-        self::$model->logOut();
+        $this->model->logOut();
     }
     public function getLogin()
     {
-        return self::$model->getLogin();
+        return $this->model->getLogin();
     }
     public function registration()
     {
-        self::$model->registration($_POST['loginText'],$_POST['pswdText'],$_POST['emailText']);
+        $this->model->registration($_POST['login'],$_POST['password'],$_POST['email']);
+
     }
 
 }
