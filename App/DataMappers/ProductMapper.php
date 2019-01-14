@@ -17,7 +17,7 @@ class ProductMapper extends Mapper
         $this->pdo = parent::__construct();
     }
     public function getAllProducts(){
-        $query = $this->pdo->query('SELECT products.id,products.name,price,image,description,brands.name as Brand,brands.id as brand_id,categories.name as Category,categories.id as category_id FROM `products`
+        $query = $this->pdo->query('SELECT products.id,products.name,products.quantity,price,image,description,brands.name as Brand,brands.id as brand_id,categories.name as Category,categories.id as category_id FROM `products`
         INNER JOIN brands on products.brand_id = brands.id
         INNER JOIN categories on products.category_id = categories.id;');
         $row = $query->fetchALL(PDO::FETCH_ASSOC);

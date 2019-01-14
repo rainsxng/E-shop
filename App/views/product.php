@@ -52,23 +52,26 @@ include "../App/views/header.php";
                         <div class="col align-self-center">
                             <div><?=$items[$key]['price'];?>$</div>
                         </div>
-                        <div class="col align-self-center">
-                            <div>Есть в наличии  <i class="fas fa-check"></i></div>
-                        </div>
                     </div>
                     <div class="row">
+
                         <div class="col">
+                            <?php if ($items[$key]['quantity']>=1){ ?>
                             <div class="form-group">
                                 <label for="quantity" class="control-label">Количество</label>
                                 <input type="number" name="name" class="form-control" id="quantity" value="1">
+                                <div class="row mb-4">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-primary align-self-center mt-2" onclick="AjaxAddToCart(<?=$items[$key]['id'];?>)">Купить</button>
+                                    </div>
+                                </div>
                             </div>
+                            <?php } else { ?>
+                            <a class="btn btn-secondary mb-5" id="zero">Нет в наличии</a>
+                            <?php }?>
                         </div>
                     </div>
-                    <div class="row mb-4">
-                        <div class="col">
-                            <button type="button" class="btn btn-primary align-self-center mt-2" onclick="AjaxAddToCart(<?=$items[$key]['id'];?>)">Купить</button>
-                        </div>
-                    </div>
+
                 <div class="row content-justify-center">
                         <div class="col">
                             <?=$items[$key]['description'];?>
