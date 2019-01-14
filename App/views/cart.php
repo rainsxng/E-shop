@@ -14,7 +14,7 @@
 <body>
 <?php
 include_once '../App/views/header.php';
-if ($items['Summary']!==NULL){ ?>
+if ($items['Summary']!==NULL) { ?>
 <div class="container-flued">
     <?php foreach ($items as $key=>$value) {
         if ($key==='Summary') continue;

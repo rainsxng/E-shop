@@ -34,29 +34,29 @@ function increaseByOne(product_id)
     let quantity = $('#quantity'+product_id).text();
     $('#quantity'+product_id).text(+quantity+1);
 
-    // $.ajax({
-    //     url: '/cart/increase',
-    //     type: "POST",
-    //     data: "productId="+product_id,
-    //     dataType: "text",
-    //     error: function(){
-    //         alert("Ошибка");
-    //     },
-    //     success: success
-    // });
+    $.ajax({
+        url: '/cart/increase',
+        type: "POST",
+        data: "productId="+product_id,
+        dataType: "text",
+        error: function(){
+            alert("Ошибка");
+        },
+        success: success()
+    });
 }
 function decreaseByOne(product_id)
 {
     let quantity = $('#quantity'+product_id).text();
     $('#quantity'+product_id).text(+quantity-1);
-    // $.ajax({
-    //     url: '/cart/deleteOne',
-    //     type: "POST",
-    //     data: "productId="+product_id,
-    //     dataType: "text",
-    //     error: function(){
-    //         alert("Ошибка");
-    //     },
-    //     success: success
-    // });
+    $.ajax({
+        url: '/cart/decrease',
+        type: "POST",
+        data: "productId="+product_id,
+        dataType: "text",
+        error: function(){
+            alert("Ошибка");
+        },
+        success: success()
+    });
 }

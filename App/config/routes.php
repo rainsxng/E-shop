@@ -9,5 +9,6 @@ return [
     '/cart/add'=>'Controllers\CartController/addToCart',
     '/cart/deleteOne'=>'Controllers\CartController/deleteOne',
     '/cart/deleteAll'=>'Controllers\CartController/deleteAll',
-    '/cart/increase'=>'Controllers\CartController/increaseByOne'
+    '/cart/increase'=>'Controllers\CartController/increaseByOne',
+    '/cart/decrease'=>'Controllers\CartController/decreaseByOne'
 ];

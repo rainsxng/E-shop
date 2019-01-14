@@ -40,4 +40,10 @@ class CartController extends Controller
             $model->increaseByOne($_POST['productId']);
         }
     }
+    public function decreaseByOne(){
+        if (isset($_POST['productId'])) {
+            $model = new CartModel();
+            $model->decreaseByOne($_POST['productId']);
+        }
+    }
 }

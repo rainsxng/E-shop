@@ -82,4 +82,20 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
         $query->execute(array('order_id'=>$order_id));
         unset($query);
     }
+    public function increaseByOne($product_id)
+    {
+        $query = $this->pdo->prepare("UPDATE orders_products SET quantity = quantity+1 WHERE product_id =:product_id;
+        UPDATE products SET quantity = quantity - 1 WHERE products.id = :product_id;
+");
+        $query->execute(array('product_id'=>$product_id));
+        unset($query);
+    }
+    public function decreaseByOne($product_id)
+    {
+        $query = $this->pdo->prepare("UPDATE orders_products SET quantity = quantity-1 WHERE product_id =:product_id;
+        UPDATE products SET quantity = quantity +1 WHERE products.id = :product_id;
+");
+        $query->execute(array('product_id'=>$product_id));
+        unset($query);
+    }
 }
