@@ -14,8 +14,8 @@ class Mapper
     {
         $host = '127.0.0.1';
         $db   = 'nix';
-        $user = 'root';
-        $pass = '';
+        $user = 'bohdanov';
+        $pass = '1111';
         $charset = 'utf8';
       //  $db_config=require_once  '../App/config/db_config.php';
         $dsn = "mysql:host=$host;dbname=$db;charset=$charset";

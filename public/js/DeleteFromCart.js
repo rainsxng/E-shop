@@ -33,7 +33,6 @@ function increaseByOne(product_id)
 {
     let quantity = $('#quantity'+product_id).text();
     $('#quantity'+product_id).text(+quantity+1);
-
     $.ajax({
         url: '/cart/increase',
         type: "POST",
@@ -49,6 +48,7 @@ function decreaseByOne(product_id)
 {
     let quantity = $('#quantity'+product_id).text();
     $('#quantity'+product_id).text(+quantity-1);
+    if (quantity<=1)  DeleteOneFromCart(product_id);
     $.ajax({
         url: '/cart/decrease',
         type: "POST",
