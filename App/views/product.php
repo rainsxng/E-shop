@@ -88,7 +88,7 @@ include "../App/views/header.php";
         <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Характеристики</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Отзывы</a>
+        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Отзывы(<?=$items[0]['comments'][0]['count'];?>)</a>
     </li>
 </ul>
 <div class="tab-content" id="pills-tabContent">
@@ -108,7 +108,7 @@ include "../App/views/header.php";
                             <div class="clearfix"></div>
                             <hr>
                             <ul class="media-list">
-                                <?php foreach ($items[0]['comments'] as $key=>$value) { ?>
+                                <?php if ($items[0]['comments'][0]['count']!=0) foreach ($items[0]['comments'] as $key=>$value) { ?>
                                 <li class="media">
                                     <a  class="pull-left mr-5">
                                         <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">

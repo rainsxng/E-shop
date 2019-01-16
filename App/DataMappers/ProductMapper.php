@@ -38,11 +38,15 @@ WHERE products.id=:id");
     }
     public function getProductComments($product_id)
     {
-        $query=$this->pdo->prepare("SELECT comments.date,comments.message,comments.stars,users.login as user_login FROM comments
+        $query=$this->pdo->prepare("SELECT  comments.date,comments.message,comments.stars,users.login as user_login FROM comments
 INNER JOIN users on comments.user_id=users.id
 WHERE comments.product_id=:id;");
         $query->execute(array('id'=>$product_id));
         $row=$query->fetchALL(PDO::FETCH_ASSOC);
+        $query=$this->pdo->prepare("SELECT count(*) as comment_count FROM comments 
+WHERE comments.product_id=:id;");
+        $query->execute(array('id'=>$product_id));
+        $row[0]['count'] = $query->fetchColumn();
         return $row;
     }
     public function getProductById($id)
