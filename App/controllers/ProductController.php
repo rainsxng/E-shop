@@ -6,13 +6,22 @@ use Models\ProductModel;
 
 class ProductController extends Controller
 {
+    private $product;
+    public function __construct()
+    {
+        $this->product = new ProductModel();
+    }
+    public function render($view, $items = null, $categories = null,$comments=array(1,2,3,4))
+    {
+        parent::render($view, $items, $categories,$comments);
+    }
+
     public function viewProduct($id)
     {
-        $product = new ProductModel();
-        $products = $product->getItemById($id);
+        $products =  $this->product->getItemByIdWithComments($id);
         if (!empty($products)) {
             self::render('../App/views/product.php',
-                $product->getItemById($id));
+                $this->product->getItemByIdWithComments($id));
         }
         else {
             self::render('../App/views/404.php');
@@ -21,8 +30,7 @@ class ProductController extends Controller
 
     public function getProductsByCategoryId($id)
     {
-        $product = new ProductModel();
-        $products = $product->getProductsByCategoryId($id);
+        $products =  $this->product->getProductsByCategoryId($id);
         if (!empty($products)) {
             self::render('../App/views/category.php',
                $products);

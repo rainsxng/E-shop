@@ -10,12 +10,20 @@ use Models\CategoryModel;
 
 class IndexController extends Controller
 {
+    private $CategoryModel;
+    private $ProductModel;
+    public function __construct()
+    {
+        $this->CategoryModel = new CategoryModel();
+        $this->ProductModel = new ProductModel();
+    }
+
     public function actionIndex() {
-        $CategoryModel = new CategoryModel();
-        $categories = $CategoryModel->getCategories();
-        $ProductModel = new ProductModel();
+
+        $categories = $this->CategoryModel->getCategories();
+
         self::render ('../App/views/index.php',
-            $ProductModel->getItems(),$categories);
+            $this->ProductModel->getItems(),$categories);
     }
 
 }

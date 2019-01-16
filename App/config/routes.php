@@ -12,5 +12,5 @@ return [
     '/cart/increase'=>'Controllers\CartController/increaseByOne',
     '/cart/decrease'=>'Controllers\CartController/decreaseByOne',
     '/auth/register'=>'Controllers\AuthController/registration',
-    '/auth/login'=>'Controllers\AuthController/authorize',
+    '/auth/login'=>'Controllers\AuthController/authorize'
 ];

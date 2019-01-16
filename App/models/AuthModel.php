@@ -19,13 +19,13 @@ class AuthModel extends Model
     public function authorization($login,$pass)
     {
         $this->data = $this->mapper->getUser($login);
-
+        echo json_encode(password_verify($pass,$this->data[0]['password']));
         if (($login ==  $this->data[0]['login']) && (password_verify($pass,$this->data[0]['password']))) {
             if(!isset($_SESSION)) session_start();
+
             $_SESSION['isLogged'] = true;
             $_SESSION['user_id'] = $this->data[0]['id'];
             $_SESSION['login'] = $this->data[0]['login'];
-            header("Refresh:0,url = /");
         } else
             $_SESSION['isLogged'] = false;
         return  $_SESSION['isLogged'];
@@ -42,13 +42,13 @@ class AuthModel extends Model
     }
     public function registration($login,$password,$email)
     {
-        if ($this->isUserExists($login,$email)===false)
+        if ($this->isUserExists($login)===false)
         $this->mapper->addUser($login,$password,$email);
         else die(header("HTTP/1.0 401"));
     }
-    public function isUserExists($login,$email)
+    public function isUserExists($login)
     {
-        if (!empty($this->mapper->getUser($login,$email))){
+        if (!empty($this->mapper->getUser($login))){
             return true;
         }
         else return false;

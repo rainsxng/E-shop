@@ -11,19 +11,25 @@ use Mappers\ProductMapper;
 class ProductModel extends Model
 {
     private $products = [];
+    private $mapper;
+    public function __construct()
+    {
+        $this->mapper = new ProductMapper();
+    }
+
     public function getItems()
     {
-        $mapper = new ProductMapper();
-        return $mapper->getAllProducts();
+        return  $this->mapper->getAllProducts();
     }
-    public function getItemById($id)
+    public function getItemByIdWithComments($id)
     {
-     $mapper = new ProductMapper();
-     return $mapper->getProductById($id);
+     if (!empty($this->mapper->isCommentsExist($id)))
+        return $this->mapper->getProductByIdWithComments($id);
+     else
+         return $this->mapper->getProductById($id);
     }
     public function getProductsByCategoryId($id){
-       $mapper= new ProductMapper();
-       return $mapper->getProductsByCategoryId($id);
+       return $this->mapper->getProductsByCategoryId($id);
     }
 
 }

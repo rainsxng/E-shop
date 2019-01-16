@@ -60,7 +60,7 @@ include "../App/views/header.php";
                                 <div class="col">
                                     <p class="btn btn-danger btn-block"><?=$items[$key]['price'];?>$</p>
                                 </div>
-                                <?php if ($items[$key]['quantity']==0){ ?>
+                                <?php if ($items[$key]['quantity']<=0){ ?>
                                     <div class="col">
                                         <a class="btn btn-secondary btn-block" id="zero">Нет в наличии</a>
                                     </div>

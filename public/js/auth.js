@@ -34,6 +34,10 @@ function success()
 function AjaxLogin() {
     let login = $('#loginText').val();
     let password = $('#pswdText').val();
+    if (((login.length==0) || (password.length==0))){
+        $.notify('Необходимо заполнить все поля', {position: "right bottom"})
+        return;
+    }
     $.ajax({
         url: '/auth/login',
         type: "POST",

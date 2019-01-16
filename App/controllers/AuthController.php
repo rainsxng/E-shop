@@ -28,6 +28,7 @@ class AuthController extends Controller
     }
     public function registration()
     {
+
         $this->model->registration($_POST['login'],$_POST['password'],$_POST['email']);
 
     }

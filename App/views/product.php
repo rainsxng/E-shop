@@ -18,6 +18,7 @@
 <body>
 <?php
 include "../App/views/header.php";
+var_dump($comments);
 ?>
 <div class="container-flued">
     <div class="row ">
@@ -88,7 +89,7 @@ include "../App/views/header.php";
             <div class="description">Технические характеристики</div>
         </div>
     </div>
-    <div class="row mx-5">
+    <!--<div class="row mx-5">
         <div class="col">
             <table class="table table-hover">
                 <thead>
@@ -138,7 +139,7 @@ include "../App/views/header.php";
                 </tbody>
             </table>
         </div>
-    </div>
+    </div> -->
 <?php include "../App/views/footer.html";?>
 </body>
 </html>
