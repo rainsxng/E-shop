@@ -7,8 +7,8 @@
     <meta http-equiv="Expires" content="-1">
     <title><?=$items[0]['Brand'].' '.$items[0]['name'];?></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="/js/notify.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <link rel="stylesheet" href="/css/style.css">
@@ -18,7 +18,6 @@
 <body>
 <?php
 include "../App/views/header.php";
-var_dump($comments);
 ?>
 <div class="container-flued">
     <div class="row ">
@@ -84,62 +83,57 @@ var_dump($comments);
         </div>
     </div>
     <?php }?>
-    <div class="row ml-5">
-        <div class="col">
-            <div class="description">Технические характеристики</div>
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Характеристики</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Отзывы</a>
+    </li>
+</ul>
+<div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">1</div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <div class="row ml-5">
+            <div class="col-md-6 col-md-offset-2 col-sm-12">
+                <div class="comment-wrapper">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                           Добавить отзыв
+                        </div>
+                        <div class="panel-body">
+                            <textarea class="form-control" placeholder="Напиишите отзыв" rows="3"></textarea>
+                            <br>
+                            <button type="button" class="btn btn-info pull-right">Добавить</button>
+                            <div class="clearfix"></div>
+                            <hr>
+                            <ul class="media-list">
+                                <?php foreach ($items[0]['comments'] as $key=>$value) { ?>
+                                <li class="media">
+                                    <a  class="pull-left mr-5">
+                                        <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
+                                    </a>
+                                    <div class="media-body">
+                                <span class="text-muted pull-right">
+                                    <small class="text-muted"> <?=$items[0]['comments'][$key]['date'];?></small>
+                                </span>
+                                        <strong class="text-success"><?=$items[0]['comments'][$key]['user_login'];?></strong>
+                                        <p>
+                                        <p><?=$items[0]['comments'][$key]['stars'];?></p>
+                                            <?=$items[0]['comments'][$key]['message'];?>
+                                        </p>
+                                    </div>
+                                </li>
+                                <?php }?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <!--<div class="row mx-5">
-        <div class="col">
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th scope="col">Характеристика</th>
-                    <th scope="col">Описание</th>
-                    <th scope="col">Характеристика</th>
-                    <th scope="col">Описание</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">Lorem ipsum dolor sit amet.</th>
-                    <td>Lorem ipsum dolor sit amet.</td>
-                    <td>Lorem ipsum dolor sit amet.</td>
-                    <td>Lorem ipsum dolor sit amet.</td>
-
-                </tr>
-                <tr>
-                    <th scope=/"row">Lorem ipsum dolor sit amet.</th>
-                    <td>Lorem ipsum dolor sit amet.</td>
-                    <td>Lorem ipsum dolor sit amet.</td>
-                    <td>Lorem ipsum dolor sit amet.</td>
-
-                </tr>
-                <tr>
-                    <th scope="row">Lorem ipsum dolor sit amet.</th>
-                    <td>Lorem ipsum dolor sit amet.</td>
-                    <td>Lorem ipsum dolor sit amet.</td>
-                    <td>Lorem ipsum dolor sit amet.</td>
-
-                </tr>
-                <tr>
-                    <th scope="row">Lorem ipsum dolor sit amet.</th>
-                    <td>Lorem ipsum dolor sit amet.</td>
-                    <td>Lorem ipsum dolor sit amet.</td>
-                    <td>Lorem ipsum dolor sit amet.</td>
-
-                </tr>
-                <tr>
-                    <th scope="row">Lorem ipsum dolor sit amet.</th>
-                    <td>Lorem ipsum dolor sit amet.</td>
-                    <td>Lorem ipsum dolor sit amet.</td>
-                    <td>Lorem ipsum dolor sit amet.</td>
-
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div> -->
-<?php include "../App/views/footer.html";?>
+<footer class="mt-5">
+    <?php include "../App/views/footer.html";?>
+</footer>
 </body>
 </html>

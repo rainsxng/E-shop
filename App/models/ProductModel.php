@@ -10,7 +10,6 @@ use Core\Model;
 use Mappers\ProductMapper;
 class ProductModel extends Model
 {
-    private $products = [];
     private $mapper;
     public function __construct()
     {
@@ -21,15 +20,20 @@ class ProductModel extends Model
     {
         return  $this->mapper->getAllProducts();
     }
-    public function getItemByIdWithComments($id)
+    public function getItemById($id)
     {
-     if (!empty($this->mapper->isCommentsExist($id)))
-        return $this->mapper->getProductByIdWithComments($id);
-     else
          return $this->mapper->getProductById($id);
     }
-    public function getProductsByCategoryId($id){
+    public function getProductsByCategoryId($id)
+    {
        return $this->mapper->getProductsByCategoryId($id);
+    }
+    public function getCommentsForProduct($id)
+    {
+        $comments=$this->mapper->getProductComments($id);
+
+        if (!empty($comments)) return $comments;
+        else return false;
     }
 
 }

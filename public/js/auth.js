@@ -46,8 +46,13 @@ function AjaxLogin() {
         error: function(){
                 $.notify('Произошла ошибка', {position: "right bottom"})
         },
-        success:function () {
-            location.href = "/"
+        success:function (result) {
+            alert(result);
+            if (result==""){
+                location.href = "/";
+            }
+            else
+            $.notify('Неверный логин или пароль!', {position: "right bottom"});
         }
     });
 }

@@ -18,10 +18,12 @@ class ProductController extends Controller
 
     public function viewProduct($id)
     {
-        $products =  $this->product->getItemByIdWithComments($id);
+        $comments = $this->product->getCommentsForProduct($id);
+        $products =  $this->product->getItemById($id);
         if (!empty($products)) {
-            self::render('../App/views/product.php',
-                $this->product->getItemByIdWithComments($id));
+            if (!empty($comments)) $products[0]['comments']=$comments;
+             self::render('../App/views/product.php',
+                $products);
         }
         else {
             self::render('../App/views/404.php');

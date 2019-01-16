@@ -16,14 +16,16 @@ class ProductMapper extends Mapper
     {
         $this->pdo = parent::__construct();
     }
-    public function getAllProducts(){
+    public function getAllProducts()
+    {
         $query = $this->pdo->query('SELECT products.id,products.name,products.quantity,price,image,description,brands.name as Brand,brands.id as brand_id,categories.name as Category,categories.id as category_id FROM `products`
         INNER JOIN brands on products.brand_id = brands.id
         INNER JOIN categories on products.category_id = categories.id;');
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
         return $row;
     }
-    public function getProductByIdWithComments($id){
+    public function getProductByIdWithComments($id)
+    {
         $query = $this->pdo->prepare("SELECT products.id,products.name,products.price,products.quantity,products.image,products.description,brands.name as Brand,categories.name as Category,categories.id as category_id,comments.id as comment_id,comments.message,comments.stars,users.login from products
 INNER JOIN brands on products.brand_id=brands.id
 INNER JOIN categories on products.category_id=categories.id
@@ -34,7 +36,17 @@ WHERE products.id=:id");
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
         return $row;
     }
-    public function getProductById($id){
+    public function getProductComments($product_id)
+    {
+        $query=$this->pdo->prepare("SELECT comments.date,comments.message,comments.stars,users.login as user_login FROM comments
+INNER JOIN users on comments.user_id=users.id
+WHERE comments.product_id=:id;");
+        $query->execute(array('id'=>$product_id));
+        $row=$query->fetchALL(PDO::FETCH_ASSOC);
+        return $row;
+    }
+    public function getProductById($id)
+    {
         $query = $this->pdo->prepare("SELECT products.id,products.name,products.price,products.quantity,products.image,products.description,brands.name as Brand,categories.name as Category,categories.id as category_id from products
 INNER JOIN brands on products.brand_id=brands.id
 INNER JOIN categories on products.category_id=categories.id
@@ -53,7 +65,8 @@ WHERE categories.id=:id");
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
         return $row;
     }
-    public function isCommentsExist($product_id){
+    public function isCommentsExist($product_id)
+    {
         $query = $this->pdo->prepare("SELECT comments.id FROM  products
  LEFT JOIN comments on products.id=comments.product_id
 INNER JOIN users on comments.user_id=users.id WHERE products.id=:id;");
