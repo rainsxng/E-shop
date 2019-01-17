@@ -1,7 +1,8 @@
 <?php
 return [
     "host" => "127.0.0.1",
-    "db" => "nix",
+    "db" => 'nix',
     "user"=>"root",
-    "pass"=>""
+    "pass"=>"",
+    "charset"=>"utf8"
 ];

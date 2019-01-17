@@ -69,12 +69,11 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
     }
     public function deleteAll()
     {
-        $query = $this->pdo->prepare("
-        DELETE FROM orders_products
-        WHERE order_id=:order_id;
-        DELETE FROM orders WHERE orders.user_id = :user_id;");
-        $query->execute(array('order_id'=>$this->order_id,'user_id'=>$_SESSION['user_id']));
-        unset($query);
+        $user_id = $_SESSION['user_id'];
+        $query = $this->pdo->prepare("DELETE FROM orders_products WHERE order_id=:order_id;");
+        $query->execute(array('order_id'=>$this->order_id));
+        $query="DELETE FROM orders WHERE orders.user_id=:user_id;";
+        $query->execute(array('user_id'=>$user_id));
     }
     public function increaseByOne($product_id)
     {
