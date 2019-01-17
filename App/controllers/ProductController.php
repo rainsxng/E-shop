@@ -12,9 +12,9 @@ class ProductController extends Controller
     {
         $this->product = new ProductModel();
     }
-    public function render($view, $items = null, $categories = null, $comments=array(1,2,3,4))
+    public function render($view, $items = null, $categories = null)
     {
-        parent::render($view, $items, $categories, $comments);
+        parent::render($view, $items, $categories);
     }
 
     public function viewProduct($id)

@@ -14,7 +14,7 @@ class Request
     private static $params = array();
     public static $requestedUrl = '';
     /**
-     * Добавить маршрут
+     * Add route
      */
     public static function addRoute($route, $destination=null)
     {
@@ -30,37 +30,37 @@ class Request
     }
 
     /**
-     * Разделить переданный URL на компоненты
+     * Split URL on parts
      */
     public static function splitUrl($url)
     {
         return preg_split('/\//', $url, -1, PREG_SPLIT_NO_EMPTY);
     }
     /**
-     * Текущий обработанный URL
+     * Current  URL
      */
     public static function getCurrentUrl()
     {
         return (self::$requestedUrl?:'/');
     }
     /**
-     * Обработка переданного URL
+     * Dispatching  URL
      */
     public static function dispatch($requestedUrl = null)
     {
-        // Если URL не передан, берем его из REQUEST_URI
+        // If there is no URL , take it from REQUEST_URI
         if ($requestedUrl === null) {
             $uri = reset(explode('?', $_SERVER["REQUEST_URI"]));
             $requestedUrl = urldecode(rtrim($uri, '/'));
         }
         self::$requestedUrl = $requestedUrl;
-        // если URL и маршрут полностью совпадают
+        // if URL and route matches
         if (isset(self::$routes[$requestedUrl])) {
             self::$params = self::splitUrl(self::$routes[$requestedUrl]);
             return self::executeAction();
         }
         foreach (self::$routes as $route => $uri) {
-            // Заменяем wildcards на рег. выражения
+            // Replace wildcards on regular statements
             if (strpos($route, ':') !== false) {
                 $route = str_replace(':any', '(.+)', str_replace(':num', '([0-9]+)', $route));
             }
@@ -69,13 +69,13 @@ class Request
                     $uri = preg_replace('#^'.$route.'$#', $uri, $requestedUrl);
                 }
                 self::$params = self::splitUrl($uri);
-                break; // URL обработан!
+                break; // URL dispatched!
             }
         }
         return self::executeAction();
     }
     /**
-     * Запуск соответствующего действия/экшена/метода контроллера
+     * Running the corresponding action
      */
     public static function executeAction()
     {

@@ -17,7 +17,7 @@
     "autoload": {
         "psr-4": {
             "Controllers\\": "App\\controllers\\",
-            "Core\\": "App\\core\\",
+            "Core\\": "Framework\\",
             "Models\\": "App\\models\\",
             "Mappers\\": "App\\DataMappers\\"
         }
