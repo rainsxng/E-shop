@@ -29,10 +29,11 @@ include "../App/views/header.php";
             <div class="card bg-light mb-3">
                 <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Категории</div>
                 <ul class="list-group category_block">
-                    <?php foreach ($categories as $key=>$value){
-                        ?>
-                    <li class="list-group-item"><a href="/category/<?=$categories[$key]['id'];?>"><?=$categories[$key]['name'];?></a></li>
-                    <?php  } ?>
+                    <?php foreach ($categories as $key=>$value) {
+    ?>
+                    <li class="list-group-item"><a href="/category/<?=$categories[$key]['id']; ?>"><?=$categories[$key]['name']; ?></a></li>
+                    <?php
+} ?>
                 </ul>
             </div>
             <div class="card bg-light mb-3">
@@ -47,33 +48,38 @@ include "../App/views/header.php";
         <div class="col">
             <div class="row">
                 <?php foreach ($items as $key=>$value) {
-                ?>
+        ?>
                 <div class="col-12 col-md-6 col-lg-4 mt-4 mb-3">
                     <div class="card">
-                        <img class="card-img-top" src="<?=$items[$key]['image'];?>" alt="Card image cap">
+                        <img class="card-img-top" src="<?=$items[$key]['image']; ?>" alt="Card image cap">
                         <div class="card-body">
-                            <a href="brands/<?=$items[$key]['brand_id'];?>"><?=$items[$key]['Brand'];?></a>
-                            <h4 class="card-title"><a href="product/<?=$items[$key]['id'];?>" title="View Product"><?=$items[$key]['name'];?></a></h4>
-                                 <a href="/category/<?=$items[$key]['category_id'];?>"><?=$items[$key]['Category'];?></a>
-                            <p class="card-text"><?=$items[$key]['short_desc'];?></p>
+                            <a href="brands/<?=$items[$key]['brand_id']; ?>"><?=$items[$key]['Brand']; ?></a>
+                            <h4 class="card-title"><a href="product/<?=$items[$key]['id']; ?>" title="View Product"><?=$items[$key]['name']; ?></a></h4>
+                                 <a href="/category/<?=$items[$key]['category_id']; ?>"><?=$items[$key]['Category']; ?></a>
+                            <p class="card-text"><?=$items[$key]['short_desc']; ?></p>
                             <div class="row">
                                 <div class="col">
-                                    <p class="btn btn-danger btn-block"><?=$items[$key]['price'];?>$</p>
+                                    <p class="btn btn-danger btn-block"><?=$items[$key]['price']; ?>$</p>
                                 </div>
-                                <?php if ($items[$key]['quantity']<=0){ ?>
+                                <?php if ($items[$key]['quantity']<=0) {
+            ?>
                                     <div class="col">
                                         <a class="btn btn-secondary btn-block" id="zero">Нет в наличии</a>
                                     </div>
-                                <?php } else {?>
+                                <?php
+        } else {
+            ?>
                                 <div class="col">
-                                    <a class="btn btn-success btn-block" id="addBtn" onclick="AjaxAddToCart(<?=$items[$key]['id'];?>)">Добавить в корзину</a>
+                                    <a class="btn btn-success btn-block" id="addBtn" onclick="AjaxAddToCart(<?=$items[$key]['id']; ?>)">Добавить в корзину</a>
                                 </div>
-                            <?php } ?>
+                            <?php
+        } ?>
                             </div>
                         </div>
                     </div>
                 </div>
-                <?php }?>
+                <?php
+    }?>
 
             </div>
         </div>

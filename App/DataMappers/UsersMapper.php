@@ -7,8 +7,10 @@
  */
 
 namespace Mappers;
+
 use Core\Mapper;
 use PDO;
+
 class UsersMapper extends Mapper
 {
     private $pdo;
@@ -23,14 +25,14 @@ class UsersMapper extends Mapper
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
         return $row;
     }
-    public function addUser($login,$pswd,$email)
+    public function addUser($login, $pswd, $email)
     {
         $query=$this->pdo->prepare("INSERT INTO users (id, login, password, email, created_at, updated_at) VALUES (NULL, :login,  :password, :email,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP )");
-        $query->execute(array('login'=>$login,'password'=>password_hash($pswd,PASSWORD_BCRYPT),'email'=>$email));
-        if ($query!==NULL){
+        $query->execute(array('login'=>$login,'password'=>password_hash($pswd, PASSWORD_BCRYPT),'email'=>$email));
+        if ($query!==null) {
             return 0;
+        } else {
+            return 1;
         }
-        else return 1;
     }
-
 }

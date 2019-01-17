@@ -15,21 +15,23 @@
 <body>
 <?php
 include_once '../App/views/header.php';
-if ($items['Summary']!==NULL) { ?>
+if ($items['Summary']!==null) {
+    ?>
 <div class="container-flued">
     <?php foreach ($items as $key=>$value) {
-        if ($key==='Summary') continue;
-    ?>
+        if ($key==='Summary') {
+            continue;
+        } ?>
     <div class="row  align-items-center ml-5">
         <div class="col">
-            <img src="<?=$items[$key]['image'];?>" alt="Product photo"
+            <img src="<?=$items[$key]['image']; ?>" alt="Product photo"
                  height="200px">
         </div>
         <div class="col">
             <span>Название товара</span>
             <div class="row">
                 <div class="col">
-                    <div><?=$items[$key]['name'];?></div>
+                    <div><?=$items[$key]['name']; ?></div>
                 </div>
             </div>
         </div>
@@ -37,7 +39,7 @@ if ($items['Summary']!==NULL) { ?>
             <span>Цена товара</span>
             <div class="row">
                 <div class="col">
-                    <span><?=$items[$key]['price'];?> $</span>
+                    <span><?=$items[$key]['price']; ?> $</span>
                 </div>
             </div>
         </div>
@@ -45,13 +47,13 @@ if ($items['Summary']!==NULL) { ?>
             <span>Количество</span>
             <div class="row">
                 <div class="col">
-                    <button type="button" class="btn btn-secondary" onclick="decreaseByOne(<?=$items[$key]['id'];?>)">-</button>
+                    <button type="button" class="btn btn-secondary" onclick="decreaseByOne(<?=$items[$key]['id']; ?>)">-</button>
                 </div>
                 <div class="col">
-                    <span id="quantity<?=$items[$key]['id'];?>"><?= $items[$key]['quantity']; ?></span>
+                    <span id="quantity<?=$items[$key]['id']; ?>"><?= $items[$key]['quantity']; ?></span>
                 </div>
                 <div class="col">
-                    <button type="button" class="btn btn-secondary" onclick="increaseByOne(<?=$items[$key]['id'];?>)">+</button>
+                    <button type="button" class="btn btn-secondary" onclick="increaseByOne(<?=$items[$key]['id']; ?>)">+</button>
                 </div>
             </div>
         </div>
@@ -59,16 +61,15 @@ if ($items['Summary']!==NULL) { ?>
             <span>Сумма</span>
             <div class="row">
                 <div class="col">
-                    <span><?=$items[$key]['summ'];?> $</span>
-                    <div class="btn btn-primary btn-sm ml-5" onclick="DeleteOneFromCart(<?=$items[$key]['id'];?>)"><i class="fas fa-trash-alt"></i></div>
+                    <span><?=$items[$key]['summ']; ?> $</span>
+                    <div class="btn btn-primary btn-sm ml-5" onclick="DeleteOneFromCart(<?=$items[$key]['id']; ?>)"><i class="fas fa-trash-alt"></i></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
         <?php
-        }
- ?>
+    } ?>
 
 <div class="row">
     <div class="col-lg-10 text-right">
@@ -86,16 +87,19 @@ if ($items['Summary']!==NULL) { ?>
         </div>
     </div>
     <div class="col-lg-2">
-        <span><?=$items['Summary'];?> $</span>
+        <span><?=$items['Summary']; ?> $</span>
     </div>
 </div>
 </div>
-<?php } else { ?>
+<?php
+} else {
+        ?>
     <div class="col mx-auto text-center">
         <h1>Корзина пустая</h1>
         <a href="/" class="btn btn-primary btn-lg mt-4">За покупками</a>
     </div>
 
-<?php } ?>
+<?php
+    } ?>
 </body>
 </html>

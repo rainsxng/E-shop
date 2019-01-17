@@ -6,8 +6,10 @@
  * Time: 17:56
  */
 namespace Models;
+
 use Core\Model;
 use Mappers\ProductMapper;
+
 class ProductModel extends Model
 {
     private $mapper;
@@ -22,18 +24,20 @@ class ProductModel extends Model
     }
     public function getItemById($id)
     {
-         return $this->mapper->getProductById($id);
+        return $this->mapper->getProductById($id);
     }
     public function getProductsByCategoryId($id)
     {
-       return $this->mapper->getProductsByCategoryId($id);
+        return $this->mapper->getProductsByCategoryId($id);
     }
     public function getCommentsForProduct($id)
     {
         $comments=$this->mapper->getProductComments($id);
 
-        if (!empty($comments)) return $comments;
-        else return false;
+        if (!empty($comments)) {
+            return $comments;
+        } else {
+            return false;
+        }
     }
-
 }

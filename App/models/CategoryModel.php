@@ -6,11 +6,14 @@
  * Time: 17:56
  */
 namespace Models;
+
 use Core\Model;
 use Mappers\CategoryMapper;
+
 class CategoryModel extends Model
 {
-    public function getCategories(){
+    public function getCategories()
+    {
         $mapper = new CategoryMapper();
         return $mapper->getAllCategories();
     }

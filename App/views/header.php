@@ -1,7 +1,8 @@
 <?php
 use Controllers\AuthController;
+
 $controller = new AuthController();
-if (isset($_POST['logout'])){
+if (isset($_POST['logout'])) {
     $controller->logOut();
     header("Refresh:0;");
 }
@@ -24,14 +25,14 @@ if (isset($_POST['logout'])){
             </div>
             <a href="/cart" class="btn btn-primary float-left mr-2"><i class="fas fa-shopping-cart"></i>   Корзина</a>
             <?php
-    if ( $_SESSION['isLogged'] === true)
-    {
-         ?>
+    if ($_SESSION['isLogged'] === true) {
+        ?>
                 <?=$controller->getLogin()?>
                 <button type="submit" class="btn btn-primary ml-4" name="logout">Выход</button>
             <?php
+    } else {
+        echo '<a href="/login" class="btn btn-primary float-left ml-1 mr-2"><i class="fas fa-sign-in-alt"></i>  Войти</a>' ;
     }
-    else echo '<a href="/login" class="btn btn-primary float-left ml-1 mr-2"><i class="fas fa-sign-in-alt"></i>  Войти</a>' ;
         ?>
         </form>
     </div>

@@ -7,6 +7,7 @@
  */
 
 namespace Mappers;
+
 use Core\Mapper;
 use PDO;
 
@@ -17,7 +18,8 @@ class CategoryMapper extends Mapper
     {
         $this->pdo = parent::__construct();
     }
-    public function getAllCategories(){
+    public function getAllCategories()
+    {
         $query = $this->pdo->query('SELECT id,name FROM categories');
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
         return $row;

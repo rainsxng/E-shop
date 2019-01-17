@@ -7,6 +7,7 @@
  */
 
 namespace Mappers;
+
 use Core\Mapper;
 use PDO;
 
@@ -36,7 +37,7 @@ WHERE orders.user_id = :id AND orders.status='cart'");
         return $row;
     }
 
-    public function addProduct($product_id,$quantity=1)
+    public function addProduct($product_id, $quantity=1)
     {
         $this->createOrder();
         $query = $this->pdo->prepare("SELECT orders_products.id from orders_products
@@ -51,8 +52,7 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
         UPDATE products SET quantity = quantity - :quantity WHERE products.id = :product_id");
             $query->execute(array('product_id' => $product_id, 'user_id' => $_SESSION['user_id'],'quantity'=>$quantity));
             unset($query);
-        }
-        else {
+        } else {
             $query = $this->pdo->prepare("UPDATE orders_products SET quantity = quantity+:quantity WHERE product_id =:product_id;
             UPDATE products SET quantity = quantity-:quantity WHERE products.id = :product_id");
             $query->execute(array('product_id'=>$product_id,'quantity'=>$quantity));
@@ -96,8 +96,11 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
         $query->execute(array('user_id'=>$_SESSION['user_id']));
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
         $order_id=$row[0]['id'];
-        if (!empty($order_id)) return $order_id;
-        else return false;
+        if (!empty($order_id)) {
+            return $order_id;
+        } else {
+            return false;
+        }
     }
     public function createOrder()
     {

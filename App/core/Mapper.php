@@ -7,7 +7,9 @@
  */
 
 namespace Core;
+
 use PDO;
+
 class Mapper
 {
     public function __construct()
@@ -16,8 +18,8 @@ class Mapper
         //$db_config=require_once  '../App/config/db_config.php';
         $host = '127.0.0.1';
         $db   = 'nix';
-        $user = 'bohdanov';
-        $pass = '1111';
+        $user = 'root';
+        $pass = '';
         $charset = 'utf8';
         $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
         $opt = [
@@ -25,6 +27,6 @@ class Mapper
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES   => false,
         ];
-          return $pdo= new PDO($dsn,$user,$pass);
+        return $pdo= new PDO($dsn, $user, $pass);
     }
 }

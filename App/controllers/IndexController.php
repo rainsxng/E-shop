@@ -2,11 +2,9 @@
 
 namespace Controllers;
 
-
 use Core\Controller;
 use Models\ProductModel;
 use Models\CategoryModel;
-
 
 class IndexController extends Controller
 {
@@ -18,12 +16,14 @@ class IndexController extends Controller
         $this->ProductModel = new ProductModel();
     }
 
-    public function actionIndex() {
-
+    public function actionIndex()
+    {
         $categories = $this->CategoryModel->getCategories();
 
-        self::render ('../App/views/index.php',
-            $this->ProductModel->getItems(),$categories);
+        self::render(
+            '../App/views/index.php',
+            $this->ProductModel->getItems(),
+            $categories
+        );
     }
-
 }

@@ -47,7 +47,6 @@ function AjaxLogin() {
                 $.notify('Произошла ошибка', {position: "right bottom"})
         },
         success:function (result) {
-            alert(result);
             if (result==""){
                 location.href = "/";
             }

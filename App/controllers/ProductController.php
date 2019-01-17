@@ -1,6 +1,7 @@
 <?php
 
 namespace Controllers;
+
 use Core\Controller;
 use Models\ProductModel;
 
@@ -11,9 +12,9 @@ class ProductController extends Controller
     {
         $this->product = new ProductModel();
     }
-    public function render($view, $items = null, $categories = null,$comments=array(1,2,3,4))
+    public function render($view, $items = null, $categories = null, $comments=array(1,2,3,4))
     {
-        parent::render($view, $items, $categories,$comments);
+        parent::render($view, $items, $categories, $comments);
     }
 
     public function viewProduct($id)
@@ -21,11 +22,14 @@ class ProductController extends Controller
         $comments = $this->product->getCommentsForProduct($id);
         $products =  $this->product->getItemById($id);
         if (!empty($products)) {
-            if (!empty($comments)) $products[0]['comments']=$comments;
-             self::render('../App/views/product.php',
-                $products);
-        }
-        else {
+            if (!empty($comments)) {
+                $products[0]['comments']=$comments;
+            }
+            self::render(
+                 '../App/views/product.php',
+                $products
+             );
+        } else {
             self::render('../App/views/404.php');
         }
     }
@@ -34,12 +38,12 @@ class ProductController extends Controller
     {
         $products =  $this->product->getProductsByCategoryId($id);
         if (!empty($products)) {
-            self::render('../App/views/category.php',
-               $products);
-        }
-        else {
+            self::render(
+                '../App/views/category.php',
+               $products
+            );
+        } else {
             self::render('../App/views/404.php');
         }
     }
-
 }

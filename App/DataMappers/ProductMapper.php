@@ -7,8 +7,10 @@
  */
 
 namespace Mappers;
+
 use Core\Mapper;
 use PDO;
+
 class ProductMapper extends Mapper
 {
     private $pdo;
@@ -77,6 +79,5 @@ INNER JOIN users on comments.user_id=users.id WHERE products.id=:id;");
         $query->execute(array('id'=>$product_id));
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
         return $row;
-
     }
 }

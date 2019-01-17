@@ -7,6 +7,7 @@
  */
 
 namespace Core;
+
 class Request
 {
     public static $routes = array();
@@ -15,7 +16,8 @@ class Request
     /**
      * Добавить маршрут
      */
-    public static function addRoute($route, $destination=null) {
+    public static function addRoute($route, $destination=null)
+    {
         if ($destination != null && !is_array($route)) {
             $route = array($route => $destination);
         }
@@ -30,19 +32,22 @@ class Request
     /**
      * Разделить переданный URL на компоненты
      */
-    public static function splitUrl($url) {
+    public static function splitUrl($url)
+    {
         return preg_split('/\//', $url, -1, PREG_SPLIT_NO_EMPTY);
     }
     /**
      * Текущий обработанный URL
      */
-    public static function getCurrentUrl() {
+    public static function getCurrentUrl()
+    {
         return (self::$requestedUrl?:'/');
     }
     /**
      * Обработка переданного URL
      */
-    public static function dispatch($requestedUrl = null) {
+    public static function dispatch($requestedUrl = null)
+    {
         // Если URL не передан, берем его из REQUEST_URI
         if ($requestedUrl === null) {
             $uri = reset(explode('?', $_SERVER["REQUEST_URI"]));
@@ -66,24 +71,22 @@ class Request
                 self::$params = self::splitUrl($uri);
                 break; // URL обработан!
             }
-
-
-
         }
         return self::executeAction();
     }
     /**
      * Запуск соответствующего действия/экшена/метода контроллера
      */
-    public static function executeAction() {
+    public static function executeAction()
+    {
         $controller = isset(self::$params[0]) ? self::$params[0]: 'Controllers\IndexController';
         $controller = new $controller();
         $action = isset(self::$params[1]) ? self::$params[1]: 'actionIndex';
         $params = array_slice(self::$params, 2);
         return call_user_func_array(array($controller, $action), $params);
     }
-    public function returnParams(){
+    public function returnParams()
+    {
         return self::$params;
     }
-
 }

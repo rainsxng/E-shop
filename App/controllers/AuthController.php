@@ -1,6 +1,7 @@
 <?php
 
 namespace Controllers;
+
 use Core\Controller;
 use Models\AuthModel;
 use phpDocumentor\Reflection\Types\Self_;
@@ -14,7 +15,7 @@ class AuthController extends Controller
     private $model;
 
 
-    public  function authorize()
+    public function authorize()
     {
         $this->model->authorization($_POST['login'], $_POST['password']);
     }
@@ -28,9 +29,6 @@ class AuthController extends Controller
     }
     public function registration()
     {
-
-        $this->model->registration($_POST['login'],$_POST['password'],$_POST['email']);
-
+        $this->model->registration($_POST['login'], $_POST['password'], $_POST['email']);
     }
-
 }

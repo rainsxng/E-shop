@@ -1,5 +1,7 @@
 <?php
 namespace app\Transport;
- interface TransportInterface{
-     public function send($subject,$messsage,$template);
- }
+
+interface TransportInterface
+{
+    public function send($subject, $messsage, $template);
+}
