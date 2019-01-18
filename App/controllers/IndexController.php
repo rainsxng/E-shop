@@ -21,7 +21,7 @@ class IndexController extends Controller
         $categories = $this->CategoryModel->getCategories();
 
         self::render(
-            '../App/views/index.php',
+            'index',
             $this->ProductModel->getItems(),
             $categories
         );

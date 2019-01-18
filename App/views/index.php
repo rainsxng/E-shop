@@ -16,9 +16,7 @@
     <script src="/js/addToCart.js"></script>
 </head>
 <body>
-<?php
-include "../App/views/header.php";
-?>
+{% include 'header.php' %}
 <div class="container">
     <div class="row justify-content-center ml-auto mt-4" id="popularLabel">
         <p>Популярные товары</p>
@@ -29,67 +27,53 @@ include "../App/views/header.php";
             <div class="card bg-light mb-3">
                 <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Категории</div>
                 <ul class="list-group category_block">
-                    <?php foreach ($categories as $key=>$value) {
-    ?>
-                    <li class="list-group-item"><a href="/category/<?=$categories[$key]['id']; ?>"><?=$categories[$key]['name']; ?></a></li>
-                    <?php
-} ?>
+                    {% for category in categories %}
+                    <li class="list-group-item"><a href="/category/{{ category.id }}">{{ category.name }}</a></li>
+                    {% endfor %}
                 </ul>
             </div>
             <div class="card bg-light mb-3">
                 <div class="card-header bg-success text-white text-uppercase">Последнее поступление</div>
                 <div class="card-body">
-                    <img class="img-fluid" src="<?=$items[0]['image'];?>" />
-                    <h5 class="card-title"><?=$items[0]['name'];?></h5>
-                    <p class="btn btn-danger btn-block"><?=$items[0]['price'];?>$</p>
+                    <img class="img-fluid" src="{{ items[0].image }}" />
+                    <h5 class="card-title">{{ items[0].name }}</h5>
+                    <p class="btn btn-danger btn-block">{{ items[0].price }}$</p>
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="row">
-                <?php foreach ($items as $key=>$value) {
-        ?>
+                {% for item in items %}
                 <div class="col-12 col-md-6 col-lg-4 mt-4 mb-3">
                     <div class="card">
-                        <img class="card-img-top" src="<?=$items[$key]['image']; ?>" alt="Card image cap">
+                        <img class="card-img-top" src="{{ item.image }}" alt="Card image cap">
                         <div class="card-body">
-                            <a href="brands/<?=$items[$key]['brand_id']; ?>"><?=$items[$key]['Brand']; ?></a>
-                            <h4 class="card-title"><a href="product/<?=$items[$key]['id']; ?>" title="View Product"><?=$items[$key]['name']; ?></a></h4>
-                                 <a href="/category/<?=$items[$key]['category_id']; ?>"><?=$items[$key]['Category']; ?></a>
-                            <p class="card-text"><?=$items[$key]['short_desc']; ?></p>
+                            <a href="brands/{{ item.brand_id }}">{{ item.Brand }}</a>
+                            <h4 class="card-title"><a href="product/{{ item.id }}" title="View Product">{{ item.name }}</a></h4>
+                                 <a href="/category/{{ item.category_id }}">{{ item.Category }}</a>
+                            <p class="card-text">{{ item.short_desc }}</p>
                             <div class="row">
                                 <div class="col">
-                                    <p class="btn btn-danger btn-block"><?=$items[$key]['price']; ?>$</p>
+                                    <p class="btn btn-danger btn-block">{{ item.price }}$</p>
                                 </div>
-                                <?php if ($items[$key]['quantity']<=0) {
-            ?>
+                                {% if item.quantity <=0 %}
                                     <div class="col">
                                         <a class="btn btn-secondary btn-block" id="zero">Нет в наличии</a>
                                     </div>
-                                <?php
-        } else {
-            ?>
+                                {% else %}
                                 <div class="col">
-                                    <a class="btn btn-success btn-block" id="addBtn" onclick="AjaxAddToCart(<?=$items[$key]['id']; ?>)">Добавить в корзину</a>
+                                    <a class="btn btn-success btn-block" id="addBtn" onclick="AjaxAddToCart({{ item.id }})">Добавить в корзину</a>
                                 </div>
-                            <?php
-        } ?>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
                 </div>
-                <?php
-    }?>
-
+                {% endfor %}
             </div>
         </div>
-
     </div>
 </div>
-
-<!-- Footer -->
-<?php include_once '../App/views/footer.html';?>
-<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    {% include 'footer.html' %}
 </body>
 </html>

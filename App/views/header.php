@@ -1,6 +1,5 @@
 <?php
 use Controllers\AuthController;
-
 $controller = new AuthController();
 if (isset($_POST['logout'])) {
     $controller->logOut();
