@@ -11,7 +11,7 @@ class CartController extends Controller
     {
         $model = new CartModel();
         $products=$model->getProducts();
-        self::render('../App/views/cart.php', $products);
+        self::render('cart', ['items'=>$products]);
     }
     public function addToCart()
     {

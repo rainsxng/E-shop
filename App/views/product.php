@@ -5,7 +5,7 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="-1">
-    <title><?=$items[0]['Brand'].' '.$items[0]['name'];?></title>
+    <title><?=$product[0]['Brand'].' '.$product[0]['name'];?></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -22,12 +22,12 @@ include "../App/views/header.php";
 <div class="container-flued">
     <div class="row ">
         <div class="col">
-            <?php foreach ($items as $key=>$value) {
+            <?php foreach ($product as $key=>$value) {
     ?>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Главная</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><a href="/category/<?=$items[0]['category_id']; ?>"><?=$items[0]['Category']; ?></a> / <?=$items[0]['Brand'].' '.$items[0]['name']; ?></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="/category/<?=$product[0]['category_id']; ?>"><?=$product[0]['Category']; ?></a> / <?=$product[0]['Brand'].' '.$product[0]['name']; ?></li>
                 </ol>
             </nav>
         </div>
@@ -36,11 +36,11 @@ include "../App/views/header.php";
 <div class="container-flued ml-4 mb-4">
     <div class="row mr-4">
         <div class="col-md-4">
-            <img src="<?=$items[$key]['image']; ?>" alt="Product photo" height="450px">
+            <img src="<?=$product[$key]['image']; ?>" alt="Product photo" height="450px">
         </div>
         <div class="col">
-            <p><?=$items[$key]['Brand']; ?></p>
-            <p><?=$items[$key]['name']; ?></p>
+            <p><?=$product[$key]['Brand']; ?></p>
+            <p><?=$product[$key]['name']; ?></p>
             <div class="row">
                 <div class="col">
                     <span class="fa fa-star checked"></span>
@@ -50,20 +50,20 @@ include "../App/views/header.php";
                     <span class="fa fa-star checked"></span>
                     <div class="row">
                         <div class="col align-self-center">
-                            <div><?=$items[$key]['price']; ?>$</div>
+                            <div><?=$product[$key]['price']; ?>$</div>
                         </div>
                     </div>
                     <div class="row">
 
                         <div class="col">
-                            <?php if ($items[$key]['quantity']>=1) {
+                            <?php if ($product[$key]['quantity']>=1) {
         ?>
                             <div class="form-group">
                                 <label for="quantity" class="control-label">Количество</label>
                                 <input type="number" name="name" class="form-control" id="quantity" value="1">
                                 <div class="row mb-4">
                                     <div class="col">
-                                        <button type="button" class="btn btn-primary align-self-center mt-2" onclick="AjaxAddToCart(<?=$items[$key]['id']; ?>)">Купить</button>
+                                        <button type="button" class="btn btn-primary align-self-center mt-2" onclick="AjaxAddToCart(<?=$product[$key]['id']; ?>)">Купить</button>
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@ include "../App/views/header.php";
 
                 <div class="row content-justify-center">
                         <div class="col">
-                            <?=$items[$key]['description']; ?>
+                            <?=$product[$key]['description']; ?>
                             </div>
                         </div>
                     </div>
@@ -93,7 +93,7 @@ include "../App/views/header.php";
         <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Характеристики</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Отзывы(<?=$items[0]['comments'][0]['count'];?>)</a>
+        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Отзывы(<?=$comments[0]['count'];?>)</a>
     </li>
 </ul>
 <div class="tab-content" id="pills-tabContent">
@@ -113,8 +113,8 @@ include "../App/views/header.php";
                             <div class="clearfix"></div>
                             <hr>
                             <ul class="media-list">
-                                <?php if ($items[0]['comments'][0]['count']!=0) {
-        foreach ($items[0]['comments'] as $key=>$value) {
+                                <?php if ($comments[0]['count']!=0) {
+        foreach ($comments as $key=>$value) {
             ?>
                                 <li class="media">
                                     <a  class="pull-left mr-5">
@@ -122,12 +122,12 @@ include "../App/views/header.php";
                                     </a>
                                     <div class="media-body">
                                 <span class="text-muted pull-right">
-                                    <small class="text-muted"> <?=$items[0]['comments'][$key]['date']; ?></small>
+                                    <small class="text-muted"> <?=$comments[$key]['date']; ?></small>
                                 </span>
-                                        <strong class="text-success"><?=$items[0]['comments'][$key]['user_login']; ?></strong>
+                                        <strong class="text-success"><?=$comments[$key]['user_login']; ?></strong>
                                         <p>
-                                        <p><?=$items[0]['comments'][$key]['stars']; ?></p>
-                                            <?=$items[0]['comments'][$key]['message']; ?>
+                                        <p><?=$comments[$key]['stars']; ?></p>
+                                            <?=$comments[$key]['message']; ?>
                                         </p>
                                     </div>
                                 </li>

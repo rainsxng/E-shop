@@ -2,10 +2,17 @@
 
 namespace Core;
 
+
 class Controller
 {
-    public function render($view, $items = null, $categories = null)
+    public function render($viewName, $data = null)
     {
-        require $view;
+        $path = '../App/views/' . $viewName . ".php";
+        if (!file_exists($path))
+            throw new \Exception("View file {$path} dont exist.");
+        ob_start();
+        extract($data, EXTR_OVERWRITE);
+        require $path;
+        return ob_end_flush();
     }
 }

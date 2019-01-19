@@ -10,7 +10,7 @@ namespace Models;
 use Core\Model;
 use Mappers\ProductMapper;
 
-class ProductModel extends Model
+class ProductModel
 {
     private $mapper;
     public function __construct()

@@ -10,19 +10,14 @@ class ShowController extends Controller
 {
     public function showLoginPAge()
     {
-        self::render('../App/views/login.php');
+        return self::render('login');
     }
     public function showRegisterPAge()
     {
-        self::render('../App/views/register.php');
+        self::render('register');
     }
     public function showCart()
     {
-        self::render('../App/views/cart.php');
-    }
-    public function showConnect()
-    {
-        $mapper = new ProductMapper();
-        $mapper->getAllProducts();
+        self::render('cart');
     }
 }

@@ -10,7 +10,7 @@ namespace Models;
 use Core\Model;
 use Mappers\CartMapper;
 
-class CartModel extends Model
+class CartModel
 {
     public function getProducts()
     {

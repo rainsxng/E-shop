@@ -19,11 +19,10 @@ class IndexController extends Controller
     public function actionIndex()
     {
         $categories = $this->CategoryModel->getCategories();
-
-        self::render(
-            '../App/views/index.php',
-            $this->ProductModel->getItems(),
-            $categories
+        $products = $this->ProductModel->getItems();
+        return self::render(
+            'index',
+            ['items'=>$products,'categories'=>$categories]
         );
     }
 }

@@ -10,7 +10,7 @@ namespace Models;
 use Core\Model;
 use Mappers\CategoryMapper;
 
-class CategoryModel extends Model
+class CategoryModel
 {
     public function getCategories()
     {

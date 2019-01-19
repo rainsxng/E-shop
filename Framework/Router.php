@@ -8,7 +8,7 @@
 
 namespace Core;
 
-class Request
+class Router
 {
     public static $routes = array();
     private static $params = array();

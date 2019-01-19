@@ -10,7 +10,7 @@ namespace Models;
 use Core\Model;
 use Mappers\UsersMapper;
 
-class AuthModel extends Model
+class AuthModel
 {
     public function __construct()
     {
