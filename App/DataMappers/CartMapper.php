@@ -8,17 +8,17 @@
 
 namespace Mappers;
 
-use Core\Mapper;
+use Core\Database;
 use PDO;
 
-class CartMapper extends Mapper
+class CartMapper
 {
     private $pdo;
     private $summ;
     private $order_id;
     public function __construct()
     {
-        $this->pdo = parent::__construct();
+        $this->pdo = Database::getInstance();
         $this->order_id = $this->getOrderIdByUser();
     }
 

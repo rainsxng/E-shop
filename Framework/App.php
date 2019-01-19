@@ -16,7 +16,6 @@ class App
         $logger->registerFatalHandler();
         $logger->registerExceptionHandler();
         $logger->registerErrorHandler([], false);
-        $mapper = new Mapper();
         $router = new Request();
         $router::dispatch();
     }

@@ -8,15 +8,15 @@
 
 namespace Mappers;
 
-use Core\Mapper;
+use Core\Database;
 use PDO;
 
-class ProductMapper extends Mapper
+class ProductMapper
 {
     private $pdo;
     public function __construct()
     {
-        $this->pdo = parent::__construct();
+        $this->pdo = Database::getInstance();
     }
     public function getAllProducts()
     {

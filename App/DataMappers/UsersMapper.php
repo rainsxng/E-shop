@@ -8,15 +8,15 @@
 
 namespace Mappers;
 
-use Core\Mapper;
+use Core\Database;
 use PDO;
 
-class UsersMapper extends Mapper
+class UsersMapper
 {
     private $pdo;
     public function __construct()
     {
-        $this->pdo = parent::__construct();
+        $this->pdo = Database::getInstance();
     }
     public function getUser($login)
     {
