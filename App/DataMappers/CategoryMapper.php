@@ -9,6 +9,7 @@
 namespace Mappers;
 
 use Core\Database;
+use Models\Category;
 use PDO;
 
 class CategoryMapper
@@ -22,6 +23,15 @@ class CategoryMapper
     {
         $query = $this->pdo->query('SELECT id,name FROM categories');
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
-        return $row;
+        $categories = [];
+        foreach ($row as $r)
+            array_push($categories, $this->mapArrayToCategory($r));
+        return $categories;
+    }
+    private function mapArrayToCategory($data) {
+        $category = new Category();
+        $category->setId($data['id']);
+        $category->setName($data['name']);
+        return  $category;
     }
 }
