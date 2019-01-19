@@ -10,6 +10,7 @@ namespace Mappers;
 
 use Core\Database;
 use PDO;
+use Models\Product;
 
 class ProductMapper
 {
@@ -24,8 +25,26 @@ class ProductMapper
         INNER JOIN brands on products.brand_id = brands.id
         INNER JOIN categories on products.category_id = categories.id;');
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
-        return $row;
+        $products = [];
+        foreach ($row as $r)
+            array_push($products, $this->mapArrayToProduct($r));
+        return $products;
     }
+    private function mapArrayToProduct($data) {
+        $product = new Product();
+        $product->setId($data['id']);
+        $product->setName($data['name']);
+        $product->setQuantity($data['quantity']);
+        $product->setImage($data['image']);
+        $product->setDescription($data['description']);
+        $product->setPrice($data['price']);
+        $product->setCategory($data['Category']);
+        $product->setBrand($data['Brand']);
+        $product->setBrandId($data['brand_id']);
+        $product->setCategoryId($data['category_id']);
+        return  $product;
+    }
+
     public function getProductByIdWithComments($id)
     {
         $query = $this->pdo->prepare("SELECT products.id,products.name,products.price,products.quantity,products.image,products.description,brands.name as Brand,categories.name as Category,categories.id as category_id,comments.id as comment_id,comments.message,comments.stars,users.login from products

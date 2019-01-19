@@ -29,58 +29,48 @@ include "../App/views/header.php";
             <div class="card bg-light mb-3">
                 <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Категории</div>
                 <ul class="list-group category_block">
-                    <?php foreach ($categories as $category) {
-    ?>
+                    <?php foreach ($categories as $category) {?>
                     <li class="list-group-item"><a href="/category/<?=$category->getCategoryId();?>"><?=$category->getCategoryName();?></a></li>
-                    <?php
-} ?>
+                    <?php } ?>
                 </ul>
             </div>
             <div class="card bg-light mb-3">
                 <div class="card-header bg-success text-white text-uppercase">Последнее поступление</div>
                 <div class="card-body">
-                    <img class="img-fluid" src="<?=$items[0]['image'];?>" />
-                    <h5 class="card-title"><?=$items[0]['name'];?></h5>
-                    <p class="btn btn-danger btn-block"><?=$items[0]['price'];?>$</p>
+                    <img class="img-fluid" src="" />
+                    <h5 class="card-title">""</h5>
+                    <p class="btn btn-danger btn-block">$</p>
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="row">
-                <?php foreach ($items as $key=>$value) {
-        ?>
+                <?php foreach ($items as $product) { ?>
                 <div class="col-12 col-md-6 col-lg-4 mt-4 mb-3">
                     <div class="card">
-                        <img class="card-img-top" src="<?=$items[$key]['image']; ?>" alt="Card image cap">
+                        <img class="card-img-top" src="<?=$product->getImage();?>" alt="Card image cap">
                         <div class="card-body">
-                            <a href="brands/<?=$items[$key]['brand_id']; ?>"><?=$items[$key]['Brand']; ?></a>
-                            <h4 class="card-title"><a href="product/<?=$items[$key]['id']; ?>" title="View Product"><?=$items[$key]['name']; ?></a></h4>
-                                 <a href="/category/<?=$items[$key]['category_id']; ?>"><?=$items[$key]['Category']; ?></a>
-                            <p class="card-text"><?=$items[$key]['short_desc']; ?></p>
+                            <a href="brands/<?=$items[$key]['brand_id']; ?>"><?=$product->getBrand(); ?></a>
+                            <h4 class="card-title"><a href="product/<?=$product->getId(); ?>" title="View Product"><?=$product->getName(); ?></a></h4>
+                                 <a href="/category/<?=$product->getCategoryId(); ?>"><?=$product->getCategory(); ?></a>
                             <div class="row">
                                 <div class="col">
-                                    <p class="btn btn-danger btn-block"><?=$items[$key]['price']; ?>$</p>
+                                    <p class="btn btn-danger btn-block"><?=$product->getPrice(); ?>$</p>
                                 </div>
-                                <?php if ($items[$key]['quantity']<=0) {
-            ?>
+                                <?php if ($product->getQuantity()<=0) {  ?>
                                     <div class="col">
                                         <a class="btn btn-secondary btn-block" id="zero">Нет в наличии</a>
                                     </div>
-                                <?php
-        } else {
-            ?>
+                                <?php } else { ?>
                                 <div class="col">
-                                    <a class="btn btn-success btn-block" id="addBtn" onclick="AjaxAddToCart(<?=$items[$key]['id']; ?>)">Добавить в корзину</a>
+                                    <a class="btn btn-success btn-block" id="addBtn" onclick="AjaxAddToCart(<?=$product->getId(); ?>)">Добавить в корзину</a>
                                 </div>
-                            <?php
-        } ?>
+                            <?php } ?>
                             </div>
                         </div>
                     </div>
                 </div>
-                <?php
-    }?>
-
+                <?php }?>
             </div>
         </div>
 

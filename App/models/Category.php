@@ -8,6 +8,8 @@
 
 namespace Models;
 
+use Mappers\CategoryMapper;
+
 class Category
 {
     private $id;
@@ -28,9 +30,13 @@ class Category
         $this->name = $name;
         return $this;
     }
-    public function formArray($data): void
+    public function formArray($data)
     {
         $this->setId($data['id']);
         $this->setName($data['name']);
+    }
+    public function getAllCategories(){
+        $mapper= new CategoryMapper();
+        return $mapper->getAllCategories();
     }
 }
