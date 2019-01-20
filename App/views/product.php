@@ -5,7 +5,7 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="-1">
-    <title><?=$product[0]['Brand'].' '.$product[0]['name'];?></title>
+    <title><?=$product->getBrand().' '.$product->getName();?></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -18,16 +18,16 @@
 <body>
 <?php
 include "../App/views/header.php";
+var_dump($comments);
+var_dump($count);
 ?>
 <div class="container-flued">
     <div class="row ">
         <div class="col">
-            <?php foreach ($product as $key=>$value) {
-    ?>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Главная</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><a href="/category/<?=$product[0]['category_id']; ?>"><?=$product[0]['Category']; ?></a> / <?=$product[0]['Brand'].' '.$product[0]['name']; ?></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="/category/<?=$product->getCategoryId();?>"><?=$product->getCategory(); ?></a> / <?=$product->getBrand().' '.$product->getName(); ?></li>
                 </ol>
             </nav>
         </div>
@@ -36,28 +36,25 @@ include "../App/views/header.php";
 <div class="container-flued ml-4 mb-4">
     <div class="row mr-4">
         <div class="col-md-4">
-            <img src="<?=$product[$key]['image']; ?>" alt="Product photo" height="450px">
+            <img src="<?=$product->getImage(); ?>" alt="Product photo" height="450px">
         </div>
         <div class="col">
-            <p><?=$product[$key]['Brand']; ?></p>
-            <p><?=$product[$key]['name']; ?></p>
+            <p><?=$product->getBrand(); ?></p>
+            <p><?$product->getName(); ?></p>
             <div class="row">
                 <div class="col">
+                    <?php for ($i=1;$i<=5;$i++){ ?>
                     <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
+                   <?php }?>
                     <div class="row">
                         <div class="col align-self-center">
-                            <div><?=$product[$key]['price']; ?>$</div>
+                            <div><?=$product->getPrice(); ?>$</div>
                         </div>
                     </div>
                     <div class="row">
 
                         <div class="col">
-                            <?php if ($product[$key]['quantity']>=1) {
-        ?>
+                            <?php if ($product->getQuantity()>=1) { ?>
                             <div class="form-group">
                                 <label for="quantity" class="control-label">Количество</label>
                                 <input type="number" name="name" class="form-control" id="quantity" value="1">
@@ -67,18 +64,14 @@ include "../App/views/header.php";
                                     </div>
                                 </div>
                             </div>
-                            <?php
-    } else {
-        ?>
+                            <?php  } else {  ?>
                             <a class="btn btn-secondary mb-5" id="zero">Нет в наличии</a>
-                            <?php
-    } ?>
+                            <?php } ?>
                         </div>
                     </div>
-
                 <div class="row content-justify-center">
                         <div class="col">
-                            <?=$product[$key]['description']; ?>
+                            <?=$product->getDescription(); ?>
                             </div>
                         </div>
                     </div>
@@ -86,14 +79,12 @@ include "../App/views/header.php";
             </div>
         </div>
     </div>
-    <?php
-}?>
 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
     <li class="nav-item">
         <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Характеристики</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Отзывы(<?=$comments[0]['count'];?>)</a>
+        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Отзывы(<?=$count;?>)</a>
     </li>
 </ul>
 <div class="tab-content" id="pills-tabContent">
@@ -113,27 +104,24 @@ include "../App/views/header.php";
                             <div class="clearfix"></div>
                             <hr>
                             <ul class="media-list">
-                                <?php if ($comments[0]['count']!=0) {
-        foreach ($comments as $key=>$value) {
-            ?>
+                                <?php if ($count!=0) {
+                                 foreach ($comments as $comment) { ?>
                                 <li class="media">
                                     <a  class="pull-left mr-5">
                                         <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
                                     </a>
                                     <div class="media-body">
                                 <span class="text-muted pull-right">
-                                    <small class="text-muted"> <?=$comments[$key]['date']; ?></small>
+                                    <small class="text-muted"> <?=$comment->getDate(); ?></small>
                                 </span>
-                                        <strong class="text-success"><?=$comments[$key]['user_login']; ?></strong>
+                                        <strong class="text-success"><?=$comment->getUserLogin(); ?></strong>
                                         <p>
-                                        <p><?=$comments[$key]['stars']; ?></p>
-                                            <?=$comments[$key]['message']; ?>
+                                        <p><?=$comment->getStars(); ?></p>
+                                            <?=$comment->getMessage(); ?>
                                         </p>
                                     </div>
                                 </li>
-                                <?php
-        }
-    }?>
+                                <?php }  }?>
                             </ul>
                         </div>
                     </div>

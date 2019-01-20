@@ -166,6 +166,8 @@ class Product
     public function setImage($image)
     {
         $this->image = $image;
+        if (empty($this->image)) $this->image = "/img/Image-not-found.jpeg";
+
     }
 
     /**
@@ -192,9 +194,12 @@ class Product
         $this->setId($data['id']);
         $this->setName($data['name']);
         $this->setDescription($data['description']);
-        $this->setCategory($data['category']);
+        $this->setCategory($data['Category']);
         $this->setPrice($data['price']);
         $this->setImage($data['image']);
+        $this->setBrand($data['Brand']);
+        $this->setCategoryId($data['category_id']);
+        $this->setBrandId($data['brand_id']);
     }
 
 }

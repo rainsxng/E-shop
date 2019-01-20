@@ -37,9 +37,9 @@ include "../App/views/header.php";
             <div class="card bg-light mb-3">
                 <div class="card-header bg-success text-white text-uppercase">Последнее поступление</div>
                 <div class="card-body">
-                    <img class="img-fluid" src="" />
-                    <h5 class="card-title">""</h5>
-                    <p class="btn btn-danger btn-block">$</p>
+                    <img class="img-fluid" src="<?=$items[0]->getImage();?>" />
+                    <h5 class="card-title">"<?=$items[0]->getName();?>"</h5>
+                    <p class="btn btn-danger btn-block"><?=$items[0]->getPrice();?>$</p>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@ include "../App/views/header.php";
                     <div class="card">
                         <img class="card-img-top" src="<?=$product->getImage();?>" alt="Card image cap">
                         <div class="card-body">
-                            <a href="brands/<?=$items[$key]['brand_id']; ?>"><?=$product->getBrand(); ?></a>
+                            <a href="brands/<?=$product->getBrandId(); ?>"><?=$product->getBrand(); ?></a>
                             <h4 class="card-title"><a href="product/<?=$product->getId(); ?>" title="View Product"><?=$product->getName(); ?></a></h4>
                                  <a href="/category/<?=$product->getCategoryId(); ?>"><?=$product->getCategory(); ?></a>
                             <div class="row">
@@ -76,10 +76,7 @@ include "../App/views/header.php";
 
     </div>
 </div>
-
 <!-- Footer -->
 <?php include_once '../App/views/footer.html';?>
-<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 </body>
 </html>

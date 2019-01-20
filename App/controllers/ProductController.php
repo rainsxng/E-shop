@@ -3,24 +3,29 @@
 namespace Controllers;
 
 use Core\Controller;
+use Models\Comment;
+use Models\Product;
 use Models\ProductModel;
 
 class ProductController extends Controller
 {
     private $product;
+    private $comment;
     public function __construct()
     {
         $this->product = new ProductModel();
+        $this->comment = new Comment();
+
     }
 
     public function viewProduct($id)
     {
-        $comments = $this->product->getCommentsForProduct($id);
+        $comments = $this->comment->getCommentsForProduct($id);
         $product =  $this->product->getItemById($id);
         if (!empty($product)) {
             self::render(
                  'product',
-                ['product'=>$product,'comments'=>$comments]
+                ['product'=>$product,'comments'=>$comments,'count'=>Comment::getCount()]
              );
         } else {
             self::render('404');

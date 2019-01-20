@@ -72,13 +72,15 @@ WHERE comments.product_id=:id;");
     }
     public function getProductById($id)
     {
-        $query = $this->pdo->prepare("SELECT products.id,products.name,products.price,products.quantity,products.image,products.description,brands.name as Brand,categories.name as Category,categories.id as category_id from products
+        $query = $this->pdo->prepare("SELECT products.id,products.name,products.price,products.quantity,products.image,products.description,brands.name as Brand,categories.name as Category,categories.id as category_id,brands.id as brand_id from products
 INNER JOIN brands on products.brand_id=brands.id
 INNER JOIN categories on products.category_id=categories.id
 WHERE products.id=:id");
         $query->execute(array('id'=>$id));
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
-        return $row;
+        $product = new Product();
+        $product->fromArray($row[0]);
+        return $product;
     }
     public function getProductsByCategoryId($id)
     {
