@@ -58,7 +58,7 @@ include "../App/views/header.php";
                                 <input type="number" name="name" class="form-control" id="quantity" value="1">
                                 <div class="row mb-4">
                                     <div class="col">
-                                        <button type="button" class="btn btn-primary align-self-center mt-2" onclick="AjaxAddToCart(<?=$product[$key]['id']; ?>)">Купить</button>
+                                        <button type="button" class="btn btn-primary align-self-center mt-2" onclick="AjaxAddToCart(<?=$product->getId();?>)">Купить</button>
                                     </div>
                                 </div>
                             </div>

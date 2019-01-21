@@ -114,7 +114,7 @@ class User
         if ($this->isUserExists($login)===false) {
             $this->mapper->addUser($login, $password, $email);
         } else {
-          header("HTTP/1.0 401");
+           header("HTTP/1.0 401");
         }
     }
     public function isUserExists($login)

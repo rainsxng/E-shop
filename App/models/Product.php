@@ -205,6 +205,7 @@ class Product
         $this->setBrand($data['Brand']);
         $this->setCategoryId($data['category_id']);
         $this->setBrandId($data['brand_id']);
+        $this->setQuantity($data['quantity']);
     }
     public function getProductByCategoryId($id){
         return $this->mapper ->getProductsByCategoryId($id);
