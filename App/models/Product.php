@@ -23,6 +23,11 @@ class Product
     private $description;
     private $category;
     private $brand;
+    private $mapper;
+    public function __construct()
+    {
+        $this->mapper = new ProductMapper();
+    }
 
     /**
      * @return mixed
@@ -187,8 +192,8 @@ class Product
     }
 
     public function getAllProducts(){
-        $mapper= new ProductMapper();
-        return $mapper->getAllProducts();
+
+        return $this->mapper->getAllProducts();
     }
     public function fromArray($data){
         $this->setId($data['id']);
@@ -201,5 +206,10 @@ class Product
         $this->setCategoryId($data['category_id']);
         $this->setBrandId($data['brand_id']);
     }
-
+    public function getProductByCategoryId($id){
+        return $this->mapper ->getProductsByCategoryId($id);
+    }
+    public function getProductById($id){
+       return $this->mapper->getProductById($id);
+    }
 }

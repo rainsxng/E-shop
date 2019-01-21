@@ -38,7 +38,7 @@ include "../App/views/header.php";
                 <div class="card-header bg-success text-white text-uppercase">Последнее поступление</div>
                 <div class="card-body">
                     <img class="img-fluid" src="<?=$items[0]->getImage();?>" />
-                    <h5 class="card-title">"<?=$items[0]->getName();?>"</h5>
+                    <h5 class="card-title"><?=$items[0]->getName();?></h5>
                     <p class="btn btn-danger btn-block"><?=$items[0]->getPrice();?>$</p>
                 </div>
             </div>

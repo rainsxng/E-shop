@@ -9,6 +9,7 @@
 namespace Mappers;
 
 use Core\Database;
+use Models\User;
 use PDO;
 
 class UsersMapper
@@ -23,7 +24,9 @@ class UsersMapper
         $query = $this->pdo->prepare("SELECT * FROM users WHERE login=:login");
         $query->execute(array('login'=>$login));
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
-        return $row;
+        $user = new User();
+        $user->fromArray($row[0]);
+        return $user;
     }
     public function addUser($login, $pswd, $email)
     {
@@ -34,5 +37,14 @@ class UsersMapper
         } else {
             return 1;
         }
+    }
+    public function mapArrayToUser($data):User
+    {
+        $user = new User();
+        $user->setId($data['id']);
+        $user->setEmail($data['email']);
+        $user->setLogin($data['login']);
+        $user->setPassword($data['password']);
+        return $user;
     }
 }

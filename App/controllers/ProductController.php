@@ -13,7 +13,7 @@ class ProductController extends Controller
     private $comment;
     public function __construct()
     {
-        $this->product = new ProductModel();
+        $this->product = new Product();
         $this->comment = new Comment();
 
     }
@@ -21,7 +21,7 @@ class ProductController extends Controller
     public function viewProduct($id)
     {
         $comments = $this->comment->getCommentsForProduct($id);
-        $product =  $this->product->getItemById($id);
+        $product =  $this->product->getProductById($id);
         if (!empty($product)) {
             self::render(
                  'product',

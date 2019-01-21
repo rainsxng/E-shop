@@ -8,7 +8,6 @@
 
 namespace Models;
 
-use Mappers\CategoryMapper;
 use Mappers\CommentMapper;
 
 class Comment
@@ -154,4 +153,5 @@ class Comment
         $mapper = new CommentMapper();
         return $mapper->getProductComments($id);
     }
+    
 }

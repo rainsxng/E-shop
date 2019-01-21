@@ -18,8 +18,6 @@
 <body>
 <?php
 include "../App/views/header.php";
-var_dump($comments);
-var_dump($count);
 ?>
 <div class="container-flued">
     <div class="row ">
