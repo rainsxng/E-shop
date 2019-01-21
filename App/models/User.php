@@ -17,6 +17,7 @@ class User
     private $password;
     private $login;
     private $email;
+    private $field;
     private $user;
     private $mapper;
     public function __construct()
