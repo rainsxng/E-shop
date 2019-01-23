@@ -1,0 +1,82 @@
+.bloc_left_price {
+    color: rosybrown;
+    text-align: center;
+    font-weight: bold;
+    font-size: 150%;
+}
+.add_to_cart_block .price {
+    color: rosybrown;
+    text-align: center;
+    font-weight: bold;
+    font-size: 200%;
+    margin-bottom: 0;
+}
+.add_to_cart_block .price_discounted {
+    text-align: center;
+    text-decoration: line-through;
+    font-size: 140%;
+}
+.product_rassurance {
+    padding: 10px;
+    margin-top: 15px;
+}
+.product_rassurance .list-inline {
+    margin-bottom: 0;
+    text-transform: uppercase;
+    text-align: center;
+}
+.reviews_product .fa-star {
+    color: gold;
+}
+.pagination {
+    margin-top: 20px;
+}
+footer {
+    background: #343a40;
+    padding: 40px;
+}
+footer a {
+    color: #f8f9fa!important
+}
+#fluent-container{
+    position: absolute;
+    top: 30%;
+    left:35%;
+}
+
+#popularLabel{
+    font-size: 20px;
+}
+.checked {
+    color: orange;
+}
+.col-md-8 p{
+    font-size: 20px;
+}
+.description{
+    font-size:20px;
+}
+.btn-order {
+    position: absolute;
+    left: 40px;
+}
+#quantity{
+    width: 70px;
+}
+input[type="number"],
+select.form-control {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+input[type="number"]:focus,
+select.form-control:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+#zero {
+    color: #ffffff;
+}
