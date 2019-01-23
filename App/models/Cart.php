@@ -11,6 +11,7 @@ class Cart
     private $quantity;
     private $mapper;
     private $product_id;
+    private $orderModel;
     private static $sum;
 
     /**
@@ -66,6 +67,8 @@ class Cart
     public function __construct()
     {
         $this->mapper = new CartMapper();
+        $this->orderModel = new Order();
+        $this->setOrderId($this->orderModel->getId());
     }
 
     /**
@@ -122,7 +125,6 @@ class Cart
     public function getProducts()
     {
         return $this->mapper->getCartProducts();
-
     }
 
     public function addProduct(Cart $obj)
@@ -134,9 +136,9 @@ class Cart
     {
         $this->mapper->deleteOne($obj);
     }
-    public function delete()
+    public function delete(Cart $obj)
     {
-        $this->mapper->delete();
+        $this->mapper->delete($obj);
     }
     public function increaseByOne(Cart $obj)
     {

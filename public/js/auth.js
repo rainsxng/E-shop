@@ -52,7 +52,6 @@ function AjaxLogin() {
                 $.notify('Произошла ошибка', {position: "right bottom"})
         },
         success:function (result) {
-            alert(result);
             let res = JSON.parse(result);
                 if (res===true) {
                     $(window).attr('location','/')

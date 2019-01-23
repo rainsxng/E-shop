@@ -6,17 +6,16 @@ use Mappers\OrderMapper;
 
 class Order
 {
-    private $id;
-    private $user_id;
-    private $status;
-    private $mapper;
-    private $obj;
+    public $id;
+    public $user_id;
+    public $status;
+    public $mapper;
 
     public function __construct()
     {
         $this->mapper = new OrderMapper();
         $this->setId($this->mapper->getOrderIdByUser());
-        $this->setUserId($_SESSION['user']);
+        $this->setUserId($_SESSION['user_id']);
     }
 
     /**
@@ -69,7 +68,7 @@ class Order
 
     public function createOrder()
     {
-        $this->mapper->createOrder($this->obj);
+        $this->mapper->createOrder(new Order());
     }
     public function delete(Order $orderObj)
     {

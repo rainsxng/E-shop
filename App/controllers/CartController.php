@@ -44,7 +44,7 @@ class CartController extends Controller
     }
     public function deleteAll()
     {
-        $this->cartModel->delete();
+        $this->cartModel->delete($this->cartModel);
         $this->orderModel->delete($this->orderModel);
     }
     public function increaseByOne()
