@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Core\Controller;
+use Models\Cart;
 use Models\CartModel;
 
 class CartController extends Controller
@@ -11,7 +12,7 @@ class CartController extends Controller
     {
         $model = new CartModel();
         $products=$model->getProducts();
-        self::render('cart', ['items'=>$products]);
+        self::render('cart', ['products'=>$products,'sum'=>Cart::getSum()]);
     }
     public function addToCart()
     {

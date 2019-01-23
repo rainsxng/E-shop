@@ -24,6 +24,23 @@ class Product
     private $category;
     private $brand;
     private $mapper;
+    private $sum;
+
+    /**
+     * @return mixed
+     */
+    public function getSum()
+    {
+        return $this->sum;
+    }
+
+    /**
+     * @param mixed $sum
+     */
+    public function setSum($sum)
+    {
+        $this->sum = $sum;
+    }
     public function __construct()
     {
         $this->mapper = new ProductMapper();

@@ -27,8 +27,9 @@ class ProductMapper
         INNER JOIN categories on products.category_id = categories.id;');
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
         $products = [];
-        foreach ($row as $r)
+        foreach ($row as $r) {
             array_push($products, $this->mapArrayToProduct($r));
+        }
         return $products;
     }
 

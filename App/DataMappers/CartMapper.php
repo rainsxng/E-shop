@@ -9,6 +9,8 @@
 namespace Mappers;
 
 use Core\Database;
+use Models\Cart;
+use Models\Product;
 use PDO;
 
 class CartMapper
@@ -24,20 +26,24 @@ class CartMapper
 
     public function getCartProducts()
     {
+        $products = [];
         $query = $this->pdo->prepare("SELECT products.id,products.name,products.price,orders_products.quantity,products.image,products.price*orders_products.quantity as summ from products
 INNER JOIN orders_products on products.id=orders_products.product_id
 INNER JOIN orders on orders.id = orders_products.order_id
 WHERE orders.user_id = :id AND orders.status='cart'");
         $query->execute(array('id'=>$_SESSION['user_id']));
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
-        foreach ($row as $key=>$value) {
+        foreach ($row as $key => $value) {
             $this->summ+=$row[$key]['price']*$row[$key]['quantity'];
         }
-        $row['Summary'] =$this->summ;
-        return $row;
+        Cart::setSum($this->summ);
+        foreach ($row as $r) {
+            array_push($products, $this->mapArrayToProduct($r));
+        }
+        return $products;
     }
 
-    public function addProduct($product_id, $quantity=1)
+    public function addProduct($product_id, $quantity = 1)
     {
         $this->createOrder();
         $query = $this->pdo->prepare("SELECT orders_products.id from orders_products
@@ -108,5 +114,21 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
             $query->execute(array('user_id' => $_SESSION['user_id']));
             unset($query);
         }
+    }
+    private function mapArrayToProduct($data)
+    {
+        $product = new Product();
+        $product->setId($data['id']);
+        $product->setName($data['name']);
+        $product->setQuantity($data['quantity']);
+        $product->setImage($data['image']);
+        $product->setDescription($data['description']);
+        $product->setPrice($data['price']);
+        $product->setCategory($data['Category']);
+        $product->setBrand($data['Brand']);
+        $product->setBrandId($data['brand_id']);
+        $product->setCategoryId($data['category_id']);
+        $product->setSum($data['summ']);
+        return  $product;
     }
 }
