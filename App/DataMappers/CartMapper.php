@@ -10,6 +10,7 @@ namespace Mappers;
 
 use Core\Database;
 use Models\Cart;
+use Models\Order;
 use Models\Product;
 use PDO;
 
@@ -43,34 +44,34 @@ WHERE orders.user_id = :id AND orders.status='cart'");
         return $products;
     }
 
-    public function addProduct($product_id, $quantity = 1)
+    public function addProduct(Cart $cartObj)
     {
         $this->createOrder();
         $query = $this->pdo->prepare("SELECT orders_products.id from orders_products
 INNER JOIN orders on orders_products.order_id = orders.id
 WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.product_id=:product_id");
-        $query->execute(array('product_id'=>$product_id,'user_id'=>$_SESSION['user_id']));
+        $query->execute(array('product_id'=>$cartObj->getProductId(),'user_id'=>$_SESSION['user_id']));
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
         if (empty($row)) {
             $query = $this->pdo->prepare("
         INSERT INTO orders_products
         SELECT NULL,id,:product_id,:quantity FROM orders WHERE user_id = :user_id AND status ='cart';
         UPDATE products SET quantity = quantity - :quantity WHERE products.id = :product_id");
-            $query->execute(array('product_id' => $product_id, 'user_id' => $_SESSION['user_id'],'quantity'=>$quantity));
+            $query->execute(array('product_id' => $cartObj->getProductId(), 'user_id' => $_SESSION['user_id'],'quantity'=>$cartObj->getQuantity()));
             unset($query);
         } else {
             $query = $this->pdo->prepare("UPDATE orders_products SET quantity = quantity+:quantity WHERE product_id =:product_id;
             UPDATE products SET quantity = quantity-:quantity WHERE products.id = :product_id");
-            $query->execute(array('product_id'=>$product_id,'quantity'=>$quantity));
+            $query->execute(array('product_id'=>$cartObj->getProductId(),'quantity'=>$cartObj->getQuantity()));
             unset($query);
         }
     }
-    public function deleteOne($product_id)
+    public function deleteOne(Cart $cartObj)
     {
         $query = $this->pdo->prepare("
         DELETE FROM orders_products
         WHERE product_id=:product_id AND order_id=:order_id;");
-        $query->execute(array('product_id'=>$product_id,'order_id'=>$this->order_id));
+        $query->execute(array('product_id'=>$cartObj->getProductId(),'order_id'=>$this->order_id));
         unset($query);
     }
     public function deleteAll()
@@ -81,18 +82,18 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
         $query="DELETE FROM orders WHERE orders.user_id=:user_id;";
         $query->execute(array('user_id'=>$user_id));
     }
-    public function increaseByOne($product_id)
+    public function increaseByOne(Cart $cartObj)
     {
         $query = $this->pdo->prepare("UPDATE orders_products SET quantity = quantity+1 WHERE product_id =:product_id AND orders_products.order_id = :order_id;
         UPDATE products SET quantity = quantity - 1 WHERE products.id = :product_id;");
-        $query->execute(array('product_id'=>$product_id,'order_id'=>$this->order_id));
+        $query->execute(array('product_id'=>$cartObj->getProductId(),'order_id'=>$this->order_id));
         unset($query);
     }
-    public function decreaseByOne($product_id)
+    public function decreaseByOne(Cart $cartObj)
     {
         $query = $this->pdo->prepare("UPDATE orders_products SET quantity = quantity-1 WHERE product_id =:product_id AND orders_products.order_id = :order_id;
         UPDATE products SET quantity = quantity +1 WHERE products.id = :product_id;");
-        $query->execute(array('product_id'=>$product_id,'order_id'=>$this->order_id));
+        $query->execute(array('product_id'=>$cartObj->getProductId(),'order_id'=>$this->order_id));
         unset($query);
     }
     public function getOrderIdByUser()

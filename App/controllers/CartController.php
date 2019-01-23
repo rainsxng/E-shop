@@ -4,14 +4,18 @@ namespace Controllers;
 
 use Core\Controller;
 use Models\Cart;
-use Models\CartModel;
 
 class CartController extends Controller
 {
+    private $model;
+    public function __construct()
+    {
+        $this->model = new Cart();
+    }
+
     public function getCartProducts()
     {
-        $model = new CartModel();
-        $products=$model->getProducts();
+        $products=$this->model->getProducts();
         self::render('cart', ['products'=>$products,'sum'=>Cart::getSum()]);
     }
     public function addToCart()
@@ -23,34 +27,34 @@ class CartController extends Controller
             die(header("HTTP/1.0 300"));
         }
         if (isset($_POST['productId'])) {
-            $model = new CartModel();
-            $model->addProduct($_POST['productId'], $_POST['quantity']);
+            $this->model->setProductId($_POST['productId']);
+            $this->model->setQuantity($_POST['quantity']);
+            $this->model->addProduct($this->model);
         }
     }
     public function deleteOne()
     {
         if (isset($_POST['productId'])) {
-            $model = new CartModel();
-            $model->deleteOne($_POST['productId']);
+            $this->model->setProductId($_POST['productId']);
+            $this->model->deleteOne($this->model);
         }
     }
     public function deleteAll()
     {
-        $model = new CartModel();
-        $model->deleteAll();
+        $this->model->deleteAll();
     }
     public function increaseByOne()
     {
         if (isset($_POST['productId'])) {
-            $model = new CartModel();
-            $model->increaseByOne($_POST['productId']);
+            $this->model->setProductId($_POST['productId']);
+            $this->model->increaseByOne($this->model);
         }
     }
     public function decreaseByOne()
     {
         if (isset($_POST['productId'])) {
-            $model = new CartModel();
-            $model->decreaseByOne($_POST['productId']);
+            $this->model->setProductId($_POST['productId']);
+            $this->model->decreaseByOne($this->model);
         }
     }
 }

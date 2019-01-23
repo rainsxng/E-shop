@@ -10,7 +10,25 @@ class Cart
     private $order_id;
     private $quantity;
     private $mapper;
+    private $product_id;
     private static $sum;
+
+    /**
+     * @return mixed
+     */
+    public function getProductId()
+    {
+        return $this->product_id;
+    }
+
+    /**
+     * @param mixed $product_id
+     */
+    public function setProductId($product_id)
+    {
+        $this->product_id = $product_id;
+    }
+
 
     /**
      * @return mixed
@@ -29,7 +47,6 @@ class Cart
     }
 
 
-
     /**
      * @return CartMapper
      */
@@ -45,6 +62,7 @@ class Cart
     {
         $this->mapper = $mapper;
     }
+
     public function __construct()
     {
         $this->mapper = new CartMapper();
@@ -87,6 +105,9 @@ class Cart
      */
     public function getQuantity()
     {
+        if ($this->quantity == null) {
+            $this->quantity = 1;
+        }
         return $this->quantity;
     }
 
@@ -97,10 +118,31 @@ class Cart
     {
         $this->quantity = $quantity;
     }
+
     public function getProducts()
     {
         return $this->mapper->getCartProducts();
     }
 
+    public function addProduct(Cart $obj)
+    {
+        $this->mapper->addProduct($obj);
+    }
 
+    public function deleteOne(Cart $obj)
+    {
+        $this->mapper->deleteOne($obj);
+    }
+    public function deleteAll()
+    {
+        $this->mapper->deleteAll();
+    }
+    public function increaseByOne(Cart $obj)
+    {
+        $this->mapper->increaseByOne($obj);
+    }
+    public function decreaseByOne(Cart $obj)
+    {
+        $this->mapper->decreaseByOne($obj);
+    }
 }

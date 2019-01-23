@@ -15,7 +15,6 @@
 <body>
 <?php
 include_once '../App/views/header.php';
-var_dump($sum);
 if ($sum!==null) {
     ?>
 <div class="container-flued">
