@@ -18,11 +18,11 @@ class CartMapper
 {
     private $pdo;
     private $summ;
+    private $orderObj;
     private $order_id;
     public function __construct()
     {
         $this->pdo = Database::getInstance();
-        $this->order_id = $this->getOrderIdByUser();
     }
 
     public function getCartProducts()
@@ -46,7 +46,7 @@ WHERE orders.user_id = :id AND orders.status='cart'");
 
     public function addProduct(Cart $cartObj)
     {
-        $this->createOrder();
+        $this->orderObj->createOrder();
         $query = $this->pdo->prepare("SELECT orders_products.id from orders_products
 INNER JOIN orders on orders_products.order_id = orders.id
 WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.product_id=:product_id");
@@ -74,13 +74,10 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
         $query->execute(array('product_id'=>$cartObj->getProductId(),'order_id'=>$this->order_id));
         unset($query);
     }
-    public function deleteAll()
+    public function delete()
     {
-        $user_id = $_SESSION['user_id'];
         $query = $this->pdo->prepare("DELETE FROM orders_products WHERE order_id=:order_id;");
-        $query->execute(array('order_id'=>$this->order_id));
-        $query="DELETE FROM orders WHERE orders.user_id=:user_id;";
-        $query->execute(array('user_id'=>$user_id));
+        $query->execute(array('order_id'=>$this->orderObj->getId()));
     }
     public function increaseByOne(Cart $cartObj)
     {
@@ -95,26 +92,6 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
         UPDATE products SET quantity = quantity +1 WHERE products.id = :product_id;");
         $query->execute(array('product_id'=>$cartObj->getProductId(),'order_id'=>$this->order_id));
         unset($query);
-    }
-    public function getOrderIdByUser()
-    {
-        $query=$this->pdo->prepare("SELECT orders.id FROM orders WHERE user_id=:user_id AND status='cart'");
-        $query->execute(array('user_id'=>$_SESSION['user_id']));
-        $row = $query->fetchALL(PDO::FETCH_ASSOC);
-        $order_id=$row[0]['id'];
-        if (!empty($order_id)) {
-            return $order_id;
-        } else {
-            return false;
-        }
-    }
-    public function createOrder()
-    {
-        if ($this->getOrderIdByUser()==false) {
-            $query = $this->pdo->prepare("INSERT INTO orders VALUES (NULL,:user_id,'cart',current_timestamp(),current_timestamp());");
-            $query->execute(array('user_id' => $_SESSION['user_id']));
-            unset($query);
-        }
     }
     private function mapArrayToProduct($data)
     {

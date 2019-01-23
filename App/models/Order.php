@@ -2,11 +2,22 @@
 
 namespace Models;
 
+use Mappers\OrderMapper;
+
 class Order
 {
     private $id;
     private $user_id;
     private $status;
+    private $mapper;
+    private $obj;
+
+    public function __construct()
+    {
+        $this->mapper = new OrderMapper();
+        $this->setId($this->mapper->getOrderIdByUser());
+        $this->setUserId($_SESSION['user']);
+    }
 
     /**
      * @return mixed
@@ -56,4 +67,12 @@ class Order
         $this->status = $status;
     }
 
+    public function createOrder()
+    {
+        $this->mapper->createOrder($this->obj);
+    }
+    public function delete(Order $orderObj)
+    {
+        $this->mapper->delete($orderObj);
+    }
 }

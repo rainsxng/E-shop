@@ -122,6 +122,7 @@ class Cart
     public function getProducts()
     {
         return $this->mapper->getCartProducts();
+
     }
 
     public function addProduct(Cart $obj)
@@ -133,9 +134,9 @@ class Cart
     {
         $this->mapper->deleteOne($obj);
     }
-    public function deleteAll()
+    public function delete()
     {
-        $this->mapper->deleteAll();
+        $this->mapper->delete();
     }
     public function increaseByOne(Cart $obj)
     {
