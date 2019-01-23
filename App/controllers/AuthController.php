@@ -9,12 +9,11 @@ use phpDocumentor\Reflection\Types\Self_;
 
 class AuthController extends Controller
 {
+    private $model;
     public function __construct()
     {
         $this->model=new User();
     }
-    private $model;
-
 
     public function authorize()
     {
@@ -22,7 +21,6 @@ class AuthController extends Controller
     }
     public function logOut()
     {
-
         $this->model->logOut();
     }
     public function getLogin()
@@ -31,6 +29,10 @@ class AuthController extends Controller
     }
     public function registration()
     {
-        $this->model->registration($_POST['login'], $_POST['password'], $_POST['email']);
+        $login=$_POST['login'];
+        $password = $_POST['password'];
+        $email = $_POST['email'];
+        $this->model->registration($login, $password, $email);
+        return $this->model;
     }
 }

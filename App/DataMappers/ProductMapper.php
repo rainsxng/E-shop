@@ -30,7 +30,8 @@ class ProductMapper
             array_push($products, $this->mapArrayToProduct($r));
         return $products;
     }
-    private function mapArrayToProduct($data) {
+    private function mapArrayToProduct($data)
+    {
         $product = new Product();
         $product->setId($data['id']);
         $product->setName($data['name']);

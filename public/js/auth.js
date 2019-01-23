@@ -2,24 +2,28 @@ function AjaxRegister() {
     let login = $('#loginText').val();
     let password = $('#pswdText').val();
     let email = $('#emailText').val();
-    $.ajax({
+    $.ajax(
+        {
         url: '/auth/register',
         type: "POST",
         data: {"login":login,"password":password,"email":email},
         dataType: "text",
         error: function(XMLHttpRequest){
-            if (XMLHttpRequest.status == 401) {
+            if (XMLHttpRequest.status == 401)
+            {
                 $.notify("Такой пользователь уже существует", {
                     className:'error',
                     clickToHide: true,
                     autoHide: true,
                     autoHideDelay:2000,
                     globalPosition: 'bottom-right'
-                });
+                    }
+                );
             }
         },
         success: success
-    });
+        }
+    );
 }
 function success()
 {
@@ -35,10 +39,11 @@ function AjaxLogin() {
     let login = $('#loginText').val();
     let password = $('#pswdText').val();
     if (((login.length==0) || (password.length==0))){
-        $.notify('Необходимо заполнить все поля', {position: "right bottom"})
+        $.notify('Необходимо заполнить все поля', {position: "right bottom"});
         return;
     }
-    $.ajax({
+    $.ajax(
+        {
         url: '/auth/login',
         type: "POST",
         data: {"login":login,"password":password},
@@ -47,11 +52,26 @@ function AjaxLogin() {
                 $.notify('Произошла ошибка', {position: "right bottom"})
         },
         success:function (result) {
-            if (result==""){
-                location.href = "/";
+            let res = JSON.parse(result);
+                if (res===true) {
+                    $(window).attr('location','/')
+                } else {
+                    $.notify('Неверный логин / пароль', {position: "right bottom"});
+                }
             }
-            else
-            $.notify('Неверный логин или пароль!', {position: "right bottom"});
+
         }
-    });
+    );
+}
+function AjaxLogout() {
+    $.ajax(
+        {
+        url: '/auth/logout',
+        type: "POST",
+        dataType: "text",
+        error: function(){
+            $.notify('Произошла ошибка', {position: "right bottom"})
+        },
+        }
+    );
 }

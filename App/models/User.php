@@ -17,7 +17,6 @@ class User
     private $password;
     private $login;
     private $email;
-    private $field;
     private $user;
     private $mapper;
     public function __construct()
@@ -93,44 +92,43 @@ class User
         $this->user  = new User();
         $this->user = clone $this->mapper->getUser($login);
         if (($login ==  $this->user->getLogin()) && (password_verify($pass, $this->user->getPassword()))) {
-            if (!isset($_SESSION)) {
-                session_start();
-            }
             $_SESSION['isLogged'] = true;
             $_SESSION['user_id'] = $this->user->getId();
             $_SESSION['login'] = $this->user->getLogin();
         } else {
             $_SESSION['isLogged'] = false;
         }
-        return  $_SESSION['isLogged'];
+        echo json_encode($_SESSION['isLogged']);
+        return $_SESSION['isLogged'];
     }
     public function logOut()
     {
+        $_SESSION =[];
         $_SESSION['isLogged'] = false;
-        session_destroy();
-        unset($_SESSION);
+        echo json_encode($_SESSION['isLogged']);
     }
     public function registration($login, $password, $email)
     {
         if ($this->isUserExists($login)===false) {
             $this->mapper->addUser($login, $password, $email);
         } else {
-           header("HTTP/1.0 401");
+            header("HTTP/1.0 401");
         }
     }
     public function isUserExists($login)
     {
-        if (!empty($this->mapper->getUser($login))) {
+        $user = $this->mapper->getUser($login);
+        if (!($user->getId()===null)) {
             return true;
         } else {
             return false;
         }
     }
-    public function fromArray($data){
+    public function fromArray($data)
+    {
         $this->setId($data['id']);
         $this->setLogin($data['login']);
         $this->setEmail($data['email']);
         $this->setPassword($data['password']);
     }
-
 }
