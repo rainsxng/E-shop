@@ -2,21 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cfdd3126-b6fe-4d49-a7fa-ea843b4177e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/DataMappers/CartMapper.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/DataMappers/CartMapper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/DataMappers/OrderMapper.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/DataMappers/OrderMapper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/DataMappers/ProductMapper.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/DataMappers/ProductMapper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/config/db_config.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/config/db_config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/controllers/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/controllers/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/models/Cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/models/Cart.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/models/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/models/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/addToCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/addToCart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/log.log" beforeDir="false" afterPath="$PROJECT_DIR$/public/log.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/bin/phpcbf.bat" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bin/phpcbf.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/bin/phpcs.bat" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bin/phpcs.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/bin/phpunit.bat" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bin/phpunit.bat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/brian/logger" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/brian/logger" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/doctrine/instantiator" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/doctrine/instantiator" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/doctrine/lexer" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/doctrine/lexer" afterDir="false" />
@@ -203,7 +188,7 @@
         <entry file="file://$PROJECT_DIR$/App/models/Cart.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="392">
-              <caret line="126" column="26" selection-start-line="126" selection-start-column="26" selection-end-line="126" selection-end-column="26" />
+              <caret line="129" column="5" lean-forward="true" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
               <folding>
                 <element signature="e#228#260#0#PHP" />
                 <element signature="e#265#341#0#PHP" />
@@ -474,18 +459,18 @@
       <workItem from="1548249311663" duration="13952000" />
       <workItem from="1548338011658" duration="2393000" />
       <workItem from="1548348952119" duration="910000" />
-      <workItem from="1548420240932" duration="3548000" />
+      <workItem from="1548420240932" duration="3861000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24976000" />
+    <option name="totallyTimeSpent" value="25289000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1610404" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1610404" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -498,7 +483,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32894737" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3199554" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.31907895" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32894737" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -801,7 +786,7 @@
     <entry file="file://$PROJECT_DIR$/App/models/Cart.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="392">
-          <caret line="126" column="26" selection-start-line="126" selection-start-column="26" selection-end-line="126" selection-end-column="26" />
+          <caret line="129" column="5" lean-forward="true" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
           <folding>
             <element signature="e#228#260#0#PHP" />
             <element signature="e#265#341#0#PHP" />
