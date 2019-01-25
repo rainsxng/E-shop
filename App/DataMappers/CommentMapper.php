@@ -58,4 +58,16 @@ INNER JOIN users on comments.user_id=users.id WHERE products.id=:id;");
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
         return $row;
     }
+
+    public function addComment (Comment $commentObj)
+    {
+        echo json_encode($commentObj);
+        $query = $this->pdo->prepare("INSERT INTO comments (id,message,date,created_at,updated_at,stars,user_id,product_id) VALUES (NULL,:message,current_date(),current_timestamp(),current_timestamp(),:stars,:user_id,:product_id)");
+        $query->execute(array(
+            'message'=>$commentObj->getMessage(),
+            'stars'=>$commentObj->getStars(),
+            'user_id'=>$commentObj->getUserId(),
+            'product_id'=>$commentObj->getProductId()
+            ));
+    }
 }

@@ -6,10 +6,10 @@ use Mappers\OrderMapper;
 
 class Order
 {
-    public $id;
-    public $user_id;
-    public $status;
-    public $mapper;
+    protected $id;
+    protected $user_id;
+    protected $status;
+    protected $mapper;
 
     public function __construct()
     {

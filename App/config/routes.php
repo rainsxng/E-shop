@@ -13,5 +13,6 @@ return [
     '/cart/decrease'=>'Controllers\CartController/decreaseByOne',
     '/auth/register'=>'Controllers\AuthController/registration',
     '/auth/login'=>'Controllers\AuthController/authorize',
-    '/auth/logout'=>'Controllers\AuthController/logOut'
+    '/auth/logout'=>'Controllers\AuthController/logOut',
+    '/comment/add'=>'Controllers\ProductController/addComment'
 ];

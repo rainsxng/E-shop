@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <script src="/js/addToCart.js"></script>
+    <script src="/js/Comments.js"></script>
 </head>
 <body>
 <?php
@@ -92,13 +93,21 @@ include "../App/views/header.php";
             <div class="col-md-6 col-md-offset-2 col-sm-12">
                 <div class="comment-wrapper">
                     <div class="panel panel-info">
-                        <div class="panel-heading">
+                        <div class="panel-heading mt-2 mb-4">
                            Добавить отзыв
                         </div>
+                        <div class="form-group">
+                            <label for="estimate" class="control-label">Оценка (1-5)</label>
+                            <input type="number" name="name" class="form-control" id="estimate" value="1">
+                            <div class="row mb-4">
+                            </div>
+                          </div>
+                         </div>
+                        </div>
                         <div class="panel-body">
-                            <textarea class="form-control" placeholder="Напиишите отзыв" rows="3"></textarea>
+                            <textarea class="form-control" id="commentMessage" placeholder="Напишите отзыв" rows="3"></textarea>
                             <br>
-                            <button type="button" class="btn btn-info pull-right">Добавить</button>
+                            <button type="button" class="btn btn-info pull-right" onclick="AddComment(<?=$product->getId();?>,<?=$_SESSION['user_id'];?>)">Добавить</button>
                             <div class="clearfix"></div>
                             <hr>
                             <ul class="media-list">

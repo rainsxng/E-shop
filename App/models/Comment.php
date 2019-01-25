@@ -12,14 +12,20 @@ use Mappers\CommentMapper;
 
 class Comment
 {
-    private $id;
-    private $message;
-    private $date;
-    private $stars;
-    private $user_id;
-    private $product_id;
-    private $userLogin;
-    private static $count;
+    protected $id;
+    protected $message;
+    protected $date;
+    protected $stars;
+    protected $user_id;
+    protected $product_id;
+    protected $userLogin;
+    protected $mapper;
+    protected static $count;
+
+    public function __construct()
+    {
+        $this->mapper = new CommentMapper();
+    }
 
     /**
      * @return mixed
@@ -150,8 +156,13 @@ class Comment
     }
 
     public function getCommentsForProduct($id){
-        $mapper = new CommentMapper();
-        return $mapper->getProductComments($id);
+
+        return $this->mapper->getProductComments($id);
+    }
+
+    public function add(Comment $commentObj)
+    {
+        $this->mapper->addComment($commentObj);
     }
     
 }

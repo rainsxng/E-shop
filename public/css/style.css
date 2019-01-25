@@ -60,7 +60,7 @@ footer a {
     position: absolute;
     left: 40px;
 }
-#quantity{
+#quantity,#estimate{
     width: 70px;
 }
 input[type="number"],

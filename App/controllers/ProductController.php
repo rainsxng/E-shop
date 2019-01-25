@@ -43,4 +43,12 @@ class ProductController extends Controller
             self::render('404');
         }
     }
+    public function addComment()
+    {
+        $this->comment->setProductId($_POST['product_id']);
+        $this->comment->setUserId($_POST['user_id']);
+        $this->comment->setMessage($_POST['message']);
+        $this->comment->setStars($_POST['stars']);
+        $this->comment->add($this->comment);
+    }
 }
