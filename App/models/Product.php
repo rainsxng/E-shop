@@ -8,7 +8,6 @@
 
 namespace Models;
 
-
 use Mappers\ProductMapper;
 
 class Product
@@ -24,10 +23,30 @@ class Product
     private $category;
     private $brand;
     private $mapper;
-    public function __construct()
+    private $sum;
+
+    public function __construct($id = null, $quantity = null)
     {
         $this->mapper = new ProductMapper();
+        $this->setId($id);
+        $this->setQuantity($quantity);
     }
+    /**
+     * @return mixed
+     */
+    public function getSum()
+    {
+        return $this->sum;
+    }
+
+    /**
+     * @param mixed $sum
+     */
+    public function setSum($sum)
+    {
+        $this->sum = $sum;
+    }
+
 
     /**
      * @return mixed
@@ -171,8 +190,9 @@ class Product
     public function setImage($image)
     {
         $this->image = $image;
-        if (empty($this->image)) $this->image = "/img/Image-not-found.jpeg";
-
+        if (empty($this->image)) {
+            $this->image = "/img/Image-not-found.jpeg";
+        }
     }
 
     /**
@@ -191,11 +211,12 @@ class Product
         $this->description = $description;
     }
 
-    public function getAllProducts(){
-
+    public function getAllProducts()
+    {
         return $this->mapper->getAllProducts();
     }
-    public function fromArray($data){
+    public function fromArray($data)
+    {
         $this->setId($data['id']);
         $this->setName($data['name']);
         $this->setDescription($data['description']);
@@ -207,10 +228,25 @@ class Product
         $this->setBrandId($data['brand_id']);
         $this->setQuantity($data['quantity']);
     }
-    public function getProductByCategoryId($id){
+    public function getProductByCategoryId($id)
+    {
         return $this->mapper ->getProductsByCategoryId($id);
     }
-    public function getProductById($id){
-       return $this->mapper->getProductById($id);
+    public function getProductById($id)
+    {
+        return $this->mapper->getProductById($id);
+    }
+    public function updateQuantity($product_id, $quantity)
+    {
+        $this->mapper->updateQuantity(new Product($product_id), $quantity);
+    }
+
+    public function increaseQuantity($product_id, $quantity)
+    {
+        $this->mapper->increaseQuantity(new Product($product_id, $quantity));
+    }
+    public function decreaseQuantity($product_id, $quantity)
+    {
+        $this->mapper->decreaseQuantity(new Product($product_id, $quantity));
     }
 }

@@ -12,6 +12,7 @@ class AuthController extends Controller
     private $model;
     public function __construct()
     {
+        session_start();
         $this->model=new User();
     }
 

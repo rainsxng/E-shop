@@ -38,7 +38,7 @@ include "../App/views/header.php";
         </div>
         <div class="col">
             <p><?=$product->getBrand(); ?></p>
-            <p><?$product->getName(); ?></p>
+            <p><?=$product->getName(); ?></p>
             <div class="row">
                 <div class="col">
                     <?php for ($i=1;$i<=5;$i++){ ?>

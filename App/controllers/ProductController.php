@@ -15,7 +15,6 @@ class ProductController extends Controller
     {
         $this->product = new Product();
         $this->comment = new Comment();
-
     }
 
     public function viewProduct($id)
@@ -24,9 +23,9 @@ class ProductController extends Controller
         $product =  $this->product->getProductById($id);
         if (!empty($product)) {
             self::render(
-                 'product',
+                'product',
                 ['product'=>$product,'comments'=>$comments,'count'=>Comment::getCount()]
-             );
+            );
         } else {
             self::render('404');
         }
@@ -34,11 +33,11 @@ class ProductController extends Controller
 
     public function getProductsByCategoryId($id)
     {
-        $products =  $this->product->getProductsByCategoryId($id);
+        $products =  $this->product->getProductByCategoryId($id);
         if (!empty($products)) {
             self::render(
                 'category',
-               ['items'=>$products]
+                ['products'=>$products]
             );
         } else {
             self::render('404');

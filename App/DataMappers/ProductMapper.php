@@ -19,6 +19,7 @@ class ProductMapper
     {
         $this->pdo = Database::getInstance();
     }
+
     public function getAllProducts()
     {
         $query = $this->pdo->query('SELECT products.id,products.name,products.quantity,price,image,description,brands.name as Brand,brands.id as brand_id,categories.name as Category,categories.id as category_id FROM `products`
@@ -26,10 +27,12 @@ class ProductMapper
         INNER JOIN categories on products.category_id = categories.id;');
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
         $products = [];
-        foreach ($row as $r)
+        foreach ($row as $r) {
             array_push($products, $this->mapArrayToProduct($r));
+        }
         return $products;
     }
+
     private function mapArrayToProduct($data)
     {
         $product = new Product();
@@ -45,6 +48,7 @@ class ProductMapper
         $product->setCategoryId($data['category_id']);
         return  $product;
     }
+
     public function getProductById($id)
     {
         $query = $this->pdo->prepare("SELECT products.id,products.name,products.price,products.quantity,products.image,products.description,brands.name as Brand,categories.name as Category,categories.id as category_id,brands.id as brand_id from products
@@ -57,14 +61,37 @@ WHERE products.id=:id");
         $product->fromArray($row[0]);
         return $product;
     }
+
     public function getProductsByCategoryId($id)
     {
-        $query = $this->pdo->prepare("SELECT products.name,products.id,products.price,products.quantity,products.image,products.description,brands.name as Brand,categories.name as Category from categories
+        $query = $this->pdo->prepare("SELECT products.name,products.id,products.price,products.quantity,products.image,products.description,brands.name as Brand,categories.name as Category,brands.id as brand_id,categories.id as category_id from categories
 INNER JOIN products on categories.id=products.category_id
 INNER JOIN brands on products.brand_id=brands.id
 WHERE categories.id=:id");
-        $query->execute(array('id'=>$id));
+        $query->execute(array('id' => $id));
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
-        return $row;
+        $products = [];
+        foreach ($row as $r) {
+            array_push($products, $this->mapArrayToProduct($r));
+        }
+        return $products;
+    }
+
+    public function updateQuantity(Product $obj, $value)
+    {
+        $query = $this->pdo->prepare("UPDATE products SET quantity = :value WHERE products.id = :id");
+        $query->execute(array('id' => $obj->getId(),'value'=>$value));
+    }
+
+    public function increaseQuantity(Product $obj)
+    {
+        $query = $this->pdo->prepare("Update products SET quantity = quantity + :quantity WHERE products.id = :id");
+        $query->execute(array('id' => $obj->getId(),'quantity'=>$obj->getQuantity()));
+    }
+
+    public function decreaseQuantity(Product $obj)
+    {
+        $query = $this->pdo->prepare("Update products SET quantity = quantity - :quantity WHERE products.id = :id");
+        $query->execute(array('id' => $obj->getId(),'quantity'=>$obj->getQuantity()));
     }
 }
