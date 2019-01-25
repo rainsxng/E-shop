@@ -70,8 +70,8 @@ class Order
     {
         $this->mapper->createOrder(new Order());
     }
-    public function delete(Order $orderObj)
+    public function delete()
     {
-        $this->mapper->delete($orderObj);
+        $this->mapper->delete(new Order());
     }
 }

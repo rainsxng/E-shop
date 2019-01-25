@@ -30,35 +30,30 @@ class CartController extends Controller
             die(header("HTTP/1.0 300"));
         }
         if (isset($_POST['productId'])) {
-            $this->cartModel->setProductId($_POST['productId']);
-            $this->cartModel->setQuantity($_POST['quantity']);
-            $this->cartModel->addProduct($this->cartModel);
+            $this->cartModel->addProduct($_POST['productId']);
         }
     }
     public function deleteOne()
     {
         if (isset($_POST['productId'])) {
-            $this->cartModel->setProductId($_POST['productId']);
-            $this->cartModel->deleteOne($this->cartModel);
+            $this->cartModel->deleteOne($_POST['productId']);
         }
     }
     public function deleteAll()
     {
-        $this->cartModel->delete($this->cartModel);
-        $this->orderModel->delete($this->orderModel);
+        $this->cartModel->deleteAll();
+        $this->orderModel->delete();
     }
     public function increaseByOne()
     {
         if (isset($_POST['productId'])) {
-            $this->cartModel->setProductId($_POST['productId']);
-            $this->cartModel->increaseByOne($this->cartModel);
+            $this->cartModel->increaseByOne($_POST['productId']);
         }
     }
     public function decreaseByOne()
     {
         if (isset($_POST['productId'])) {
-            $this->cartModel->setProductId($_POST['productId']);
-            $this->cartModel->decreaseByOne($this->cartModel);
+            $this->cartModel->decreaseByOne($_POST['productId']);
         }
     }
 }

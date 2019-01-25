@@ -80,16 +80,18 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
     }
     public function increaseByOne(Cart $cartObj)
     {
-        $query = $this->pdo->prepare("UPDATE orders_products SET quantity = quantity+1 WHERE product_id =:product_id AND orders_products.order_id = :order_id;
-        UPDATE products SET quantity = quantity - 1 WHERE products.id = :product_id;");
-        $query->execute(array('product_id'=>$cartObj->getProductId(),'order_id'=>$this->order_id));
+        $productObj = new Product($cartObj->getProductId());
+        $query = $this->pdo->prepare("UPDATE orders_products SET quantity = quantity+1 WHERE product_id =:product_id AND orders_products.order_id = :order_id");
+        $query->execute(array('product_id'=>$productObj->getId(),'order_id'=>$cartObj->getOrderId()));
+        $productObj->incrementQuantity($productObj->getId());
         unset($query);
     }
     public function decreaseByOne(Cart $cartObj)
     {
-        $query = $this->pdo->prepare("UPDATE orders_products SET quantity = quantity-1 WHERE product_id =:product_id AND orders_products.order_id = :order_id;
-        UPDATE products SET quantity = quantity +1 WHERE products.id = :product_id;");
-        $query->execute(array('product_id'=>$cartObj->getProductId(),'order_id'=>$this->order_id));
+        $productObj = new Product($cartObj->getProductId());
+        $query = $this->pdo->prepare("UPDATE orders_products SET quantity = quantity-1 WHERE product_id =:product_id AND orders_products.order_id = :order_id");
+        $query->execute(array('product_id'=>$productObj->getId(),'order_id'=>$cartObj->getOrderId()));
+        $productObj->decrementQuantity($productObj->getId());
         unset($query);
     }
     private function mapArrayToProduct($data)

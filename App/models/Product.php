@@ -8,7 +8,6 @@
 
 namespace Models;
 
-
 use Mappers\ProductMapper;
 
 class Product
@@ -41,9 +40,10 @@ class Product
     {
         $this->sum = $sum;
     }
-    public function __construct()
+    public function __construct($id = null)
     {
         $this->mapper = new ProductMapper();
+        $this->setId($id);
     }
 
     /**
@@ -233,5 +233,18 @@ class Product
     public function getProductById($id)
     {
         return $this->mapper->getProductById($id);
+    }
+    public function updateQuantity($product_id, $quantity, $increment)
+    {
+        $this->mapper->updateQuantity(new Product($product_id), $quantity, $increment);
+    }
+
+    public function incrementQuantity($product_id)
+    {
+        $this->mapper->incrementQuantity((new Product($product_id)));
+    }
+    public function decrementQuantity($product_id)
+    {
+        $this->mapper->decrementQuantity((new Product($product_id)));
     }
 }

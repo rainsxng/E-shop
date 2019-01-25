@@ -64,10 +64,11 @@ class Cart
         $this->mapper = $mapper;
     }
 
-    public function __construct()
+    public function __construct($product_id = null)
     {
         $this->mapper = new CartMapper();
         $this->orderModel = new Order();
+        $this->setProductId($product_id);
         $this->setOrderId($this->orderModel->getId());
     }
 
@@ -127,25 +128,24 @@ class Cart
         return $this->mapper->getCartProducts();
     }
 
-    public function addProduct(Cart $obj)
+    public function addProduct($product_id)
     {
-        $this->mapper->addProduct($obj);
+        $this->mapper->addProduct(new Cart($product_id));
     }
-
-    public function deleteOne(Cart $obj)
+    public function deleteOne($product_id)
     {
-        $this->mapper->deleteOne($obj);
+        $this->mapper->deleteOne(new Cart($product_id));
     }
-    public function delete(Cart $obj)
+    public function deleteAll()
     {
-        $this->mapper->delete($obj);
+        $this->mapper->delete(new Cart());
     }
-    public function increaseByOne(Cart $obj)
+    public function increaseByOne($product_id)
     {
-        $this->mapper->increaseByOne($obj);
+        $this->mapper->increaseByOne(new Cart($product_id));
     }
-    public function decreaseByOne(Cart $obj)
+    public function decreaseByOne($product_id)
     {
-        $this->mapper->decreaseByOne($obj);
+        $this->mapper->decreaseByOne(new Cart($product_id));
     }
 }

@@ -76,4 +76,22 @@ WHERE categories.id=:id");
         }
         return $products;
     }
+
+    public function updateQuantity(Product $obj, $value)
+    {
+        $query = $this->pdo->prepare("UPDATE products SET quantity = :value WHERE products.id = :id");
+        $query->execute(array('id' => $obj->getId(),'value'=>$value));
+    }
+
+    public function incrementQuantity(Product $obj)
+    {
+        $query = $this->pdo->prepare("Update products SET quantity = quantity + 1 WHERE products.id = :id");
+        $query->execute(array('id' => $obj->getId()));
+    }
+
+    public function decrementQuantity(Product $obj)
+    {
+        $query = $this->pdo->prepare("Update products SET quantity = quantity - 1 WHERE products.id = :id");
+        $query->execute(array('id' => $obj->getId()));
+    }
 }
