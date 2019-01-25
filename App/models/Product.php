@@ -25,6 +25,12 @@ class Product
     private $mapper;
     private $sum;
 
+    public function __construct($id = null, $quantity = null)
+    {
+        $this->mapper = new ProductMapper();
+        $this->setId($id);
+        $this->setQuantity($quantity);
+    }
     /**
      * @return mixed
      */
@@ -40,11 +46,7 @@ class Product
     {
         $this->sum = $sum;
     }
-    public function __construct($id = null)
-    {
-        $this->mapper = new ProductMapper();
-        $this->setId($id);
-    }
+
 
     /**
      * @return mixed
@@ -234,17 +236,17 @@ class Product
     {
         return $this->mapper->getProductById($id);
     }
-    public function updateQuantity($product_id, $quantity, $increment)
+    public function updateQuantity($product_id, $quantity)
     {
-        $this->mapper->updateQuantity(new Product($product_id), $quantity, $increment);
+        $this->mapper->updateQuantity(new Product($product_id), $quantity);
     }
 
-    public function incrementQuantity($product_id)
+    public function increaseQuantity($product_id, $quantity)
     {
-        $this->mapper->incrementQuantity((new Product($product_id)));
+        $this->mapper->increaseQuantity(new Product($product_id, $quantity));
     }
-    public function decrementQuantity($product_id)
+    public function decreaseQuantity($product_id, $quantity)
     {
-        $this->mapper->decrementQuantity((new Product($product_id)));
+        $this->mapper->decreaseQuantity(new Product($product_id, $quantity));
     }
 }

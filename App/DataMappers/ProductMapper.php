@@ -83,15 +83,15 @@ WHERE categories.id=:id");
         $query->execute(array('id' => $obj->getId(),'value'=>$value));
     }
 
-    public function incrementQuantity(Product $obj)
+    public function increaseQuantity(Product $obj)
     {
-        $query = $this->pdo->prepare("Update products SET quantity = quantity + 1 WHERE products.id = :id");
-        $query->execute(array('id' => $obj->getId()));
+        $query = $this->pdo->prepare("Update products SET quantity = quantity + :quantity WHERE products.id = :id");
+        $query->execute(array('id' => $obj->getId(),'quantity'=>$obj->getQuantity()));
     }
 
-    public function decrementQuantity(Product $obj)
+    public function decreaseQuantity(Product $obj)
     {
-        $query = $this->pdo->prepare("Update products SET quantity = quantity - 1 WHERE products.id = :id");
-        $query->execute(array('id' => $obj->getId()));
+        $query = $this->pdo->prepare("Update products SET quantity = quantity - :quantity WHERE products.id = :id");
+        $query->execute(array('id' => $obj->getId(),'quantity'=>$obj->getQuantity()));
     }
 }

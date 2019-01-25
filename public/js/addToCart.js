@@ -1,4 +1,5 @@
-function AjaxAddToCart(product_id) {
+function AjaxAddToCart(product_id)
+{
     let quantity = $('#quantity').val();
     if (quantity == null) {
         quantity = 1;

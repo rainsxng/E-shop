@@ -54,17 +54,28 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
         if (empty($row)) {
             $query = $this->pdo->prepare("
         INSERT INTO orders_products
-        SELECT NULL,id,:product_id,:quantity FROM orders WHERE user_id = :user_id AND status ='cart';
-        UPDATE products SET quantity = quantity - :quantity WHERE products.id = :product_id");
-            $query->execute(array('product_id' => $cartObj->getProductId(), 'user_id' => $orderObj->getUserId(),'quantity'=>$cartObj->getQuantity()));
+        SELECT NULL,id,:product_id,:quantity FROM orders WHERE user_id = :user_id AND status ='cart'");
+            $query->execute(array
+            (
+                'product_id' => $cartObj->getProductId(),
+                'user_id' => $orderObj->getUserId(),
+                'quantity'=>$cartObj->getQuantity()));
+            $product = new Product();
+            $product->decreaseQuantity($cartObj->getOrderId(), $cartObj->getQuantity());
             unset($query);
         } else {
-            $query = $this->pdo->prepare("UPDATE orders_products SET quantity = quantity+:quantity WHERE product_id =:product_id;
-            UPDATE products SET quantity = quantity-:quantity WHERE products.id = :product_id");
-            $query->execute(array('product_id'=>$cartObj->getProductId(),'quantity'=>$cartObj->getQuantity()));
+            $query = $this->pdo->prepare("UPDATE orders_products 
+            SET quantity = quantity+:quantity WHERE product_id =:product_id;");
+            $query->execute(array
+            (
+                'product_id'=>$cartObj->getProductId(),
+                'quantity'=>$cartObj->getQuantity()));
+            $product = new Product();
+            $product->decreaseQuantity($cartObj->getProductId(), $cartObj->getQuantity());
             unset($query);
         }
     }
+
     public function deleteOne(Cart $cartObj)
     {
         $query = $this->pdo->prepare("
@@ -73,27 +84,34 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
         $query->execute(array('product_id'=>$cartObj->getProductId(),'order_id'=>$cartObj->getOrderId()));
         unset($query);
     }
+
     public function delete(Cart $cartObj)
     {
         $query = $this->pdo->prepare("DELETE FROM orders_products WHERE order_id=:order_id;");
         $query->execute(array('order_id'=>$cartObj->getOrderId()));
     }
-    public function increaseByOne(Cart $cartObj)
+
+    public function increaseQuantity(Cart $cartObj)
     {
         $productObj = new Product($cartObj->getProductId());
-        $query = $this->pdo->prepare("UPDATE orders_products SET quantity = quantity+1 WHERE product_id =:product_id AND orders_products.order_id = :order_id");
-        $query->execute(array('product_id'=>$productObj->getId(),'order_id'=>$cartObj->getOrderId()));
-        $productObj->incrementQuantity($productObj->getId());
+        $query = $this->pdo->prepare("UPDATE orders_products SET quantity = quantity+ :quantity
+        WHERE product_id =:product_id AND orders_products.order_id = :order_id");
+        $query->execute(array('product_id'=>$productObj->getId(),
+            'order_id'=>$cartObj->getOrderId(),
+            'quantity'=>$cartObj->getQuantity()));
+        $productObj->increaseQuantity($productObj->getId(), 1);
         unset($query);
     }
-    public function decreaseByOne(Cart $cartObj)
+
+    public function decreaseQuantity(Cart $cartObj)
     {
         $productObj = new Product($cartObj->getProductId());
-        $query = $this->pdo->prepare("UPDATE orders_products SET quantity = quantity-1 WHERE product_id =:product_id AND orders_products.order_id = :order_id");
-        $query->execute(array('product_id'=>$productObj->getId(),'order_id'=>$cartObj->getOrderId()));
-        $productObj->decrementQuantity($productObj->getId());
+        $query = $this->pdo->prepare("UPDATE orders_products SET quantity = quantity-:quantity WHERE product_id =:product_id AND orders_products.order_id = :order_id");
+        $query->execute(array('product_id'=>$productObj->getId(),'order_id'=>$cartObj->getOrderId(),'quantity'=>$cartObj->getQuantity()));
+        $productObj->decreaseQuantity($productObj->getId(), 1);
         unset($query);
     }
+
     private function mapArrayToProduct($data)
     {
         $product = new Product();

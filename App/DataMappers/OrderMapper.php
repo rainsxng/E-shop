@@ -13,6 +13,7 @@ class OrderMapper
     {
         $this->pdo = Database::getInstance();
     }
+
     public function getOrderIdByUser()
     {
         $query=$this->pdo->prepare("SELECT orders.id FROM orders WHERE user_id=:user_id AND status='cart'");
@@ -25,6 +26,7 @@ class OrderMapper
             return false;
         }
     }
+
     public function createOrder(Order $orderObj)
     {
         if ($this->getOrderIdByUser()==false) {
@@ -33,6 +35,7 @@ class OrderMapper
             unset($query);
         }
     }
+
     public function delete(Order $orderObj)
     {
         $query=$this->pdo->prepare("DELETE FROM orders WHERE orders.user_id=:user_id;");

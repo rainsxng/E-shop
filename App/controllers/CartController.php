@@ -30,7 +30,7 @@ class CartController extends Controller
             die(header("HTTP/1.0 300"));
         }
         if (isset($_POST['productId'])) {
-            $this->cartModel->addProduct($_POST['productId']);
+            $this->cartModel->addProduct($_POST['productId'], $_POST['quantity']);
         }
     }
     public function deleteOne()
@@ -47,13 +47,13 @@ class CartController extends Controller
     public function increaseByOne()
     {
         if (isset($_POST['productId'])) {
-            $this->cartModel->increaseByOne($_POST['productId']);
+            $this->cartModel->increaseQuantity($_POST['productId'], 1);
         }
     }
     public function decreaseByOne()
     {
         if (isset($_POST['productId'])) {
-            $this->cartModel->decreaseByOne($_POST['productId']);
+            $this->cartModel->decreaseQuantity($_POST['productId'], 1);
         }
     }
 }
