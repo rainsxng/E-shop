@@ -19,10 +19,19 @@ class UsersMapper
     {
         $this->pdo = Database::getInstance();
     }
-    public function getUser($login)
+    public function getUserByLogin($login)
     {
         $query = $this->pdo->prepare("SELECT * FROM users WHERE login=:login");
         $query->execute(array('login'=>$login));
+        $row = $query->fetchALL(PDO::FETCH_ASSOC);
+        $user = new User();
+        $user->fromArray($row[0]);
+        return $user;
+    }
+    public function getUserById($id)
+    {
+        $query = $this->pdo->prepare("SELECT * FROM users WHERE id=:id");
+        $query->execute(array('id'=>$id));
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
         $user = new User();
         $user->fromArray($row[0]);

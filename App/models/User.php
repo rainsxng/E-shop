@@ -13,12 +13,12 @@ use Mappers\UsersMapper;
 
 class User
 {
-    private $id;
-    private $password;
-    private $login;
-    private $email;
-    private $user;
-    private $mapper;
+    protected $id;
+    protected $password;
+    protected $login;
+    protected $email;
+    protected $user;
+    protected $mapper;
     public function __construct()
     {
         $this->mapper = new UsersMapper();
@@ -90,7 +90,7 @@ class User
     public function authorization($login, $pass)
     {
         $this->user  = new User();
-        $this->user = clone $this->mapper->getUser($login);
+        $this->user = clone $this->mapper->getUserByLogin($login);
         if (($login ==  $this->user->getLogin()) && (password_verify($pass, $this->user->getPassword()))) {
             $_SESSION['isLogged'] = true;
             $_SESSION['user_id'] = $this->user->getId();
@@ -117,7 +117,7 @@ class User
     }
     public function isUserExists($login)
     {
-        $user = $this->mapper->getUser($login);
+        $user = $this->mapper->getUserByLogin($login);
         if (!($user->getId()===null)) {
             return true;
         } else {
@@ -130,5 +130,11 @@ class User
         $this->setLogin($data['login']);
         $this->setEmail($data['email']);
         $this->setPassword($data['password']);
+    }
+
+    public function getUserById($id)
+    {
+    $this->user = $this->mapper->getUserById($id);
+    return $this->user;
     }
 }

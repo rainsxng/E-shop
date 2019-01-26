@@ -25,8 +25,26 @@ function AddComment(product_id,user_id)
         error: function(){
             alert("Ошибка");
         },
-        success: function (result) {
-            console.log(JSON.parse(result));
+        success: function (comment) {
+            let result = JSON.parse(comment);
+            let html = ' <li class="media">\n' +
+                '<a  class="pull-left mr-5">\n' +
+                '<img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">\n' +
+                '</a>\n' +
+                ' <div class="media-body">\n' +
+                '<span class="text-muted pull-right">\n' +
+                '<small class="text-muted">'+result.date+'</small>\n' +
+                '</span>\n' +
+                '<strong class="text-success">'+result.userLogin+'</strong>\n' +
+                '<p>\n' +
+                ' <p>'+result.star+'</p>\n' +
+                ''+result.message+'\n' +
+                '</p>\n' +
+                '</div>\n' +
+                '</li>';
+            $('.media-list').prepend(html);
+           let count = $("#count").text();
+           $("#count").text(+count+1);
         }
     });
 }

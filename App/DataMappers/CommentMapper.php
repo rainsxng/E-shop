@@ -10,6 +10,7 @@ namespace Mappers;
 
 use Core\Database;
 use Models\Comment;
+use Models\User;
 use PDO;
 
 class CommentMapper
@@ -35,7 +36,8 @@ class CommentMapper
     {
         $query=$this->pdo->prepare("SELECT  comments.id,comments.product_id,comments.user_id,comments.date,comments.message,comments.stars,users.login as user_login FROM comments
 INNER JOIN users on comments.user_id=users.id
-WHERE comments.product_id=:id;");
+WHERE comments.product_id=:id
+ORDER BY comments.id DESC;");
         $query->execute(array('id'=>$product_id));
         $row=$query->fetchALL(PDO::FETCH_ASSOC);
         $comments = [];
@@ -61,13 +63,28 @@ INNER JOIN users on comments.user_id=users.id WHERE products.id=:id;");
 
     public function addComment (Comment $commentObj)
     {
-        echo json_encode($commentObj);
-        $query = $this->pdo->prepare("INSERT INTO comments (id,message,date,created_at,updated_at,stars,user_id,product_id) VALUES (NULL,:message,current_date(),current_timestamp(),current_timestamp(),:stars,:user_id,:product_id)");
+        echo json_encode($this->mapCommentToArray($commentObj));
+        $query = $this->pdo->prepare("INSERT INTO comments (id,message,date,created_at,updated_at,stars,user_id,product_id) VALUES (NULL,:message,:date,:created_at,:updated_at,:stars,:user_id,:product_id)");
         $query->execute(array(
             'message'=>$commentObj->getMessage(),
             'stars'=>$commentObj->getStars(),
             'user_id'=>$commentObj->getUserId(),
-            'product_id'=>$commentObj->getProductId()
+            'product_id'=>$commentObj->getProductId(),
+            'date'=>$commentObj->getDate(),
+            'created_at'=>$commentObj->getCreatedAt(),
+            'updated_at'=>$commentObj->getUpdatedAt(),
             ));
+    }
+
+    public function mapCommentToArray(Comment $commentObj)
+    {
+        $user = new User();
+        $userObj = $user->getUserById($commentObj->getUserId());
+        return array(
+            'date'=>$commentObj->getDate(),
+            'message'=>$commentObj->getMessage(),
+            'userLogin'=>$userObj->getLogin(),
+            'star'=>$commentObj->getStars()
+        );
     }
 }

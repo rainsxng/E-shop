@@ -49,6 +49,7 @@ class ProductController extends Controller
         $this->comment->setUserId($_POST['user_id']);
         $this->comment->setMessage($_POST['message']);
         $this->comment->setStars($_POST['stars']);
+        $this->comment->setDate(date('Y-m-d'));
         $this->comment->add($this->comment);
     }
 }

@@ -8,9 +8,10 @@
 
 namespace Models;
 
+use Core\Model;
 use Mappers\CommentMapper;
 
-class Comment
+class Comment extends Model
 {
     protected $id;
     protected $message;
@@ -24,6 +25,7 @@ class Comment
 
     public function __construct()
     {
+        parent::__construct();
         $this->mapper = new CommentMapper();
     }
 
