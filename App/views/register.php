@@ -39,7 +39,6 @@ include_once 'header.php';
                 <h3>Регистрация</h3>
                 <p>Для регистрации заполните поля ниже</p>
                 <form>
-
                     <div class="form-group">
                         <input type="text" class="form-control form-control-lg" placeholder="Имя пользователя" id="loginText">
                     </div>
@@ -51,6 +50,7 @@ include_once 'header.php';
                     </div>
                     <input type="button" class="btn btn-outline-light btn-block" value="Регистрация" name="registerBtn" onclick="AjaxRegister()">
                     <a href="/login" class="btn btn-outline-light btn-block">Уже зарегистрированы?</a>
+                    <div id="message1"></div>
                 </form>
             </div>
         </div>

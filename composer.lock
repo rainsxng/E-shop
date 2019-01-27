@@ -913,12 +913,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "f56cb265dac29f717a3fda2c0ef5114341b50d6e"
+                "reference": "9394dc3eba44ffcd3fd44293e57e847ecbce3bd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/f56cb265dac29f717a3fda2c0ef5114341b50d6e",
-                "reference": "f56cb265dac29f717a3fda2c0ef5114341b50d6e",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/9394dc3eba44ffcd3fd44293e57e847ecbce3bd6",
+                "reference": "9394dc3eba44ffcd3fd44293e57e847ecbce3bd6",
                 "shasum": ""
             },
             "require": {
@@ -989,7 +989,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-01-21T05:20:59+00:00"
+            "time": "2019-01-24T16:01:13+00:00"
         },
         {
             "name": "psr/log",
@@ -1607,12 +1607,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "95a3e884a888820d97fcd694afb559bc008520b6"
+                "reference": "8c94cf9231dc70e8cb45c52a8f3a34501e271da0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/95a3e884a888820d97fcd694afb559bc008520b6",
-                "reference": "95a3e884a888820d97fcd694afb559bc008520b6",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/8c94cf9231dc70e8cb45c52a8f3a34501e271da0",
+                "reference": "8c94cf9231dc70e8cb45c52a8f3a34501e271da0",
                 "shasum": ""
             },
             "require": {
@@ -1650,7 +1650,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-01-22T05:07:47+00:00"
+            "time": "2019-01-23T00:15:48+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

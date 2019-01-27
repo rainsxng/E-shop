@@ -3,9 +3,7 @@
 namespace Controllers;
 
 use Core\Controller;
-use Models\AuthModel;
 use Models\User;
-use phpDocumentor\Reflection\Types\Self_;
 
 class AuthController extends Controller
 {
@@ -30,10 +28,11 @@ class AuthController extends Controller
     }
     public function registration()
     {
+        $this->model->setLogin($_POST['login']);
+        $this->model->setPassword($_POST['password']);
         $login=$_POST['login'];
         $password = $_POST['password'];
         $email = $_POST['email'];
         $this->model->registration($login, $password, $email);
-        return $this->model;
     }
 }

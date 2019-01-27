@@ -8,8 +8,8 @@
 
 namespace Models;
 
-
 use Mappers\UsersMapper;
+use Core\Response;
 
 class User
 {
@@ -19,6 +19,7 @@ class User
     protected $email;
     protected $user;
     protected $mapper;
+
     public function __construct()
     {
         $this->mapper = new UsersMapper();
@@ -87,11 +88,12 @@ class User
     {
         $this->login = $login;
     }
+
     public function authorization($login, $pass)
     {
-        $this->user  = new User();
+        $this->user = new User();
         $this->user = clone $this->mapper->getUserByLogin($login);
-        if (($login ==  $this->user->getLogin()) && (password_verify($pass, $this->user->getPassword()))) {
+        if (($login == $this->user->getLogin()) && (password_verify($pass, $this->user->getPassword()))) {
             $_SESSION['isLogged'] = true;
             $_SESSION['user_id'] = $this->user->getId();
             $_SESSION['login'] = $this->user->getLogin();
@@ -101,29 +103,36 @@ class User
         echo json_encode($_SESSION['isLogged']);
         return $_SESSION['isLogged'];
     }
+
     public function logOut()
     {
-        $_SESSION =[];
+        $_SESSION = [];
         $_SESSION['isLogged'] = false;
         echo json_encode($_SESSION['isLogged']);
     }
+
     public function registration($login, $password, $email)
     {
-        if ($this->isUserExists($login)===false) {
+        if ($this->isUserExists($login) === false) {
             $this->mapper->addUser($login, $password, $email);
         } else {
-            header("HTTP/1.0 401");
+            Response::setResponseCode(401);
+            Response::setContent("Такой пользователь уже существует", "");
+            Response::send();
         }
     }
+
     public function isUserExists($login)
     {
+
         $user = $this->mapper->getUserByLogin($login);
-        if (!($user->getId()===null)) {
+        if (!($user->getId() === null)) {
             return true;
         } else {
             return false;
         }
     }
+
     public function fromArray($data)
     {
         $this->setId($data['id']);
@@ -134,7 +143,7 @@ class User
 
     public function getUserById($id)
     {
-    $this->user = $this->mapper->getUserById($id);
-    return $this->user;
+        $this->user = $this->mapper->getUserById($id);
+        return $this->user;
     }
 }
