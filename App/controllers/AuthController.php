@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Core\Controller;
+use Core\Response;
 use Models\User;
 
 class AuthController extends Controller
@@ -30,9 +31,10 @@ class AuthController extends Controller
     {
         $this->model->setLogin($_POST['login']);
         $this->model->setPassword($_POST['password']);
-        $login=$_POST['login'];
-        $password = $_POST['password'];
-        $email = $_POST['email'];
-        $this->model->registration($login, $password, $email);
+        $this->model->setEmail($_POST['email']);
+        $this->model = $this->model->prepare($this->model);
+        if ($this->model->isValid($this->model)) {
+            $this->model->registration($this->model);
+        }
     }
 }

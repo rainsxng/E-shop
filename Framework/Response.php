@@ -19,6 +19,8 @@ class Response
 
     public static function setContent(string $message, string $location): void
     {
+        self::$content['message'] = [];
+        self::$content['location'] = [];
         self::$content['message'] = $message;
         self::$content['location'] = $location;
     }
@@ -30,7 +32,7 @@ class Response
 
     public static function send(): void
     {
-        http_response_code(self::$responseCode);
-        echo json_encode(self::$content);
+            http_response_code(self::$responseCode);
+            echo json_encode(self::$content);
     }
 }

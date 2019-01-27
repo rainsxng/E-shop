@@ -37,14 +37,19 @@ class UsersMapper
         $user->fromArray($row[0]);
         return $user;
     }
-    public function addUser($login, $pswd, $email)
+    public function addUser(User $user) :int
     {
-        $query=$this->pdo->prepare("INSERT INTO users (id, login, password, email, created_at, updated_at) VALUES (NULL, :login,  :password, :email,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP )");
-        $query->execute(array('login'=>$login,'password'=>password_hash($pswd, PASSWORD_BCRYPT),'email'=>$email));
+        $query=$this->pdo->prepare("INSERT INTO users (id, login, password, email, created_at, updated_at)
+                                    VALUES (NULL, :login,  :password, :email,:created_at ,:updated_at);");
+        $query->execute(array('login'=>$user->getLogin(),
+            'password'=>password_hash($user->getPassword(), PASSWORD_BCRYPT),
+            'email'=>$user->getEmail(),
+            'created_at'=>$user->getCreatedAt(),
+            'updated_at'=>$user->getUpdatedAt()));
         if ($query!==null) {
-            return 0;
-        } else {
             return 1;
+        } else {
+            return 0;
         }
     }
     public function mapArrayToUser($data):User

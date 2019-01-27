@@ -8,10 +8,12 @@
 
 namespace Models;
 
+use Core\Model;
+use Core\Validators\UserValidator;
 use Mappers\UsersMapper;
 use Core\Response;
 
-class User
+class User extends Model
 {
     protected $id;
     protected $password;
@@ -19,10 +21,13 @@ class User
     protected $email;
     protected $user;
     protected $mapper;
+    protected $validator;
 
     public function __construct()
     {
+        parent::__construct();
         $this->mapper = new UsersMapper();
+        $this->validator = new UserValidator();
     }
 
     /**
@@ -111,10 +116,14 @@ class User
         echo json_encode($_SESSION['isLogged']);
     }
 
-    public function registration($login, $password, $email)
+    public function registration(User $user)
     {
-        if ($this->isUserExists($login) === false) {
-            $this->mapper->addUser($login, $password, $email);
+        if ($this->isUserExists($user->getLogin()) === false) {
+            if ($this->mapper->addUser($user)) {
+                Response::setResponseCode(200);
+                Response::setContent("Успешно зарегистрирован", "");
+                Response::send();
+            }
         } else {
             Response::setResponseCode(401);
             Response::setContent("Такой пользователь уже существует", "");
@@ -145,5 +154,24 @@ class User
     {
         $this->user = $this->mapper->getUserById($id);
         return $this->user;
+    }
+
+    public function prepare(User $obj)
+    {
+
+        $obj = $this->validator->prepare($obj);
+        return $obj;
+    }
+
+    public function isValid(User $obj)
+    {
+        if ($this->validator->validateLogin($obj->getLogin())
+            && $this->validator->validateEmail($obj->getEmail())
+            && $this->validator->validatePassword($obj->getPassword())) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

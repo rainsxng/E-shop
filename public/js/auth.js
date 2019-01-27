@@ -8,39 +8,34 @@ function AjaxRegister()
             url: '/auth/register',
             type: "POST",
             data: {"login": login, "password": password, "email": email},
-            dataType: "json",
             error: function (response) {
-                let res = (JSON.parse(response.responseText));
-                if (res.location=="")
+                let data = JSON.parse(response.responseText);
+                if (data.location=="")
                 {
-                    $.notify(res.message, {
+                    $.notify(data.message,{
                         className: 'error',
                         clickToHide: true,
                         autoHide: true,
                         autoHideDelay: 2000,
                         globalPosition: 'bottom-right'
                         }
-                    );
+                      );
                 } else {
-                    document.getElementById(res.location).innerHTML = res.message;
+                    document.getElementById(data.location).innerHTML = data.message;
                 }
-
             },
-            success: success
+            success: function (data, textStatus, XmlHttpRequest) {
+                let res = JSON.parse(XmlHttpRequest.responseText);
+                $.notify(res.message, {
+                    className: 'success',
+                    clickToHide: true,
+                    autoHide: true,
+                    autoHideDelay: 1500,
+                    globalPosition: 'bottom-center'
+                });
+            }
         }
     );
-}
-
-function success(result)
-{
-    let response = JSON.parse(result);
-    $.notify(response.message, {
-        className: 'success',
-        clickToHide: true,
-        autoHide: true,
-        autoHideDelay: 1500,
-        globalPosition: 'bottom-center'
-    });
 }
 
 function AjaxLogin()
