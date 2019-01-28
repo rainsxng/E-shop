@@ -8,6 +8,8 @@ use Models\Attribute_value;
 use Models\Comment;
 use Models\Product;
 use Models\ProductModel;
+use Validators\ProductValidator;
+use Validators\UserValidator;
 
 class ProductController extends Controller
 {
@@ -25,12 +27,14 @@ class ProductController extends Controller
 
     public function viewProduct($id)
     {
+        $this->product->setId($id);
+        $this->product = ProductValidator::prepare($this->product);
         $comments = $this->comment->getCommentsForProduct($id);
         $product =  $this->product->getProductById($id);
         $this->values->setProductId($id);
         $this->values = $this->values->getAllForProduct($this->values);
         $this->attributes = $this->attributes->getAllAttributes();
-        if (!empty($product)) {
+        if ((!empty($product)) && $product->isValid($product)) {
             self::render(
                 'product',
                 [
@@ -47,6 +51,8 @@ class ProductController extends Controller
 
     public function getProductsByCategoryId($id)
     {
+        $this->product->setId($id);
+        $this->product = ProductValidator::prepare($this->product);
         $products =  $this->product->getProductByCategoryId($id);
         if (!empty($products)) {
             self::render(

@@ -94,4 +94,31 @@ WHERE categories.id=:id");
         $query = $this->pdo->prepare("Update products SET quantity = quantity - :quantity WHERE products.id = :id");
         $query->execute(array('id' => $obj->getId(),'quantity'=>$obj->getQuantity()));
     }
+
+    public function getProductsByBrandName($brands)
+    {
+        $in ='';
+        $arr = [];
+        $brandsArr = explode(',', $brands);
+        for($i = 0; $i < count($brandsArr); $i++ ) {
+            $arr['brand' . $i] = $brandsArr[$i];
+            if ($i < count($brandsArr) - 1) {
+                $in .= ":brand$i,";
+            } else {
+                $in .= ":brand$i";
+            }
+        }
+
+        $query = $this->pdo->prepare('SELECT products.id,products.name,products.quantity,price,image,description,brands.name as Brand,brands.id as brand_id,categories.name as Category,categories.id as category_id FROM `products`
+        INNER JOIN brands on products.brand_id = brands.id
+        INNER JOIN categories on products.category_id = categories.id
+        WHERE brands.name IN ('.$in.')');
+        $query->execute($arr);
+        $row = $query->fetchALL(PDO::FETCH_ASSOC);
+        $products = [];
+        foreach ($row as $r) {
+            array_push($products, $this->mapArrayToProduct($r));
+        }
+        return $products;
+    }
 }

@@ -51,9 +51,21 @@ function AjaxLogin()
             url: '/auth/login',
             type: "POST",
             data: {"login": login, "password": password},
-            dataType: "text",
-            error: function () {
-                $.notify('Произошла ошибка', {position: "right bottom"})
+            error: function (response) {
+                let data = JSON.parse(response.responseText);
+                if (data.location=="")
+                {
+                    $.notify(data.message,{
+                            className: 'error',
+                            clickToHide: true,
+                            autoHide: true,
+                            autoHideDelay: 2000,
+                            globalPosition: 'bottom-right'
+                        }
+                    );
+                } else {
+                    document.getElementById(data.location).innerHTML = data.message;
+                }
             },
             success: function (result) {
                 let res = JSON.parse(result);
@@ -63,7 +75,6 @@ function AjaxLogin()
                     $.notify('Неверный логин / пароль', {position: "right bottom"});
                 }
             }
-
         }
     );
 }

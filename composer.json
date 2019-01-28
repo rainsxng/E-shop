@@ -20,7 +20,8 @@
             "Controllers\\": "App\\controllers\\",
             "Core\\": "Framework\\",
             "Models\\": "App\\models\\",
-            "Mappers\\": "App\\DataMappers\\"
+            "Mappers\\": "App\\DataMappers\\",
+            "Validators\\": "App\\Validators\\"
         }
     }
 }

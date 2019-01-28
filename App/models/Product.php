@@ -9,6 +9,8 @@
 namespace Models;
 
 use Mappers\ProductMapper;
+use Validators\ProductValidator;
+use Validators\UserValidator;
 
 class Product
 {
@@ -248,5 +250,20 @@ class Product
     public function decreaseQuantity($product_id, $quantity)
     {
         $this->mapper->decreaseQuantity(new Product($product_id, $quantity));
+    }
+
+    public function isValid(Product $obj)
+    {
+        if (ProductValidator::validateProduct_id($obj->getId())) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public function getProductsByBrand($brands)
+    {
+        return $this->mapper->getProductsByBrandName($brands);
     }
 }

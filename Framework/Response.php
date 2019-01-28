@@ -10,7 +10,6 @@ namespace Core;
 
 class Response
 {
-
     private static $content = [
         'message'=>'',
         'location'=>''
@@ -19,8 +18,7 @@ class Response
 
     public static function setContent(string $message, string $location): void
     {
-        self::$content['message'] = [];
-        self::$content['location'] = [];
+        self::$content = [];
         self::$content['message'] = $message;
         self::$content['location'] = $location;
     }

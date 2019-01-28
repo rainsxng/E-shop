@@ -15,6 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <script src="/js/addToCart.js"></script>
+    <script src="/js/filter.js"></script>
 </head>
 <body>
 <?php
@@ -34,6 +35,32 @@ include "../App/views/header.php";
                     <li class="list-group-item"><a href="/category/<?=$category->getCategoryId();?>"><?=$category->getCategoryName();?></a></li>
                     <?php } ?>
                 </ul>
+            </div>
+            <div class="mb-4">
+                    <div class="card">
+                        <article class="card-group-item">
+                            <header class="card-header">
+                                <h6 class="title">Бренд </h6>
+                            </header>
+                            <div class="filter-content">
+                                <div class="card-body">
+                                    <form>
+                                        <?php foreach ($brands as $brand) { ?>
+                                        <label class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="<?=$brand->getName();?>" name="brands[]">
+                                            <span class="form-check-label">
+                                    <?=$brand->getName();?>
+                                            </span>
+                                        </label> <!-- form-check.// -->
+                                        <?php } ?>
+                                        <button type="button" class="btn btn-primary" id="showBtn" disabled>Показать</button>
+                                    </form>
+                                </div> <!-- card-body.// -->
+                            </div>
+                        </article> <!-- card-group-item.// -->
+
+                    </div> <!-- card.// -->
+
             </div>
             <div class="card bg-light mb-3">
                 <div class="card-header bg-success text-white text-uppercase">Последнее поступление</div>

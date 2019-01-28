@@ -9,7 +9,7 @@
 namespace Models;
 
 use Core\Model;
-use Core\Validators\UserValidator;
+use Validators\UserValidator;
 use Mappers\UsersMapper;
 use Core\Response;
 
@@ -21,13 +21,11 @@ class User extends Model
     protected $email;
     protected $user;
     protected $mapper;
-    protected $validator;
 
     public function __construct()
     {
         parent::__construct();
         $this->mapper = new UsersMapper();
-        $this->validator = new UserValidator();
     }
 
     /**
@@ -159,15 +157,26 @@ class User extends Model
     public function prepare(User $obj)
     {
 
-        $obj = $this->validator->prepare($obj);
+        $obj = UserValidator::prepare($obj);
         return $obj;
     }
 
-    public function isValid(User $obj)
+    public function isValidForRegister(User $obj)
     {
-        if ($this->validator->validateLogin($obj->getLogin())
-            && $this->validator->validateEmail($obj->getEmail())
-            && $this->validator->validatePassword($obj->getPassword())) {
+        if (UserValidator::validateLogin($obj->getLogin())
+            && UserValidator::validateEmail($obj->getEmail())
+            && UserValidator::validatePassword($obj->getPassword())) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public function isValidForLogin(User $obj)
+    {
+        if (UserValidator::validateLogin($obj->getLogin())
+            && UserValidator::validatePassword($obj->getPassword())) {
             return true;
         }
         else {

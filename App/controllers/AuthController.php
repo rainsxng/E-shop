@@ -17,7 +17,13 @@ class AuthController extends Controller
 
     public function authorize()
     {
-        $this->model->authorization($_POST['login'], $_POST['password']);
+        $this->model->setLogin($_POST['login']);
+        $this->model->setPassword($_POST['password']);
+        if ($this->model->isValidForLogin($this->model))
+        {
+            $this->model->authorization($_POST['login'], $_POST['password']);
+        }
+
     }
     public function logOut()
     {
@@ -33,7 +39,7 @@ class AuthController extends Controller
         $this->model->setPassword($_POST['password']);
         $this->model->setEmail($_POST['email']);
         $this->model = $this->model->prepare($this->model);
-        if ($this->model->isValid($this->model)) {
+        if ($this->model->isValidForRegister($this->model)) {
             $this->model->registration($this->model);
         }
     }

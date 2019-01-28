@@ -1,11 +1,11 @@
 <?php
 return [
     '/' => 'Controllers\IndexController/actionIndex', // главная страница
-    '/product/:num' => 'Controllers\ProductController/viewProduct/$1',
+    '/product/:any' => 'Controllers\ProductController/viewProduct/$1',
     '/login'=>'Controllers\ShowController/showLoginPage',
     '/register'=>'Controllers\ShowController/showRegisterPage',
     '/cart'=>'Controllers\CartController/getCartProducts',
-    '/category/:num'=>'Controllers\ProductController/getProductsByCategoryId/$1',
+    '/category/:any'=>'Controllers\ProductController/getProductsByCategoryId/$1',
     '/cart/add'=>'Controllers\CartController/addToCart',
     '/cart/deleteOne'=>'Controllers\CartController/deleteOne',
     '/cart/deleteAll'=>'Controllers\CartController/deleteAll',
@@ -14,5 +14,6 @@ return [
     '/auth/register'=>'Controllers\AuthController/registration',
     '/auth/login'=>'Controllers\AuthController/authorize',
     '/auth/logout'=>'Controllers\AuthController/logOut',
-    '/comment/add'=>'Controllers\ProductController/addComment'
+    '/comment/add'=>'Controllers\ProductController/addComment',
+    '/?brands=:any'=>'Controllers\IndexController/showBrandsProducts'
 ];

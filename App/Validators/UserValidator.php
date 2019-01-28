@@ -6,14 +6,14 @@
  * Time: 12:00
  */
 
-namespace Core\Validators;
+namespace Validators;
 
 use Models\User;
 use Core\Response;
 
 class UserValidator
 {
-    public function prepare(User $user)
+    public static function prepare(User $user)
     {
         $user->setLogin(trim($user->getLogin()));
         $user->setLogin(stripslashes($user->getLogin()));
@@ -25,7 +25,7 @@ class UserValidator
         $user->setEmail(preg_replace('/\s/', '', $user->getEmail()));
         return $user;
     }
-    public function validateLogin($login)
+    public static function validateLogin($login)
     {
         if (mb_strlen($login)<3 || mb_strlen($login)>25) {
             Response::setResponseCode(403);
@@ -42,7 +42,7 @@ class UserValidator
         return 1;
     }
 
-    public function validateEmail($email)
+    public static function validateEmail($email)
     {
         if (mb_strlen($email)==0) {
             Response::setResponseCode(403);
@@ -65,9 +65,9 @@ class UserValidator
         return 1;
     }
 
-    public function validatePassword($password)
+    public static function validatePassword($password)
     {
-        if (mb_strlen($password)<4) {
+        if (strlen($password)<=3) {
             Response::setResponseCode(403);
             Response::setContent("Пароль должен состоять минимум из 4 знаков", "");
             Response::send();

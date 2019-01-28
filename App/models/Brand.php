@@ -5,8 +5,9 @@ namespace Models;
 
 use Core\Model;
 use Mappers\AttributeMapper;
+use Mappers\BrandMapper;
 
-class Attribute extends Model
+class Brand extends Model
 {
     private $id;
     private $name;
@@ -46,11 +47,11 @@ class Attribute extends Model
     public function __construct()
     {
         parent::__construct();
-        $this->mapper = new AttributeMapper();
+        $this->mapper = new BrandMapper();
     }
 
-    public function getAllAttributes()
+    public function getAllBrands()
     {
-        return $this->mapper->getAllAttributes();
+        return $this->mapper->getAllBrands();
     }
 }
