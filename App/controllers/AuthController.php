@@ -3,7 +3,6 @@
 namespace Controllers;
 
 use Core\Controller;
-use Core\Response;
 use Models\User;
 
 class AuthController extends Controller

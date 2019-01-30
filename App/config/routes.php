@@ -15,5 +15,6 @@ return [
     '/auth/login'=>'Controllers\AuthController/authorize',
     '/auth/logout'=>'Controllers\AuthController/logOut',
     '/comment/add'=>'Controllers\ProductController/addComment',
-    '/?brands=:any'=>'Controllers\IndexController/showBrandsProducts'
+    '/?brands=:any'=>'Controllers\IndexController/showBrandsProducts',
+    '/user'=>'Controllers\UserController/getUser'
 ];

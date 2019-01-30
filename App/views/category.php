@@ -1,3 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <title>Онлайн магазин</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="/js/notify.js"></script>
+    <script src="/js/auth.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="/js/addToCart.js"></script>
+</head>
+<body>
 <?php
 include_once '../App/views/header.php';
 ?>
@@ -34,7 +53,7 @@ include_once '../App/views/header.php';
                         <div class="card">
                             <img class="card-img-top" src="<?=$product->getImage(); ?>" alt="Card image cap">
                             <div class="card-body">
-                                <a href="brands/<?=$product->getBrandId(); ?>"><?=$product->getBrand(); ?></a>
+                                <p><?=$product->getBrand();?></p>
                                 <h4 class="card-title"><a href="/product/<?=$product->getId();?>" title="View Product"><?=$product->getName(); ?></a></h4>
                                 <div class="row">
 

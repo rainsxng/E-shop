@@ -5,7 +5,7 @@ namespace Core;
 
 class Controller
 {
-    public function render($viewName, $data = null,$title = "Онлайн магазин")
+    public function render($viewName, $data = null)
     {
         $path = '../App/views/' . $viewName . ".php";
         if (!file_exists($path))

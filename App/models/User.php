@@ -146,6 +146,8 @@ class User extends Model
         $this->setLogin($data['login']);
         $this->setEmail($data['email']);
         $this->setPassword($data['password']);
+        $this->setCreatedAt($data['created_at']);
+        $this->setUpdatedAt($data['updated_at']);
     }
 
     public function getUserById($id)
