@@ -2,6 +2,7 @@
 include_once '../App/views/header.php';
 if ($sum!==null) {
     ?>
+    <script src="/js/Cart.js"></script>
 <div class="container-flued">
     <?php foreach ($products as $product) { ?>
     <div class="row  align-items-center ml-5">
@@ -78,5 +79,6 @@ if ($sum!==null) {
     </div>
 
 <?php } ?>
+
 </body>
 </html>
