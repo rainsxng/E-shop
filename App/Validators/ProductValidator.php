@@ -21,11 +21,11 @@ class ProductValidator
         $product->setId(preg_replace('/\s/', '', $product->getId()));
         return $product;
     }
-    public static function validateProduct_id($id)
+    public static function validateProductId($id)
     {
         if (!filter_var($id, FILTER_VALIDATE_INT)) {
-            return 0;
+            return false;
         }
-        return 1;
+        return true;
     }
 }

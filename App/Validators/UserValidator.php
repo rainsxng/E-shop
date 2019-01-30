@@ -31,15 +31,15 @@ class UserValidator
             Response::setResponseCode(403);
             Response::setContent("Длина логина должна быть  от 3 до 25 символов", "");
             Response::send();
-            return 0;
+            return false;
         }
         if (preg_match("/[а-яё]/iu", $login)) {
             Response::setResponseCode(403);
             Response::setContent("Логин должен состоять только из латинских символов", "");
             Response::send();
-            return 0;
+            return false;
         }
-        return 1;
+        return true;
     }
 
     public static function validateEmail($email)
@@ -48,21 +48,21 @@ class UserValidator
             Response::setResponseCode(403);
             Response::setContent("Пожалуйста введите email", "");
             Response::send();
-            return 0;
+            return false;
         }
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             Response::setResponseCode(403);
             Response::setContent("Некорректный email", "");
             Response::send();
-            return 0;
+            return false;
         }
         if (!preg_match("/^([a-z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2,6})$/", $email)) {
             Response::setResponseCode(403);
             Response::setContent("Email должен состоять только из латинских символов", "");
             Response::send();
-            return 0;
+            return false;
         }
-        return 1;
+        return true;
     }
 
     public static function validatePassword($password)
@@ -71,8 +71,8 @@ class UserValidator
             Response::setResponseCode(403);
             Response::setContent("Пароль должен состоять минимум из 4 знаков", "");
             Response::send();
-            return 0;
+            return false;
         }
-        return 1;
+        return true;
     }
 }

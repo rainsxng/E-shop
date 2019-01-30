@@ -43,6 +43,5 @@ class IndexController extends Controller
             'index',
             ['items'=>$products,'categories'=>$categories,'brands'=>$brands]
         );
-
     }
 }

@@ -23,7 +23,6 @@ class AuthController extends Controller
         {
             $this->model->authorization($_POST['login'], $_POST['password']);
         }
-
     }
     public function logOut()
     {

@@ -74,6 +74,7 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
             $product->decreaseQuantity($cartObj->getProductId(), $cartObj->getQuantity());
             unset($query);
         }
+        return true;
     }
 
     public function deleteOne(Cart $cartObj)

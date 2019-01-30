@@ -672,12 +672,12 @@
             "require": {
                 "ext-dom": "*",
                 "ext-xmlwriter": "*",
-                "php": "^7.1",
+                "php": "^7.2",
                 "phpunit/php-file-iterator": "^2.0.2",
                 "phpunit/php-text-template": "^1.2.1",
                 "phpunit/php-token-stream": "^3.0.1",
                 "sebastian/code-unit-reverse-lookup": "^1.0.1",
-                "sebastian/environment": "^4.0",
+                "sebastian/environment": "^4.1",
                 "sebastian/version": "^2.0.1",
                 "theseer/tokenizer": "^1.1"
             },
@@ -913,12 +913,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "9394dc3eba44ffcd3fd44293e57e847ecbce3bd6"
+                "reference": "47a63ddd3c2a1e9f133aec204a2705239ded7468"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/9394dc3eba44ffcd3fd44293e57e847ecbce3bd6",
-                "reference": "9394dc3eba44ffcd3fd44293e57e847ecbce3bd6",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/47a63ddd3c2a1e9f133aec204a2705239ded7468",
+                "reference": "47a63ddd3c2a1e9f133aec204a2705239ded7468",
                 "shasum": ""
             },
             "require": {
@@ -989,7 +989,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-01-24T16:01:13+00:00"
+            "time": "2019-01-29T13:42:34+00:00"
         },
         {
             "name": "psr/log",
@@ -1209,24 +1209,27 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "585fbcdeff7fb58c4b7596d8b2d6e97aef510611"
+                "reference": "ec363060503ae6f070739aca153ea6119c60b440"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/585fbcdeff7fb58c4b7596d8b2d6e97aef510611",
-                "reference": "585fbcdeff7fb58c4b7596d8b2d6e97aef510611",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/ec363060503ae6f070739aca153ea6119c60b440",
+                "reference": "ec363060503ae6f070739aca153ea6119c60b440",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "^7.4"
+                "phpunit/phpunit": "^7.5"
+            },
+            "suggest": {
+                "ext-posix": "*"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.0-dev"
+                    "dev-master": "4.1-dev"
                 }
             },
             "autoload": {
@@ -1251,7 +1254,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2019-01-07T17:23:37+00:00"
+            "time": "2019-01-29T09:22:31+00:00"
         },
         {
             "name": "sebastian/exporter",
@@ -1607,12 +1610,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "8c94cf9231dc70e8cb45c52a8f3a34501e271da0"
+                "reference": "3dd9e9722992b6a25140b8103bc94eca7e303398"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/8c94cf9231dc70e8cb45c52a8f3a34501e271da0",
-                "reference": "8c94cf9231dc70e8cb45c52a8f3a34501e271da0",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/3dd9e9722992b6a25140b8103bc94eca7e303398",
+                "reference": "3dd9e9722992b6a25140b8103bc94eca7e303398",
                 "shasum": ""
             },
             "require": {
@@ -1650,7 +1653,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-01-23T00:15:48+00:00"
+            "time": "2019-01-30T03:39:54+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

@@ -254,7 +254,7 @@ class Product
 
     public function isValid(Product $obj)
     {
-        if (ProductValidator::validateProduct_id($obj->getId())) {
+        if (ProductValidator::validateProductId($obj->getId())) {
             return true;
         }
         else {
