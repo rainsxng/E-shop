@@ -2,6 +2,26 @@
 use Controllers\AuthController;
 $controller = new AuthController();
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <title><?=$title;?></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="/js/notify.js"></script>
+    <script src="/js/auth.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="/js/addToCart.js"></script>
+    <script src="/js/filter.js"></script>
+</head>
+<body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/">Rainsxng</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,8 +42,36 @@ $controller = new AuthController();
             <?php
     if ($_SESSION['isLogged'] === true) {
         ?>
-                <?=$controller->getLogin()?>
-                <button type="submit" class="btn btn-primary ml-4" name="logout" onclick="AjaxLogout()">Выход</button>
+        <div class="navbar navbar-inverse nav">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/">CMS</a>
+
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="divider-vertical"></li>
+                            <li><a href="#"><i class="icon-home icon-white"></i> Home</a></li>
+                        </ul>
+                        <div class="pull-right">
+                            <ul class="nav pull-right">
+                                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, <?=$controller->getLogin();?> <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/user/preferences"><i class="icon-cog"></i> Настройки</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="/auth/logout"><i class="icon-off"></i> Выход</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
             <?php
     } else {
         echo '<a href="/login" class="btn btn-primary float-left ml-1 mr-2"><i class="fas fa-sign-in-alt"></i>  Войти</a>' ;

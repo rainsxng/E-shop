@@ -42,7 +42,8 @@ class ProductController extends Controller
                     'comments'=>$comments,
                     'count'=>Comment::getCount(),
                     'attributes'=>$this->attributes,
-                    'values'=>$this->values]
+                    'values'=>$this->values],
+                    $product->getBrand() . ' ' . $product->getName()
             );
         } else {
             self::render('404');
@@ -57,7 +58,8 @@ class ProductController extends Controller
         if (!empty($products)) {
             self::render(
                 'category',
-                ['products'=>$products]
+                ['products'=>$products],
+                $products[0]->getCategory()
             );
         } else {
             self::render('404');

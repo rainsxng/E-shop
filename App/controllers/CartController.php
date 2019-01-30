@@ -19,7 +19,7 @@ class CartController extends Controller
     public function getCartProducts()
     {
         $products=$this->cartModel->getProducts();
-        self::render('cart', ['products'=>$products,'sum'=>Cart::getSum()]);
+        self::render('cart', ['products'=>$products,'sum'=>Cart::getSum()],"Корзина");
     }
     public function addToCart()
     {

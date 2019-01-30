@@ -12,7 +12,7 @@ class App
             session_start();
         }
         $logger = new LoggerClass();
-        $logger->setLogFile('log.log');
+        $logger->setLogFile('../App/logs/log.log');
         $logger->registerFatalHandler();
         $logger->registerExceptionHandler();
         $logger->registerErrorHandler([], false);

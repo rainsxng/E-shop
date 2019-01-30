@@ -1,23 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Cache-control" content="no-cache">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="-1">
-    <title>Онлайн магазин</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="/js/notify.js"></script>
-    <script src="/js/auth.js"></script>
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <script src="/js/addToCart.js"></script>
-    <script src="/js/filter.js"></script>
-</head>
-<body>
 <?php
 include "../App/views/header.php";
 ?>
@@ -65,9 +45,9 @@ include "../App/views/header.php";
             <div class="card bg-light mb-3">
                 <div class="card-header bg-success text-white text-uppercase">Последнее поступление</div>
                 <div class="card-body">
-                    <img class="img-fluid" src="<?=$items[0]->getImage();?>" />
-                    <h5 class="card-title"><?=$items[0]->getName();?></h5>
-                    <p class="btn btn-danger btn-block"><?=$items[0]->getPrice();?>$</p>
+                    <img class="img-fluid" src="https://images-na.ssl-images-amazon.com/images/I/61i6nJPskCL._SX425_.jpg"/>
+                    <a href="product/1"><h5 class="card-title">Grado PS1000e</h5></a>
+                    <p class="btn btn-danger btn-block">1695$</p>
                 </div>
             </div>
         </div>
