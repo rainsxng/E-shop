@@ -10,7 +10,7 @@ namespace Models;
 
 use Core\Model;
 use Validators\UserValidator;
-use Mappers\UsersMapper;
+use Mappers\UserMapper;
 use Core\Response;
 
 class User extends Model
@@ -25,7 +25,7 @@ class User extends Model
     public function __construct()
     {
         parent::__construct();
-        $this->mapper = new UsersMapper();
+        $this->mapper = new UserMapper();
     }
 
     /**
@@ -184,5 +184,10 @@ class User extends Model
         else {
             return false;
         }
+    }
+
+    public function changePassword(User $obj)
+    {
+        return $this->mapper->changePassword($obj);
     }
 }

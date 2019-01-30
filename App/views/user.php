@@ -16,6 +16,7 @@
 <body>
 <?php
 include_once '../App/views/header.php';
+var_dump($user);
 ?>
 <div class="container mt-5">
     <div class="row">
@@ -53,18 +54,18 @@ include_once '../App/views/header.php';
                                 <div class="form-group row">
                                     <label for="oldPswd" class="col-4 col-form-label">Старый пароль</label>
                                     <div class="col-8">
-                                        <input id="oldPswd" name="oldPswd" placeholder="Старый пароль" class="form-control here" required="required" type="text">
+                                        <input id="oldPswd" name="oldPswd" placeholder="Старый пароль" class="form-control here" required="required" type="password">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="newPswd" class="col-4 col-form-label">Новый пароль</label>
                                     <div class="col-8">
-                                        <input id="newPswd" name="newPswd" placeholder="Новый пароль" class="form-control here" type="text">
+                                        <input id="newPswd" name="newPswd" placeholder="Новый пароль" class="form-control here" type="password">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="offset-4 col-8">
-                                        <button name="submit" id="updatePswdBtn"  class="btn btn-primary">Сохранить</button>
+                                        <button  type="button" id="updatePswdBtn"  class="btn btn-primary">Сохранить</button>
                                     </div>
                                 </div>
                             </form>

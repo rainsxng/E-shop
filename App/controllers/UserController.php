@@ -9,6 +9,7 @@
 namespace Controllers;
 
 use Core\Controller;
+use Core\Response;
 use Models\User;
 
 class UserController extends Controller
@@ -30,5 +31,21 @@ class UserController extends Controller
             $this->user = $this->user->getUserById($_SESSION['user_id']);
             self::render('user',['user'=>$this->user]);
         }
+    }
+    public function changePassword()
+    {
+        $this->user = $this->user->getUserById($_SESSION['user_id']);
+        if (password_verify($_POST['oldPassword'], $this->user->getPassword())){
+            $this->user->setPassword($_POST['newPassword']);
+            $this->user->changePassword($this->user);
+                Response::setResponseCode(200);
+                Response::setContent("Успешно изменено", "");
+                Response::send();
+            }
+        else {
+            Response::setResponseCode(403);
+            Response::setContent("Неверный пароль", "");
+            Response::send();
+            }
     }
 }

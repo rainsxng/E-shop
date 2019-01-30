@@ -12,7 +12,7 @@ use Core\Database;
 use Models\User;
 use PDO;
 
-class UsersMapper
+class UserMapper
 {
     private $pdo;
     public function __construct()
@@ -60,5 +60,12 @@ class UsersMapper
         $user->setLogin($data['login']);
         $user->setPassword($data['password']);
         return $user;
+    }
+
+    public function changePassword(User $obj)
+    {
+        $query = $this->pdo->prepare("UPDATE users SET password = :password WHERE users.id = :id;");
+        $query->execute(array('id'=>$obj->getId(),'password'=>password_hash($obj->getPassword(), PASSWORD_BCRYPT)));
+        return true;
     }
 }
