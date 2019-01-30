@@ -64,8 +64,12 @@ class UserMapper
 
     public function changePassword(User $obj)
     {
-        $query = $this->pdo->prepare("UPDATE users SET password = :password WHERE users.id = :id;");
-        $query->execute(array('id'=>$obj->getId(),'password'=>password_hash($obj->getPassword(), PASSWORD_BCRYPT)));
+        $obj->setUpdatedAt(date('Y-m-d H:i:s'));
+        $query = $this->pdo->prepare("UPDATE users SET password=:password, updated_at=:updated_at WHERE users.id=:id;");
+        $query->execute(array(
+            'id'=>$obj->getId(),
+            'password'=>password_hash($obj->getPassword(), PASSWORD_BCRYPT),
+            'updated_at'=>$obj->getUpdatedAt()));
         return true;
     }
 }

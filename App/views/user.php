@@ -16,65 +16,71 @@
 <body>
 <?php
 include_once '../App/views/header.php';
-var_dump($user);
 ?>
+<div class="row">
+    <div class="col-3">
+
+    </div>
+
+</div>
 <div class="container mt-5">
     <div class="row">
-        <div class="col-md-3 ">
+        <div class="col-md-3 tab-container">
             <div class="list-group ">
-                <a href="#" class="list-group-item list-group-item-action active">Сменить пароль</a>
-                <a href="#" class="list-group-item list-group-item-action">User Management</a>
-                <a href="#" class="list-group-item list-group-item-action">Used</a>
-                <a href="#" class="list-group-item list-group-item-action">Enquiry</a>
-                <a href="#" class="list-group-item list-group-item-action">Dealer</a>
-                <a href="#" class="list-group-item list-group-item-action">Media</a>
-                <a href="#" class="list-group-item list-group-item-action">Post</a>
-                <a href="#" class="list-group-item list-group-item-action">Category</a>
-                <a href="#" class="list-group-item list-group-item-action">New</a>
-                <a href="#" class="list-group-item list-group-item-action">Comments</a>
-                <a href="#" class="list-group-item list-group-item-action">Appearance</a>
-                <a href="#" class="list-group-item list-group-item-action">Reports</a>
-                <a href="#" class="list-group-item list-group-item-action">Settings</a>
-
-
-            </div>
-        </div>
-        <div class="col-md-9">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4>Настройки</h4>
-                            <hr>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <form method="post">
-                                <div class="form-group row">
-                                    <label for="oldPswd" class="col-4 col-form-label">Старый пароль</label>
-                                    <div class="col-8">
-                                        <input id="oldPswd" name="oldPswd" placeholder="Старый пароль" class="form-control here" required="required" type="password">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="newPswd" class="col-4 col-form-label">Новый пароль</label>
-                                    <div class="col-8">
-                                        <input id="newPswd" name="newPswd" placeholder="Новый пароль" class="form-control here" type="password">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="offset-4 col-8">
-                                        <button  type="button" id="updatePswdBtn"  class="btn btn-primary">Сохранить</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-about-tab" data-toggle="pill" href="#v-pills-about" role="tab" aria-controls="v-pills-about" aria-selected="true">Информация</a>
+                    <a class="nav-link" id="v-pills-changePswd-tab" data-toggle="pill" href="#v-pills-changePswd" role="tab" aria-controls="v-pills-changePswd" aria-selected="false">Сменить пароль</a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Сменить email</a>
+                    <a class="nav-link" id="v-pills-orders-tab" data-toggle="pill" href="#v-pills-orders" role="tab" aria-controls="v-pills-orders" aria-selected="false">Заказы</a>
+                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Опасная зона</a>
                 </div>
             </div>
         </div>
+            <div class="col-9">
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-about" role="tabpanel" aria-labelledby="v-pills-about-tab">1</div>
+                    <div class="tab-pane fade" id="v-pills-changePswd" role="tabpanel" aria-labelledby="v-pills-changePswd-tab">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4>Смена пароля</h4>
+                                        <hr>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <form method="post">
+                                            <div class="form-group row">
+                                                <label for="oldPswd" class="col-4 col-form-label">Старый пароль</label>
+                                                <div class="col-8">
+                                                    <input id="oldPswd" name="oldPswd" placeholder="Старый пароль" class="form-control here" required="required" type="password">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="newPswd" class="col-4 col-form-label">Новый пароль</label>
+                                                <div class="col-8">
+                                                    <input id="newPswd" name="newPswd" placeholder="Новый пароль" class="form-control here" type="password">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="offset-4 col-8">
+                                                    <button  type="button" id="updatePswdBtn"  class="btn btn-primary">Сохранить</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">3</div>
+                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">4</div>
+                    <div class="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">5</div>
+                </div>
+            </div>
     </div>
 </div>
 </body>
