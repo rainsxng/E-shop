@@ -1,13 +1,13 @@
 $(document).ready(function () {
-    let btn = document.getElementById("updatePswdBtn");
-    btn.onclick = function (e) {
+    let updatePswdBtn = document.getElementById("updatePswdBtn");
+    let updateEmailBtn = document.getElementById("updateEmailBtn");
+    updatePswdBtn.onclick = function (e) {
         let oldPassword = $('#oldPswd').val();
         let newPassword = $('#newPswd').val();
         if (oldPassword.length == 0 || newPassword.length == 0) {
             $.notify('Заполните все поля', {position: "right bottom"});
             return;
-        }
-        else {
+        } else {
             $.ajax(
                 {
                     url: '/user/changePassword',
@@ -15,9 +15,8 @@ $(document).ready(function () {
                     data: {"oldPassword": oldPassword, "newPassword": newPassword},
                     error: function (response) {
                         let data = JSON.parse(response.responseText);
-                        if (data.location=="")
-                        {
-                            $.notify(data.message,{
+                        if (data.location == "") {
+                            $.notify(data.message, {
                                     className: 'error',
                                     clickToHide: true,
                                     autoHide: true,
@@ -43,4 +42,60 @@ $(document).ready(function () {
             );
         }
     }
+    updateEmailBtn.onclick = function (e) {
+        let newEmail = $('#newEmail').val();
+        if (newEmail.length==0) {
+            $.notify('Заполните поле с новым электронным адресом', {position: "right bottom"});
+            return;
+        }
+        $.ajax(
+            {
+                url: '/user/changeEmail',
+                type: "POST",
+                data: {"newEmail": newEmail},
+                error: error,
+                success: function (data, textStatus, XmlHttpRequest) {
+                    let res = JSON.parse(XmlHttpRequest.responseText);
+                    $.notify(res.message, {
+                        className: 'success',
+                        clickToHide: true,
+                        autoHide: true,
+                        autoHideDelay: 1500,
+                        globalPosition: 'bottom-center'
+                    });
+                    $('#userEmail').text('Электронный адрес: '+newEmail)
+                }
+            }
+        );
+    }
 });
+
+
+function error(response)
+{
+    let data = JSON.parse(response.responseText);
+    if (data.location == "") {
+        $.notify(data.message, {
+            className: 'error',
+            clickToHide: true,
+            autoHide: true,
+            autoHideDelay: 2000,
+            globalPosition: 'bottom-right'
+            }
+        );
+    } else {
+        document.getElementById(data.location).innerHTML = data.message;
+    }
+}
+
+function success(data, textStatus, XmlHttpRequest)
+{
+    let res = JSON.parse(XmlHttpRequest.responseText);
+    $.notify(res.message, {
+        className: 'success',
+        clickToHide: true,
+        autoHide: true,
+        autoHideDelay: 1500,
+        globalPosition: 'bottom-center'
+    });
+}

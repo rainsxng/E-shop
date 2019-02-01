@@ -19,7 +19,7 @@ class CartController extends Controller
     public function getCartProducts()
     {
         $products=$this->cartModel->getProducts();
-        self::render('cart', ['products'=>$products,'sum'=>Cart::getSum()],"Корзина");
+        self::render('cart', ['products'=>$products,'sum'=>Cart::getSum()]);
     }
     public function addToCart()
     {
@@ -54,6 +54,15 @@ class CartController extends Controller
     {
         if (isset($_POST['productId'])) {
             $this->cartModel->decreaseQuantity($_POST['productId'], 1);
+        }
+    }
+
+    public function makeOrder()
+    {
+        if (isset($_SESSION['user_id'])) {
+            $this->orderModel->setUserId($_SESSION['user_id']);
+            $this->orderModel->setStatus('order');
+            $this->cartModel->makeOrder($this->orderModel);
         }
     }
 }

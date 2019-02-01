@@ -9,6 +9,7 @@
 namespace Mappers;
 
 use Core\Database;
+use Core\Response;
 use Models\Cart;
 use Models\Order;
 use Models\Product;
@@ -113,7 +114,7 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
         unset($query);
     }
 
-    private function mapArrayToProduct($data)
+    private function mapArrayToProduct(array $data) :Product
     {
         $product = new Product();
         $product->setId($data['id']);
@@ -128,5 +129,20 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
         $product->setCategoryId($data['category_id']);
         $product->setSum($data['summ']);
         return  $product;
+    }
+
+    public function makeOrder(Order $order) :bool
+    {
+        $query = $this->pdo->prepare("UPDATE orders SET status = :status, updated_at = :update_at 
+        WHERE user_id = :user_id AND status = 'cart'");
+        $query->execute(array(
+            'user_id'=>$order->getUserId(),
+            'status'=>$order->getStatus(),
+            'updated_at'=>$order->getUpdatedAt()
+        ));
+        if (!is_null($query)) {
+            return true;
+        }
+        return false;
     }
 }

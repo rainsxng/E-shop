@@ -192,7 +192,7 @@ class Product
     public function setImage($image)
     {
         $this->image = $image;
-        if (empty($this->image)) {
+        if ($this->image == '' || is_null($this->image)) {
             $this->image = "/img/Image-not-found.jpeg";
         }
     }
@@ -229,6 +229,7 @@ class Product
         $this->setCategoryId($data['category_id']);
         $this->setBrandId($data['brand_id']);
         $this->setQuantity($data['quantity']);
+        return $this;
     }
     public function getProductByCategoryId($id)
     {

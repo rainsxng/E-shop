@@ -21,17 +21,6 @@
 include_once '../App/views/header.php';
 ?>
 <div class="container">
-    <div class="row align-items-end">
-        <div class="col text-right mr-3 mt-4">
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Сортировка
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                </div>
-            </div>
-        </div>
-</div>
 <div class="container mt-4">
     <div class="row">
         <div class="col-12 col-sm-3">
@@ -68,24 +57,6 @@ include_once '../App/views/header.php';
                         </div>
                     </div>
                 <?php }?>
-                <div class="col-12">
-                    <nav aria-label="...">
-                        <ul class="pagination">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1">Назад</a>
-                            </li>
-                            <li class="page-item active">
-                                <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Вперёд</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
             </div>
         </div>
 

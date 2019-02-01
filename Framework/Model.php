@@ -8,12 +8,19 @@ class Model
 {
     private $created_at;
     private $updated_at;
-
+    public function __construct()
+    {
+        $this->setCreatedAt(date('Y-m-d H:i:s'));
+        $this->setUpdatedAt(date('Y-m-d H:i:s'));
+    }
     /**
      * @return mixed
      */
     public function getCreatedAt()
     {
+        if ($this->created_at == '' || $this->created_at == null || empty($this->created_at)) {
+            $this->setCreatedAt(date('Y-m-d H:i:s'));
+        }
         return $this->created_at;
     }
 
@@ -30,6 +37,9 @@ class Model
      */
     public function getUpdatedAt()
     {
+        if ($this->updated_at == '' || $this->updated_at == null || empty($this->updated_at)) {
+            $this->setUpdatedAt(date('Y-m-d H:i:s'));
+        }
         return $this->updated_at;
     }
 
@@ -41,9 +51,4 @@ class Model
         $this->updated_at = $update_at;
     }
 
-    public function     __construct()
-    {
-        $this->setCreatedAt(date('Y-m-d H:i:s'));
-        $this->setUpdatedAt(date('Y-m-d H:i:s'));
-    }
 }

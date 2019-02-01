@@ -72,4 +72,15 @@ class UserMapper
             'updated_at'=>$obj->getUpdatedAt()));
         return true;
     }
+
+    public function changeEmail(User $obj)
+    {
+        $obj->setUpdatedAt(date('Y-m-d H:i:s'));
+        $query = $this->pdo->prepare("UPDATE users SET email=:email, updated_at=:updated_at WHERE users.id=:id;");
+        $query->execute(array(
+            'id'=>$obj->getId(),
+            'email'=>$obj->getEmail(),
+            'updated_at'=>$obj->getUpdatedAt()));
+        return true;
+    }
 }

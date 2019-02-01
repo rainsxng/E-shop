@@ -190,4 +190,9 @@ class User extends Model
     {
         return $this->mapper->changePassword($obj);
     }
+
+    public function changeEmail(User $obj)
+    {
+        return $this->mapper->changeEmail($obj);
+    }
 }

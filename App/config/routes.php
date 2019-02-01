@@ -17,5 +17,7 @@ return [
     '/comment/add'=>'Controllers\ProductController/addComment',
     '/?brands=:any'=>'Controllers\IndexController/showBrandsProducts',
     '/user'=>'Controllers\UserController/getUser',
-    '/user/changePassword'=>'Controllers\UserController/changePassword'
+    '/user/changePassword'=>'Controllers\UserController/changePassword',
+    '/user/changeEmail'=>'Controllers\UserController/changeEmail',
+    '/cart/order'=>'Controllers\CartController/makeOrder'
 ];

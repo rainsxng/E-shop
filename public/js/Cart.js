@@ -1,10 +1,17 @@
-function increaseByOne(product_id)
-{
-    let quantity = $('#quantity2').val();
-    $('#quantity2').val(quantity+1);
-}
-function decreaseByOne(product_id)
-{
-    let quantity = $('#quantity2').val();
-    $('#quantity2').val(quantity-1);
-}
+$(document).ready(function () {
+    let btn = document.getElementById("orderBtn");
+    btn.onclick = function (e) {
+        $.ajax({
+            url: '/cart/order',
+            type: "POST",
+            error: function () {
+                alert("Ошибка");
+            },
+            success: function () {
+                alert("Заказ оформлен");
+                success();
+            }
+        });
+    }
+});
+

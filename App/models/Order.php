@@ -2,9 +2,10 @@
 
 namespace Models;
 
+use Core\Model;
 use Mappers\OrderMapper;
 
-class Order
+class Order extends Model
 {
     protected $id;
     protected $user_id;
@@ -13,6 +14,7 @@ class Order
 
     public function __construct()
     {
+        parent::__construct();
         $this->mapper = new OrderMapper();
         $this->setId($this->mapper->getOrderIdByUser());
         $this->setUserId($_SESSION['user_id']);
@@ -73,5 +75,19 @@ class Order
     public function delete()
     {
         $this->mapper->delete(new Order());
+    }
+
+    public function mapArrayToOrder(array $data)
+    {
+        $orderObj = new Order();
+        $orderObj->setId($data['id']);
+        $orderObj->setUserId($data['user_id']);
+        $orderObj->setStatus($data['status']);
+        return $orderObj;
+    }
+
+    public function getAllOrdersByUser(User $user)
+    {
+        return $this->mapper->getAllOrdersByUser($user);
     }
 }

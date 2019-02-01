@@ -153,4 +153,9 @@ class Cart
     {
         $this->mapper->decreaseQuantity(new Cart($product_id, $quantity));
     }
+
+    public function makeOrder(Order $order)
+    {
+        $this->mapper->makeOrder($order);
+    }
 }
