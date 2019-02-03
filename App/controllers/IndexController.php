@@ -12,8 +12,17 @@ use Models\CategoryModel;
 
 class IndexController extends Controller
 {
+    /**
+     * @var Category $CategoryModel
+     */
     private $CategoryModel;
+    /**
+     * @var Product $ProductModel
+     */
     private $ProductModel;
+    /**
+     * @var Brand $BrandModel
+     */
     private $BrandModel;
     public function __construct()
     {
@@ -22,6 +31,11 @@ class IndexController extends Controller
         $this->BrandModel = new Brand();
     }
 
+    /**
+     * Render index page with all products and categories
+     * @return bool
+     * @throws \Exception
+     */
     public function actionIndex()
     {
         $categories = $this->CategoryModel->getAllCategories();
@@ -33,6 +47,11 @@ class IndexController extends Controller
         );
     }
 
+    /**
+     * Filter products by chosen brands
+     * @return bool
+     * @throws \Exception
+     */
     public function showBrandsProducts()
     {
         $brandList = substr(strstr($_SERVER['REQUEST_URI'], '='), 1, strlen($_SERVER['REQUEST_URI']));

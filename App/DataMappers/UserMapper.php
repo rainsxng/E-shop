@@ -14,12 +14,21 @@ use PDO;
 
 class UserMapper
 {
+    /**
+     * @var PDO $pdo
+     */
     private $pdo;
     public function __construct()
     {
         $this->pdo = Database::getInstance();
     }
-    public function getUserByLogin($login)
+
+    /**
+     * Get user info by Login
+     * @param $login
+     * @return User
+     */
+    public function getUserByLogin($login) :User
     {
         $query = $this->pdo->prepare("SELECT * FROM users WHERE login=:login");
         $query->execute(array('login'=>$login));
@@ -28,7 +37,13 @@ class UserMapper
         $user->fromArray($row[0]);
         return $user;
     }
-    public function getUserById($id)
+
+    /**
+     * Get user info by id
+     * @param $id
+     * @return User
+     */
+    public function getUserById($id) :User
     {
         $query = $this->pdo->prepare("SELECT * FROM users WHERE id=:id");
         $query->execute(array('id'=>$id));
@@ -37,6 +52,12 @@ class UserMapper
         $user->fromArray($row[0]);
         return $user;
     }
+
+    /**
+     * Add user to database
+     * @param User $user
+     * @return int
+     */
     public function addUser(User $user) :int
     {
         $query=$this->pdo->prepare("INSERT INTO users (id, login, password, email, created_at, updated_at)
@@ -52,7 +73,13 @@ class UserMapper
             return 0;
         }
     }
-    public function mapArrayToUser($data):User
+
+    /**
+     * Transform an array into an User Object
+     * @param $data
+     * @return User
+     */
+    public function mapArrayToUser($data) :User
     {
         $user = new User();
         $user->setId($data['id']);
@@ -62,7 +89,12 @@ class UserMapper
         return $user;
     }
 
-    public function changePassword(User $obj)
+    /**
+     * Change password for user
+     * @param User $obj
+     * @return bool
+     */
+    public function changePassword(User $obj) :bool
     {
         $obj->setUpdatedAt(date('Y-m-d H:i:s'));
         $query = $this->pdo->prepare("UPDATE users SET password=:password, updated_at=:updated_at WHERE users.id=:id;");
@@ -73,7 +105,12 @@ class UserMapper
         return true;
     }
 
-    public function changeEmail(User $obj)
+    /**
+     * Change email for user
+     * @param User $obj
+     * @return bool
+     */
+    public function changeEmail(User $obj) :bool
     {
         $obj->setUpdatedAt(date('Y-m-d H:i:s'));
         $query = $this->pdo->prepare("UPDATE users SET email=:email, updated_at=:updated_at WHERE users.id=:id;");
@@ -84,7 +121,12 @@ class UserMapper
         return true;
     }
 
-    public function delete(User $obj)
+    /**
+     * Delete user from database
+     * @param User $obj
+     * @return bool
+     */
+    public function delete(User $obj) :bool
     {
         $query = $this->pdo->prepare("DELETE FROM users WHERE users.id = :id AND users.login = :login");
         $query->execute(array(

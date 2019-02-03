@@ -4,19 +4,28 @@ namespace Mappers;
 
 use Core\Database;
 use Models\Order;
-use Models\Product;
 use Models\User;
 use PDO;
 
 class OrderMapper
 {
+    /**
+     * @var PDO $pdo
+     */
     private $pdo;
+    /**
+     * @var Order $orderModel
+     */
     private $orderModel;
     public function __construct()
     {
         $this->pdo = Database::getInstance();
     }
 
+    /**
+     * Return orderId for user
+     * @return bool
+     */
     public function getOrderIdByUser()
     {
         $query=$this->pdo->prepare("SELECT orders.id FROM orders WHERE user_id=:user_id AND status='cart'");
@@ -30,6 +39,10 @@ class OrderMapper
         }
     }
 
+    /**
+     * Create order for current user
+     * @param Order $orderObj
+     */
     public function createOrder(Order $orderObj)
     {
         if ($this->getOrderIdByUser()==false) {
@@ -39,13 +52,22 @@ class OrderMapper
         }
     }
 
+    /**
+     * Delete order for user
+     * @param Order $orderObj
+     */
     public function delete(Order $orderObj)
     {
         $query=$this->pdo->prepare("DELETE FROM orders WHERE orders.user_id=:user_id;");
         $query->execute(array('user_id'=>$orderObj->getUserId()));
     }
 
-    public function getAllOrdersByUser(User $userObj)
+    /**
+     * Get all orders for user
+     * @param User $userObj
+     * @return array
+     */
+    public function getAllOrdersByUser(User $userObj) :array
     {
         $this->orderModel = new Order();
         $query=$this->pdo->prepare("SELECT orders.id,orders.created_at,orders.updated_at FROM orders
@@ -58,6 +80,12 @@ class OrderMapper
         }
         return $orders;
     }
+
+    /**
+     * Get sum of order by order object
+     * @param Order $orderObj
+     * @return mixed
+     */
     public function getSumForOrder(Order $orderObj)
     {
         $query=$this->pdo->prepare("SELECT SUM(products.price*orders_products.quantity) as sum from products

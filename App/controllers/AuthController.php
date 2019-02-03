@@ -7,6 +7,9 @@ use Models\User;
 
 class AuthController extends Controller
 {
+    /**
+     * @var User $model User
+     */
     private $model;
     public function __construct()
     {
@@ -14,6 +17,9 @@ class AuthController extends Controller
         $this->model=new User();
     }
 
+    /**
+     * Authorize user via login and password
+     */
     public function authorize()
     {
         $this->model->setLogin($_POST['login']);
@@ -23,14 +29,26 @@ class AuthController extends Controller
             $this->model->authorization($_POST['login'], $_POST['password']);
         }
     }
+
+    /**
+     * Logout from user account
+     */
     public function logOut()
     {
         $this->model->logOut();
     }
+
+    /**
+     * @return mixed
+     */
     public function getLogin()
     {
         return $_SESSION['login'];
     }
+
+    /**
+     * User registration via login, email , password
+     */
     public function registration()
     {
         $this->model->setLogin($_POST['login']);

@@ -2,15 +2,31 @@
 
 namespace Models;
 
-
 use Core\Model;
 use Mappers\AttributeMapper;
 use Mappers\BrandMapper;
 
 class Brand extends Model
 {
+    /**
+     * Brand constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->mapper = new BrandMapper();
+    }
+    /**
+     * @var $id
+     */
     private $id;
+    /**
+     * @var $name
+     */
     private $name;
+    /**
+     * @var BrandMapper
+     */
     private $mapper;
     /**
      * @return mixed
@@ -44,13 +60,11 @@ class Brand extends Model
         $this->name = $name;
     }
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->mapper = new BrandMapper();
-    }
-
-    public function getAllBrands()
+    /**
+     * Get all brands from database
+     * @return array
+     */
+    public function getAllBrands() :array
     {
         return $this->mapper->getAllBrands();
     }

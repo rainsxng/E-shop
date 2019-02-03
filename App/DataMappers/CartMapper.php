@@ -9,7 +9,6 @@
 namespace Mappers;
 
 use Core\Database;
-use Core\Response;
 use Models\Cart;
 use Models\Order;
 use Models\Product;
@@ -17,14 +16,24 @@ use PDO;
 
 class CartMapper
 {
+    /**
+     * @var PDO $pdo
+     */
     private $pdo;
-    private $summ;
+    /**
+     * @var int $amount amount of order
+     */
+    private $amount;
     public function __construct()
     {
         $this->pdo = Database::getInstance();
     }
 
-    public function getCartProducts()
+    /**
+     * Get all products in user cart
+     * @return array
+     */
+    public function getCartProducts() :array
     {
         $products = [];
         $query = $this->pdo->prepare("SELECT products.id,products.name,products.price,orders_products.quantity,products.image,products.price*orders_products.quantity as summ from products
@@ -34,16 +43,21 @@ WHERE orders.user_id = :id AND orders.status='cart'");
         $query->execute(array('id'=>$_SESSION['user_id']));
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
         foreach ($row as $key => $value) {
-            $this->summ+=$row[$key]['price']*$row[$key]['quantity'];
+            $this->amount+=$row[$key]['price']*$row[$key]['quantity'];
         }
-        Cart::setSum($this->summ);
+        Cart::setSum($this->amount);
         foreach ($row as $r) {
             array_push($products, $this->mapArrayToProduct($r));
         }
         return $products;
     }
 
-    public function addProduct(Cart $cartObj)
+    /**
+     * Add product to cart
+     * @param Cart $cartObj
+     * @return bool
+     */
+    public function addProduct(Cart $cartObj) :bool
     {
         $orderObj = new Order();
         $orderObj->createOrder();
@@ -78,6 +92,10 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
         return true;
     }
 
+    /**
+     * Delete one product from cart
+     * @param Cart $cartObj
+     */
     public function deleteOne(Cart $cartObj)
     {
         $query = $this->pdo->prepare("
@@ -87,12 +105,20 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
         unset($query);
     }
 
+    /**
+     * Delete all cart products
+     * @param Cart $cartObj
+     */
     public function delete(Cart $cartObj)
     {
         $query = $this->pdo->prepare("DELETE FROM orders_products WHERE order_id=:order_id;");
         $query->execute(array('order_id'=>$cartObj->getOrderId()));
     }
 
+    /**
+     * Increase quantity of product in cart
+     * @param Cart $cartObj/
+     */
     public function increaseQuantity(Cart $cartObj)
     {
         $productObj = new Product($cartObj->getProductId());
@@ -105,6 +131,10 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
         unset($query);
     }
 
+    /**
+     * Decrease quantity of product in cart
+     * @param Cart $cartObj
+     */
     public function decreaseQuantity(Cart $cartObj)
     {
         $productObj = new Product($cartObj->getProductId());
@@ -118,6 +148,11 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
         unset($query);
     }
 
+    /**
+     * Transform an array into an Product Object
+     * @param array $data
+     * @return Product
+     */
     private function mapArrayToProduct(array $data) :Product
     {
         $product = new Product();
@@ -135,6 +170,11 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
         return  $product;
     }
 
+    /**
+     * Checkout an order
+     * @param Order $order
+     * @return bool
+     */
     public function makeOrder(Order $order) :bool
     {
         $query = $this->pdo->prepare("UPDATE orders SET status = :status, updated_at = :updated_at 

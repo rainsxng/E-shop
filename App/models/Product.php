@@ -10,29 +10,63 @@ namespace Models;
 
 use Mappers\ProductMapper;
 use Validators\ProductValidator;
-use Validators\UserValidator;
 
 class Product
 {
-    private $id;
-    private $category_id;
-    private $brand_id;
-    private $name;
-    private $price;
-    private $quantity;
-    private $image;
-    private $description;
-    private $category;
-    private $brand;
-    private $mapper;
-    private $sum;
-
     public function __construct($id = null, $quantity = null)
     {
         $this->mapper = new ProductMapper();
         $this->setId($id);
         $this->setQuantity($quantity);
     }
+    /**
+     * @var $id
+     */
+    private $id;
+    /**
+     * @var $category_id
+     */
+    private $category_id;
+    /**
+     * @var $brand_id
+     */
+    private $brand_id;
+    /**
+     * @var $name
+     */
+    private $name;
+    /**
+     * @var $price
+     */
+    private $price;
+    /**
+     * @var $quantity
+     */
+    private $quantity;
+    /**
+     * @var $image
+     */
+    private $image;
+    /**
+     * @var $description
+     */
+    private $description;
+    /**
+     * @var $category
+     */
+    private $category;
+    /**
+     * @var $brand
+     */
+    private $brand;
+    /**
+     * @var ProductMapper
+     */
+    private $mapper;
+    /**
+     * @var $sum
+     */
+    private $sum;
     /**
      * @return mixed
      */
@@ -48,8 +82,6 @@ class Product
     {
         $this->sum = $sum;
     }
-
-
     /**
      * @return mixed
      */
@@ -213,10 +245,19 @@ class Product
         $this->description = $description;
     }
 
+    /**
+     * @return array
+     */
     public function getAllProducts()
     {
         return $this->mapper->getAllProducts();
     }
+
+    /**
+     * Transform an array into an Product Object
+     * @param $data
+     * @return $this
+     */
     public function fromArray($data)
     {
         $this->setId($data['id']);
@@ -231,29 +272,63 @@ class Product
         $this->setQuantity($data['quantity']);
         return $this;
     }
+
+    /**
+     * Get products bt category_id
+     * @param $id
+     * @return array
+     */
     public function getProductByCategoryId($id)
     {
         return $this->mapper ->getProductsByCategoryId($id);
     }
+
+    /**
+     * Get product info by id
+     * @param $id
+     * @return Product
+     */
     public function getProductById($id)
     {
         return $this->mapper->getProductById($id);
     }
+
+    /**
+     * Update quantity of products in database
+     * @param $product_id
+     * @param $quantity
+     */
     public function updateQuantity($product_id, $quantity)
     {
         $this->mapper->updateQuantity(new Product($product_id), $quantity);
     }
 
+    /**
+     * Increase quantity of product in database
+     * @param $product_id
+     * @param $quantity
+     */
     public function increaseQuantity($product_id, $quantity)
     {
         $this->mapper->increaseQuantity(new Product($product_id, $quantity));
     }
+
+    /**
+     * Decrease quantity of product in database
+     * @param $product_id
+     * @param $quantity
+     */
     public function decreaseQuantity($product_id, $quantity)
     {
         $this->mapper->decreaseQuantity(new Product($product_id, $quantity));
     }
 
-    public function isValid(Product $obj)
+    /**
+     * Check is product valid
+     * @param Product $obj
+     * @return bool
+     */
+    public function isValid(Product $obj) :bool
     {
         if (ProductValidator::validateProductId($obj->getId())) {
             return true;
@@ -263,7 +338,12 @@ class Product
         }
     }
 
-    public function getProductsByBrand($brands)
+    /**
+     * Get products by chose brands
+     * @param $brands
+     * @return array
+     */
+    public function getProductsByBrand($brands) :array
     {
         return $this->mapper->getProductsByBrandName($brands);
     }

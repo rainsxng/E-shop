@@ -14,12 +14,20 @@ use PDO;
 
 class CategoryMapper
 {
+    /**
+     * @var PDO $pdo
+     */
     private $pdo;
     public function __construct()
     {
         $this->pdo = Database::getInstance();
     }
-    public function getAllCategories()
+
+    /**
+     * Get info about all categories
+     * @return array
+     */
+    public function getAllCategories() :array
     {
         $query = $this->pdo->query('SELECT id,name FROM categories');
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
@@ -28,7 +36,14 @@ class CategoryMapper
             array_push($categories, $this->mapArrayToCategory($r));
         return $categories;
     }
-    private function mapArrayToCategory($data) {
+
+    /**
+     * Transform an array into an Category Object
+     * @param $data
+     * @return Category
+     */
+    private function mapArrayToCategory($data) :Category
+    {
         $category = new Category();
         $category->setId($data['id']);
         $category->setName($data['name']);

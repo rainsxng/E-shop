@@ -15,6 +15,9 @@ use PDO;
 
 class BrandMapper
 {
+    /**
+     * @var PDO $pdo
+     */
     private $pdo;
 
     public function __construct()
@@ -22,7 +25,11 @@ class BrandMapper
         $this->pdo = Database::getInstance();
     }
 
-    public function getAllBrands()
+    /**
+     * Get info about all brands
+     * @return array
+     */
+    public function getAllBrands() :array
     {
         $query = $this->pdo->prepare("SELECT id,name,created_at,updated_at from brands");
         $query->execute();
@@ -34,7 +41,12 @@ class BrandMapper
         return $brands;
     }
 
-    public function mapArrayToBrand($data)
+    /**
+     * Transform an array into an Brand Object
+     * @param $data
+     * @return Brand
+     */
+    public function mapArrayToBrand($data) :Brand
     {
         $obj = new Brand();
         $obj->setId($data['id']);

@@ -8,17 +8,40 @@
 
 namespace Models;
 
-
 use Core\Model;
-use Mappers\Attribute_ValueMapper;
+use Mappers\AttributeValueMapper;
 
-class Attribute_value extends Model
+class AttributeValue extends Model
 {
+    /**
+     * AttributeValue constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->mapper = new AttributeValueMapper();
+    }
+    /**
+     * @var $id
+     */
     private $id;
+    /**
+     * @var $attribute_id
+     */
     private $attribute_id;
+    /**
+     * @var $value
+     */
     private $value;
+    /**
+     * @var $product_id
+     */
     private $product_id;
+    /**
+     * @var AttributeValueMapper
+     */
     private $mapper;
+
     /**
      * @return mixed
      */
@@ -83,15 +106,13 @@ class Attribute_value extends Model
         $this->product_id = $product_id;
     }
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->mapper = new Attribute_ValueMapper();
-    }
-
-    public function getAllForProduct(Attribute_value $obj)
+    /**
+     * Get all attributes for product
+     * @param AttributeValue $obj
+     * @return array
+     */
+    public function getAllForProduct(AttributeValue $obj) :array
     {
         return $this->mapper->getAttributeValue($obj);
     }
-
 }

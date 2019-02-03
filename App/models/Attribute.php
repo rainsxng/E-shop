@@ -8,8 +8,22 @@ use Mappers\AttributeMapper;
 
 class Attribute extends Model
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->mapper = new AttributeMapper();
+    }
+    /**
+     * @var mixed $id
+     */
     private $id;
+    /**
+     * @var mixed $name
+     */
     private $name;
+    /**
+     * @var AttributeMapper $mapper
+     */
     private $mapper;
     /**
      * @return mixed
@@ -43,13 +57,11 @@ class Attribute extends Model
         $this->name = $name;
     }
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->mapper = new AttributeMapper();
-    }
-
-    public function getAllAttributes()
+    /**
+     * Get all attributes from database
+     * @return array
+     */
+    public function getAllAttributes() :array
     {
         return $this->mapper->getAllAttributes();
     }

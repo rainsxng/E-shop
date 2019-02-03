@@ -6,13 +6,20 @@ namespace Core;
 
 class Model
 {
-    private $created_at;
-    private $updated_at;
     public function __construct()
     {
         $this->setCreatedAt(date('Y-m-d H:i:s'));
         $this->setUpdatedAt(date('Y-m-d H:i:s'));
     }
+    /**
+     * @var $created_at
+     */
+    private $created_at;
+    /**
+     * @var $updated_at
+     */
+    private $updated_at;
+
     /**
      * @return mixed
      */

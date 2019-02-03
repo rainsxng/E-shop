@@ -12,7 +12,15 @@ use PDO;
 
 class Database
 {
+    /**
+     * @var $instance
+     */
     private static $instance;
+
+    /**
+     * Get database instance
+     * @return mixed
+     */
     public static function getInstance()
     {
         if (null === static::$instance) {

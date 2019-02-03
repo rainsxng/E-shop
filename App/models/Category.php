@@ -12,7 +12,13 @@ use Mappers\CategoryMapper;
 
 class Category
 {
+    /**
+     * @var $id
+     */
     private $id;
+    /**
+     * @var $name
+     */
     private $name;
     public function getCategoryId()
     {
@@ -30,12 +36,22 @@ class Category
         $this->name = $name;
         return $this;
     }
+
+    /**
+     * @param $data
+     */
     public function formArray($data)
     {
         $this->setId($data['id']);
         $this->setName($data['name']);
     }
-    public function getAllCategories(){
+
+    /**
+     * Get all existing categories from database
+     * @return array
+     */
+    public function getAllCategories() :array
+    {
         $mapper= new CategoryMapper();
         return $mapper->getAllCategories();
     }

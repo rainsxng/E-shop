@@ -10,12 +10,14 @@ namespace Mappers;
 
 use Core\Database;
 use Models\Attribute;
-use Models\Attribute_value;
 use PDO;
 
 
 class AttributeMapper
 {
+    /**
+     * @var PDO $pdo
+     */
     private $pdo;
 
     public function __construct()
@@ -23,6 +25,10 @@ class AttributeMapper
         $this->pdo = Database::getInstance();
     }
 
+    /**
+     * Get info about all attributes
+     * @return array
+     */
     public function getAllAttributes()
     {
         $query = $this->pdo->prepare("SELECT id,name,created_at,updated_at from attribute");
@@ -35,6 +41,11 @@ class AttributeMapper
         return $attributes;
     }
 
+    /**
+     *Transform an array into an Attribute Object
+     * @param $data
+     * @return Attribute
+     */
     public function mapArrayToAttributes($data)
     {
         $atObj = new Attribute();

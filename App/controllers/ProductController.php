@@ -4,7 +4,7 @@ namespace Controllers;
 
 use Core\Controller;
 use Models\Attribute;
-use Models\Attribute_value;
+use Models\AttributeValue;
 use Models\Comment;
 use Models\Product;
 use Models\ProductModel;
@@ -13,18 +13,35 @@ use Validators\UserValidator;
 
 class ProductController extends Controller
 {
+    /**
+     * @var Product $product
+     */
     private $product;
+    /**
+     * @var Comment $comment
+     */
     private $comment;
+    /**
+     * @var AttributeValue $values
+     */
     private $values;
+    /**
+     * @var Attribute $attributes
+     */
     private $attributes;
     public function __construct()
     {
         $this->product = new Product();
         $this->comment = new Comment();
-        $this->values = new Attribute_value();
+        $this->values = new AttributeValue();
         $this->attributes = new Attribute();
     }
 
+    /**
+     * Show all information about selected product
+     * @param $id
+     * @throws \Exception
+     */
     public function viewProduct($id)
     {
         $this->product->setId($id);
@@ -50,6 +67,11 @@ class ProductController extends Controller
         }
     }
 
+    /**
+     * Get all products for chosen category
+     * @param $id
+     * @throws \Exception
+     */
     public function getProductsByCategoryId($id)
     {
         $this->product->setId($id);
@@ -65,6 +87,10 @@ class ProductController extends Controller
             self::render('404');
         }
     }
+
+    /**
+     * Add comment to product
+     */
     public function addComment()
     {
         $this->comment->setProductId($_POST['product_id']);

@@ -7,12 +7,6 @@ use Mappers\OrderMapper;
 
 class Order extends Model
 {
-    protected $id;
-    protected $user_id;
-    protected $status;
-    protected $mapper;
-    protected $sum;
-
     public function __construct()
     {
         parent::__construct();
@@ -20,7 +14,26 @@ class Order extends Model
         $this->setId($this->mapper->getOrderIdByUser());
         $this->setUserId($_SESSION['user_id']);
     }
-
+    /**
+     * @var $id
+     */
+    protected $id;
+    /**
+     * @var $user_id
+     */
+    protected $user_id;
+    /**
+     * @var $status
+     */
+    protected $status;
+    /**
+     * @var OrderMapper
+     */
+    protected $mapper;
+    /**
+     * @var $sum
+     */
+    protected $sum;
     /**
      * @return mixed
      */
@@ -85,16 +98,28 @@ class Order extends Model
         $this->status = $status;
     }
 
+    /**
+     * Create new order
+     */
     public function createOrder()
     {
         $this->mapper->createOrder(new Order());
     }
+
+    /**
+     * Delete order
+     */
     public function delete()
     {
         $this->mapper->delete(new Order());
     }
 
-    public function mapArrayToOrder(array $data)
+    /**
+     * Transform an array into an Order Object
+     * @param array $data
+     * @return Order
+     */
+    public function mapArrayToOrder(array $data) :Order
     {
         $orderObj = new Order();
         $orderObj->setId($data['id']);
@@ -103,11 +128,21 @@ class Order extends Model
         return $orderObj;
     }
 
-    public function getAllOrdersByUser(User $user)
+    /**
+     * Get all orders for user
+     * @param User $user
+     * @return array
+     */
+    public function getAllOrdersByUser(User $user) :array
     {
         return $this->mapper->getAllOrdersByUser($user);
     }
 
+    /**
+     * Get sum of order
+     * @param Order $order
+     * @return mixed
+     */
     public function getSumForOrder(Order $order)
     {
         return $this->mapper->getSumForOrder($order);

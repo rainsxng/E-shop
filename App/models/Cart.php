@@ -6,12 +6,41 @@ use Mappers\CartMapper;
 
 class Cart
 {
+    public function __construct($product_id = null, $quantity = null)
+    {
+        $this->mapper = new CartMapper();
+        $this->orderModel = new Order();
+        $this->setProductId($product_id);
+        $this->setQuantity($quantity);
+        $this->setOrderId($this->orderModel->getId());
+    }
+    /**
+     * @var $id
+     */
     private $id;
+    /**
+     * @var $order_id
+     */
     private $order_id;
+    /**
+     * @var $quantity
+     */
     private $quantity;
+    /**
+     * @var CartMapper
+     */
     private $mapper;
+    /**
+     * @var $product_id
+     */
     private $product_id;
+    /**
+     * @var Order
+     */
     private $orderModel;
+    /**
+     * @var $sum
+     */
     private static $sum;
 
     /**
@@ -62,15 +91,6 @@ class Cart
     public function setMapper($mapper)
     {
         $this->mapper = $mapper;
-    }
-
-    public function __construct($product_id = null, $quantity = null)
-    {
-        $this->mapper = new CartMapper();
-        $this->orderModel = new Order();
-        $this->setProductId($product_id);
-        $this->setQuantity($quantity);
-        $this->setOrderId($this->orderModel->getId());
     }
 
     /**
@@ -124,36 +144,65 @@ class Cart
         $this->quantity = $quantity;
     }
 
+    /**
+     * @return array
+     */
     public function getProducts()
     {
         return $this->mapper->getCartProducts();
     }
 
+    /**
+     * Add product to database cart
+     * @param $product_id
+     * @param null $quantity
+     */
     public function addProduct($product_id, $quantity = null)
     {
         $this->mapper->addProduct(new Cart($product_id, $quantity));
     }
 
+    /**
+     * Delete product from database cart
+     * @param $product_id
+     */
     public function deleteOne($product_id)
     {
         $this->mapper->deleteOne(new Cart($product_id));
     }
 
+    /**
+     * Delete all products from database cart
+     */
     public function deleteAll()
     {
         $this->mapper->delete(new Cart());
     }
 
+    /**
+     * Increase quantity of product in database cart
+     * @param $product_id
+     * @param $quantity
+     */
     public function increaseQuantity($product_id, $quantity)
     {
         $this->mapper->increaseQuantity(new Cart($product_id, $quantity));
     }
 
+    /**
+     * Decrease quantity of product in database cart
+     * @param $product_id
+     * @param $quantity
+     */
     public function decreaseQuantity($product_id, $quantity)
     {
         $this->mapper->decreaseQuantity(new Cart($product_id, $quantity));
     }
 
+    /**
+     * Checkout an order
+     * @param Order $order
+     */
     public function makeOrder(Order $order)
     {
         $this->mapper->makeOrder($order);

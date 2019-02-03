@@ -15,12 +15,22 @@ use PDO;
 
 class CommentMapper
 {
+    /**
+     * @var PDO $pdo
+     */
     private $pdo;
     public function __construct()
     {
         $this->pdo = Database::getInstance();
     }
-    private function mapArrayToComment($data) {
+
+    /**
+     * Transform an array into an Comment Object
+     * @param $data
+     * @return Comment
+     */
+    private function mapArrayToComment($data) :Comment
+    {
         $comment = new Comment();
         $comment->setId($data['id']);
         $comment->setDate($data['date']);
@@ -32,7 +42,12 @@ class CommentMapper
         return  $comment;
     }
 
-    public function getProductComments($product_id)
+    /**
+     * Get all comments to  product
+     * @param $product_id
+     * @return array
+     */
+    public function getProductComments($product_id) :array
     {
         $query=$this->pdo->prepare("SELECT  comments.id,comments.product_id,comments.user_id,comments.date,comments.message,comments.stars,users.login as user_login FROM comments
 INNER JOIN users on comments.user_id=users.id
@@ -51,7 +66,12 @@ WHERE comments.product_id=:id;");
         return $comments;
     }
 
-    public function isCommentsExist($product_id)
+    /**
+     * Check is exist any comment for product
+     * @param $product_id
+     * @return array
+     */
+    public function isCommentsExist($product_id) :array
     {
         $query = $this->pdo->prepare("SELECT comments.id FROM  products
  LEFT JOIN comments on products.id=comments.product_id
@@ -61,7 +81,11 @@ INNER JOIN users on comments.user_id=users.id WHERE products.id=:id;");
         return $row;
     }
 
-    public function addComment (Comment $commentObj)
+    /**
+     * Add comment to product
+     * @param Comment $commentObj
+     */
+    public function addComment(Comment $commentObj)
     {
         echo json_encode($this->mapCommentToArray($commentObj));
         $query = $this->pdo->prepare("INSERT INTO comments (id,message,date,created_at,updated_at,stars,user_id,product_id) VALUES (NULL,:message,:date,:created_at,:updated_at,:stars,:user_id,:product_id)");
@@ -76,7 +100,12 @@ INNER JOIN users on comments.user_id=users.id WHERE products.id=:id;");
             ));
     }
 
-    public function mapCommentToArray(Comment $commentObj)
+    /**
+     * Transform a Comment object into an array
+     * @param Comment $commentObj
+     * @return array
+     */
+    public function mapCommentToArray(Comment $commentObj) :array
     {
         $user = new User();
         $userObj = $user->getUserById($commentObj->getUserId());

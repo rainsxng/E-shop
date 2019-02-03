@@ -10,13 +10,25 @@ namespace Core;
 
 class Router
 {
+    /**
+     * @var array $routes
+     */
     public static $routes = array();
+    /**
+     * @var array $params
+     */
     private static $params = array();
+    /**
+     * @var string $requestedUrl
+     */
     public static $requestedUrl = '';
+
     /**
      * Add route
+     * @param $route
+     * @param null $destination
      */
-    public static function addRoute($route, $destination=null)
+    public static function addRoute($route, $destination = null)
     {
         if ($destination != null && !is_array($route)) {
             $route = array($route => $destination);
@@ -30,7 +42,9 @@ class Router
     }
 
     /**
-     * Split URL on parts
+     * Split url on parts
+     * @param $url
+     * @return array[]|false|string[]
      */
     public static function splitUrl($url)
     {
@@ -43,8 +57,11 @@ class Router
     {
         return (self::$requestedUrl?:'/');
     }
+
     /**
-     * Dispatching  URL
+     * Dispatching URL
+     * @param null $requestedUrl
+     * @return mixed
      */
     public static function dispatch($requestedUrl = null)
     {
@@ -85,7 +102,12 @@ class Router
         $params = array_slice(self::$params, 2);
         return call_user_func_array(array($controller, $action), $params);
     }
-    public function returnParams()
+
+    /**
+     * Get params
+     * @return array
+     */
+    public function returnParams() :array
     {
         return self::$params;
     }

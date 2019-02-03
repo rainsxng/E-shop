@@ -16,7 +16,13 @@ use Validators\UserValidator;
 
 class UserController extends Controller
 {
+    /**
+     * @var User $user
+     */
     private $user;
+    /**
+     * @var Order $order
+     */
     private $order;
 
     public function __construct()
@@ -25,6 +31,10 @@ class UserController extends Controller
         $this->order = new Order();
     }
 
+    /**
+     * Get all info about user including info about orders
+     * @throws \Exception
+     */
     public function getUser()
     {
         if ($_SESSION['isLogged'] === false) {
@@ -40,6 +50,10 @@ class UserController extends Controller
             self::render('user', ['user'=>$this->user,'orders'=>$orders,'sum'=>$sum]);
         }
     }
+
+    /**
+     * Change password for user
+     */
     public function changePassword()
     {
         $this->user = $this->user->getUserById($_SESSION['user_id']);
@@ -57,6 +71,9 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Change email for user
+     */
     public function changeEmail()
     {
         $this->user = $this->user->getUserById($_SESSION['user_id']);
@@ -69,6 +86,9 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Logout user and delete his account
+     */
     public function logoutAndDelete()
     {
         $this->user = $this->user->getUserById($_SESSION['user_id']);
