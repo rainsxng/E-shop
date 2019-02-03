@@ -108,8 +108,12 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
     public function decreaseQuantity(Cart $cartObj)
     {
         $productObj = new Product($cartObj->getProductId());
-        $query = $this->pdo->prepare("UPDATE orders_products SET quantity = quantity-:quantity WHERE product_id =:product_id AND orders_products.order_id = :order_id");
-        $query->execute(array('product_id'=>$productObj->getId(),'order_id'=>$cartObj->getOrderId(),'quantity'=>$cartObj->getQuantity()));
+        $query = $this->pdo->prepare("UPDATE orders_products SET quantity = quantity-:quantity 
+        WHERE product_id =:product_id AND orders_products.order_id = :order_id");
+        $query->execute(array(
+            'product_id'=>$productObj->getId(),
+            'order_id'=>$cartObj->getOrderId(),
+            'quantity'=>$cartObj->getQuantity()));
         $productObj->decreaseQuantity($productObj->getId(), 1);
         unset($query);
     }
@@ -133,7 +137,7 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
 
     public function makeOrder(Order $order) :bool
     {
-        $query = $this->pdo->prepare("UPDATE orders SET status = :status, updated_at = :update_at 
+        $query = $this->pdo->prepare("UPDATE orders SET status = :status, updated_at = :updated_at 
         WHERE user_id = :user_id AND status = 'cart'");
         $query->execute(array(
             'user_id'=>$order->getUserId(),

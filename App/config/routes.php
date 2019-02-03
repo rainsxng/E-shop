@@ -1,6 +1,6 @@
 <?php
 return [
-    '/' => 'Controllers\IndexController/actionIndex', // главная страница
+    '/' => 'Controllers\IndexController/actionIndex',
     '/product/:any' => 'Controllers\ProductController/viewProduct/$1',
     '/login'=>'Controllers\ShowController/showLoginPage',
     '/register'=>'Controllers\ShowController/showRegisterPage',
@@ -19,5 +19,6 @@ return [
     '/user'=>'Controllers\UserController/getUser',
     '/user/changePassword'=>'Controllers\UserController/changePassword',
     '/user/changeEmail'=>'Controllers\UserController/changeEmail',
-    '/cart/order'=>'Controllers\CartController/makeOrder'
+    '/cart/order'=>'Controllers\CartController/makeOrder',
+    '/user/delete'=>'Controllers\UserController/logoutAndDelete'
 ];

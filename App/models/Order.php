@@ -11,6 +11,7 @@ class Order extends Model
     protected $user_id;
     protected $status;
     protected $mapper;
+    protected $sum;
 
     public function __construct()
     {
@@ -18,6 +19,22 @@ class Order extends Model
         $this->mapper = new OrderMapper();
         $this->setId($this->mapper->getOrderIdByUser());
         $this->setUserId($_SESSION['user_id']);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSum()
+    {
+        return $this->sum;
+    }
+
+    /**
+     * @param mixed $sum
+     */
+    public function setSum($sum): void
+    {
+        $this->sum = $sum;
     }
 
     /**
@@ -89,5 +106,10 @@ class Order extends Model
     public function getAllOrdersByUser(User $user)
     {
         return $this->mapper->getAllOrdersByUser($user);
+    }
+
+    public function getSumForOrder(Order $order)
+    {
+        return $this->mapper->getSumForOrder($order);
     }
 }

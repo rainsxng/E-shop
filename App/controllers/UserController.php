@@ -33,7 +33,11 @@ class UserController extends Controller
         else {
             $this->user = $this->user->getUserById($_SESSION['user_id']);
             $orders = $this->order->getAllOrdersByUser($this->user);
-            self::render('user', ['user'=>$this->user,'orders'=>$orders]);
+            foreach ($orders as $order) {
+                $order->setSum($this->order->getSumForOrder($order));
+            }
+            $sum = $this->order->getSumForOrder($this->order);
+            self::render('user', ['user'=>$this->user,'orders'=>$orders,'sum'=>$sum]);
         }
     }
     public function changePassword()
@@ -63,5 +67,14 @@ class UserController extends Controller
             Response::setContent("Успешно изменено", "");
             Response::send();
         }
+    }
+
+    public function logoutAndDelete()
+    {
+        $this->user = $this->user->getUserById($_SESSION['user_id']);
+        $this->user->logOut();
+        $this->user->delete($this->user);
+        Response::setResponseCode(200);
+        Response::send();
     }
 }

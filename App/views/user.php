@@ -16,7 +16,6 @@
 <body>
 <?php
 include_once '../App/views/header.php';
-var_dump($orders);
 ?>
 <div class="row">
     <div class="col-3">
@@ -29,7 +28,7 @@ var_dump($orders);
         <div class="col-md-3 tab-container">
             <div class="list-group ">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="v-pills-about-tab" data-toggle="pill" href="#v-pills-about" role="tab" aria-controls="v-pills-about" aria-selected="true">Информация</a>
+                    <a class="nav-link active" id="v-pills-about-tab" data-toggle="pill" href="#v-pills-about" role="tab" aria-controls="v-pills-about" aria-selected="true">Общая информация</a>
                     <a class="nav-link" id="v-pills-changePswd-tab" data-toggle="pill" href="#v-pills-changePswd" role="tab" aria-controls="v-pills-changePswd" aria-selected="false">Сменить пароль</a>
                     <a class="nav-link" id="v-pills-changeEmail-tab" data-toggle="pill" href="#v-pills-changeEmail" role="tab" aria-controls="v-pills-changeEmail" aria-selected="false">Сменить email</a>
                     <a class="nav-link" id="v-pills-orders-tab" data-toggle="pill" href="#v-pills-orders" role="tab" aria-controls="v-pills-orders" aria-selected="false">Заказы</a>
@@ -110,24 +109,35 @@ var_dump($orders);
                         </div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">
+                        <?php
+                        if (!empty($orders)) { ?>
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th scope="col">Order Id</th>
-                                <th scope="col">updated_at</th>
-                                <th scope="col">Summa</th>
+                                <th scope="col">Номер заказа</th>
+                                <th scope="col">Дата и время оформления</th>
+                                <th scope="col">Сумма заказа</th>
                             </tr>
                             </thead>
                             <tbody>
+                            <?php
+                            foreach ($orders as $order) {
+                                ?>
                             <tr>
-                                <th scope="row">1</th>
-                                <td>10.09.10101</td>
-                                <td>Ot21321321to</td>
+                                <th scope="row"><?=$order->getId();?></th>
+                                <td><?=$order->getUpdatedAt();?></td>
+                                <td><?=$order->getSum();?></td>
                             </tr>
+                            <?php } ?>
                             </tbody>
                         </table>
+                        <?php } else { ?>
+                        <p>Заказов нет</p>
+                        <?php } ?>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">4</div>
+                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                        <button type="button" class="btn btn-danger" id="deleteBtn">Удалить аккаунт</button>
+                    </div>
 
                 </div>
             </div>

@@ -1,6 +1,7 @@
 $(document).ready(function () {
     let updatePswdBtn = document.getElementById("updatePswdBtn");
     let updateEmailBtn = document.getElementById("updateEmailBtn");
+    let deleteBtn = document.getElementById("deleteBtn");
     updatePswdBtn.onclick = function (e) {
         let oldPassword = $('#oldPswd').val();
         let newPassword = $('#newPswd').val();
@@ -67,6 +68,22 @@ $(document).ready(function () {
                 }
             }
         );
+    }
+
+    deleteBtn.onclick = function (e) {
+        let answer = confirm("Вы точно хотите удалить аккаунт ? ");
+        if (answer == true) {
+            $.ajax(
+                {
+                    url: '/user/delete',
+                    type: "POST",
+                    error: error,
+                    success: function () {
+                        $(window).attr('location', '/');
+                    }
+                }
+            );
+        }
     }
 });
 

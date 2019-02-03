@@ -83,4 +83,14 @@ class UserMapper
             'updated_at'=>$obj->getUpdatedAt()));
         return true;
     }
+
+    public function delete(User $obj)
+    {
+        $query = $this->pdo->prepare("DELETE FROM users WHERE users.id = :id AND users.login = :login");
+        $query->execute(array(
+            'id'=>$obj->getId(),
+            'login'=>$obj->getLogin()
+        ));
+        return true;
+    }
 }

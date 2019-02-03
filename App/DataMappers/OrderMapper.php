@@ -48,22 +48,24 @@ class OrderMapper
     public function getAllOrdersByUser(User $userObj)
     {
         $this->orderModel = new Order();
-        $productModel = new Product();
-        $query=$this->pdo->prepare("
-  SELECT orders.id,orders.user_id,orders.created_at,products.name,orders.status,products.price,products.image,brands.name as Brand,orders_products.quantity FROM orders
-  JOIN orders_products on  orders.id = orders_products.order_id
-  JOIN products  on orders_products.product_id = products.id
-  JOIN brands on products.brand_id = brands.id
-  WHERE orders.user_id = :user_id AND orders.status = 'order';");
+        $query=$this->pdo->prepare("SELECT orders.id,orders.created_at,orders.updated_at FROM orders
+        WHERE orders.user_id = :user_id AND orders.status = 'order'");
         $query->execute(array('user_id'=>$userObj->getId()));
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
         $orders = [];
-        $products = [];
         foreach ($row as $r) {
             array_push($orders, $this->orderModel->mapArrayToOrder($r));
-            array_push($products, $productModel->fromArray($r));
         }
-        return array_merge($orders, $products);
+        return $orders;
     }
-
+    public function getSumForOrder(Order $orderObj)
+    {
+        $query=$this->pdo->prepare("SELECT SUM(products.price*orders_products.quantity) as sum from products
+INNER JOIN orders_products on products.id=orders_products.product_id
+INNER JOIN orders on orders.id = orders_products.order_id
+WHERE orders.id = :order_id AND orders.status='order'");
+        $query->execute(array('order_id'=>$orderObj->getId()));
+        $row = $query->fetchALL(PDO::FETCH_ASSOC);
+        return $row[0]["sum"];
+    }
 }

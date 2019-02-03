@@ -195,4 +195,10 @@ class User extends Model
     {
         return $this->mapper->changeEmail($obj);
     }
+
+    public function delete(User $obj)
+    {
+        $this->mapper->delete($obj);
+        return true;
+    }
 }
