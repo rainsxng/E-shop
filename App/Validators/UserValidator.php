@@ -13,7 +13,12 @@ use Core\Response;
 
 class UserValidator
 {
-    public static function prepare(User $user)
+    /**
+     * Prepare User before validation (delete whitespaces, slashes etc)
+     * @param User $user
+     * @return User
+     */
+    public static function prepare(User $user) :User
     {
         $user->setLogin(trim($user->getLogin()));
         $user->setLogin(stripslashes($user->getLogin()));
@@ -25,7 +30,13 @@ class UserValidator
         $user->setEmail(preg_replace('/\s/', '', $user->getEmail()));
         return $user;
     }
-    public static function validateLogin($login)
+
+    /**
+     * Validation for login
+     * @param $login
+     * @return bool
+     */
+    public static function validateLogin($login) :bool
     {
         if (mb_strlen($login)<3 || mb_strlen($login)>25) {
             Response::setResponseCode(403);
@@ -42,7 +53,12 @@ class UserValidator
         return true;
     }
 
-    public static function validateEmail($email)
+    /**
+     * Validation for email
+     * @param $email
+     * @return bool
+     */
+    public static function validateEmail($email) :bool
     {
         if (mb_strlen($email)==0) {
             Response::setResponseCode(403);
@@ -65,7 +81,12 @@ class UserValidator
         return true;
     }
 
-    public static function validatePassword($password)
+    /**
+     * Validation for password
+     * @param $password
+     * @return bool
+     */
+    public static function validatePassword($password) :bool
     {
         if (strlen($password)<=3) {
             Response::setResponseCode(403);
