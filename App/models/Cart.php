@@ -193,10 +193,11 @@ class Cart
      * Decrease quantity of product in database cart
      * @param $product_id
      * @param $quantity
+     * @return bool
      */
     public function decreaseQuantity($product_id, $quantity)
     {
-        $this->mapper->decreaseQuantity(new Cart($product_id, $quantity));
+        return $this->mapper->decreaseQuantity(new Cart($product_id, $quantity));
     }
 
     /**

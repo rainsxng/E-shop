@@ -12,7 +12,7 @@ class App
     public function __construct()
     {
         if (isset($_COOKIE['PHPSESSID'])) {
-            session_start();
+            @session_start();
         }
         /**
          * Setting log file

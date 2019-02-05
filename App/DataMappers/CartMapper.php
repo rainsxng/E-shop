@@ -146,6 +146,7 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
             'quantity'=>$cartObj->getQuantity()));
         $productObj->decreaseQuantity($productObj->getId(), 1);
         unset($query);
+        return true;
     }
 
     /**
