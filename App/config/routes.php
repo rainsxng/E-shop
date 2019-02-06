@@ -20,5 +20,7 @@ return [
     '/user/changePassword'=>'Controllers\UserController/changePassword',
     '/user/changeEmail'=>'Controllers\UserController/changeEmail',
     '/cart/order'=>'Controllers\CartController/makeOrder',
-    '/user/delete'=>'Controllers\UserController/logoutAndDelete'
+    '/user/delete'=>'Controllers\UserController/logoutAndDelete',
+    '/search'=>'Controllers\IndexController/searchProductsByTitle',
+    '/fullSearch'=>'Controllers\IndexController/fullSearch'
 ];

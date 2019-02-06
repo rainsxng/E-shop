@@ -159,4 +159,19 @@ WHERE categories.id=:id");
         }
         return $products;
     }
+
+    /**
+     * Get searched items
+     * @param $name
+     * @return array
+     */
+    public function getSearchProducts($name)
+    {
+        $name = "%$name%";
+        $query = $this->pdo->prepare("SELECT id,name FROM products WHERE products.name LIKE :name");
+        $query->bindValue(':name', $name, PDO::PARAM_STR);
+        $query->execute();
+        $row = $query->fetchALL(PDO::FETCH_ASSOC);
+        return $row;
+    }
 }

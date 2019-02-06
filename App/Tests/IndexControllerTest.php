@@ -23,9 +23,4 @@ class IndexControllerTest extends TestCase
         $this->controller = new IndexController();
     }
 
-    public function testIndexAction()
-    {
-        $this->assertIsBool($this->controller->actionIndex());
-    }
-
 }

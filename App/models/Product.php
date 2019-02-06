@@ -347,4 +347,14 @@ class Product
     {
         return $this->mapper->getProductsByBrandName($brands);
     }
+
+    /**
+     * Get searched products
+     * @param $title
+     * @return array
+     */
+    public function getSearchProducts($title)
+    {
+        return $this->mapper->getSearchProducts($title);
+    }
 }

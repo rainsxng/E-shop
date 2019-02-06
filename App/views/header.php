@@ -14,10 +14,12 @@ $controller = new AuthController();
             </li>
         </ul>
         <form class="form-inline" method="post">
-            <div class="col align-self-center">
-                <input class="form-control mr-sm-2" type="text" placeholder="Поиск">
-                <button class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-            </div>
+            <form class="col align-self-center">
+                <input type="text" class="typeahead form-control mr-sm-2" id="typeahead" name="s" placeholder="Поиск" autocomplete="off" required>
+                <button class="btn btn-primary my-2 my-sm-0 mr-2" type="submit" id="searchBtn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
             <a href="/cart" class="btn btn-primary float-left mr-2"><i class="fas fa-shopping-cart"></i>   Корзина</a>
             <?php
     if ($_SESSION['isLogged'] === true) {
