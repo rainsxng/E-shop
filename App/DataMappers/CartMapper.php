@@ -134,6 +134,7 @@ WHERE orders.user_id = :user_id AND orders.status='cart' AND orders_products.pro
     /**
      * Decrease quantity of product in cart
      * @param Cart $cartObj
+     * @return bool
      */
     public function decreaseQuantity(Cart $cartObj)
     {

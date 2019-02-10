@@ -174,4 +174,28 @@ WHERE categories.id=:id");
         $row = $query->fetchALL(PDO::FETCH_ASSOC);
         return $row;
     }
+    /**
+     * @param Product $productObj
+     * @return bool
+     */
+    public function insert(Product $productObj)
+    {
+        $query = $this->pdo->prepare("INSERT INTO products VALUES (:id,:category_id,:brand_id,:name,:price,:quantity,:image,:description,:created_at,:updated_at);");
+        try {
+            $query->execute(array(
+                'id' => $productObj->getId(),
+                'name' => $productObj->getName(),
+                'category_id'=>$productObj->getCategoryId(),
+                'brand_id'=>$productObj->getBrandId(),
+                'price'=>$productObj->getPrice(),
+                'quantity'=>$productObj->getQuantity(),
+                'image'=>$productObj->getImage(),
+                'description'=>$productObj->getDescription(),
+                'created_at' => $productObj->getCreatedAt(),
+                'updated_at' => $productObj->getUpdatedAt()));
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
 }

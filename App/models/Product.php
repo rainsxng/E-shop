@@ -8,13 +8,15 @@
 
 namespace Models;
 
+use Core\Model;
 use Mappers\ProductMapper;
 use Validators\ProductValidator;
 
-class Product
+class Product extends Model
 {
     public function __construct($id = null, $quantity = null)
     {
+        parent::__construct();
         $this->mapper = new ProductMapper();
         $this->setId($id);
         $this->setQuantity($quantity);
@@ -356,5 +358,14 @@ class Product
     public function getSearchProducts($title)
     {
         return $this->mapper->getSearchProducts($title);
+    }
+
+    /**
+     * @param $productObj
+     * @return bool
+     */
+    public function insert($productObj)
+    {
+        return $this->mapper->insert($productObj);
     }
 }

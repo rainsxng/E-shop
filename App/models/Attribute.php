@@ -65,4 +65,31 @@ class Attribute extends Model
     {
         return $this->mapper->getAllAttributes();
     }
+
+    /**
+     * @param $atObj
+     * @return bool
+     */
+    public function insert($atObj)
+    {
+        return $this->mapper->insert($atObj);
+    }
+
+    /**
+     * @param $atObj
+     * @return bool
+     */
+    public function delete($atObj)
+    {
+        return $this->mapper->delete($atObj);
+    }
+
+    /**
+     * @param $atObj
+     * @return bool
+     */
+    public function update($atObj)
+    {
+        return $this->mapper->update($atObj);
+    }
 }

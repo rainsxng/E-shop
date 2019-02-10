@@ -11,6 +11,7 @@ namespace Mappers;
 use Core\Database;
 use Models\Attribute;
 use PDO;
+use PHPUnit\Runner\Exception;
 
 
 class AttributeMapper
@@ -54,5 +55,84 @@ class AttributeMapper
         $atObj->setCreatedAt($data['created_at']);
         $atObj->setUpdatedAt($data['created_at']);
         return $atObj;
+    }
+
+    /**
+     * @param Attribute $atObj
+     * @return bool
+     */
+    public function insert(Attribute $atObj)
+    {
+        $query = $this->pdo->prepare("INSERT INTO attribute VALUES (:id,:name,:created_at,:updated_at);");
+        try {
+            $query->execute(array(
+                'id' => $atObj->getId(),
+                'name' => $atObj->getName(),
+                'created_at' => $atObj->getCreatedAt(),
+                'updated_at' => $atObj->getUpdatedAt()));
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    /**
+     * @param Attribute $atObj
+     * @return bool
+     */
+    public function delete(Attribute $atObj)
+    {
+        $name = $atObj->getName();
+        $name = "%$name%";
+        $query = $this->pdo->prepare("DELETE FROM attribute WHERE attribute.id = :id OR name LIKE :name;");
+        try {
+            $query->execute(array(
+                'id' => $atObj->getId(),
+                'name'=>$name
+            ));
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    /**
+     * @param Attribute $atObj
+     * @return bool
+     */
+    public function update(Attribute $atObj)
+    {
+        $query = $this->pdo->prepare("UPDATE attribute SET name = :name, updated_at = :updated_at
+        WHERE attribute.id = :id;");
+        try {
+            $query->execute(array(
+                'id' => $atObj->getId(),
+                'name'=>$atObj->getName(),
+                'updated_at'=>$atObj->getUpdatedAt()
+            ));
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    /**
+     * @param string $name
+     * @return bool|Attribute
+     */
+    public function getAttributeByName(string $name)
+    {
+        $name = "%$name%";
+        $query = $this->pdo->prepare("SELECT id,name,created_at,updated_at FROM attribute WHERE  name LIKE :name");
+        try {
+            $query->execute(array(
+                'name' => $name
+            ));
+            $row = $query->fetchALL(PDO::FETCH_ASSOC);
+            $attribute = $this->mapArrayToAttributes($row[0]);
+            return $attribute;
+        } catch (Exception $e) {
+            return false;
+        }
     }
 }
